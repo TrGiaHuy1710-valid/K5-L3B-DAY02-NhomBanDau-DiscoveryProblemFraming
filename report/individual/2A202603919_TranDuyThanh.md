@@ -52,7 +52,7 @@
 | Success metric | Baseline minh họa **30 phút/tuần** → mục tiêu **≤12 phút/tuần**; đo đồng hồ 3 tuần liên tiếp, so với số giao dịch thực tế; số giao dịch bị phân loại sai ≤1/tuần. |
 | Phương án không dùng AI | Một bảng theo mẫu thống nhất, quy tắc phân loại theo từ khóa và lịch chốt giao dịch cố định. |
 | Giả thuyết về AI | Hỗ trợ gợi ý nhóm cho mô tả giao dịch khó hiểu; người dùng duyệt và có quyền sửa. |
-| Cảm nhận nhanh | **Rule / Workflow**, chưa chốt. |
+| Cảm nhận nhanh | **Rule / Workflow** |
 
 Quy trình hiện tại - **30 phút/tuần, toàn bộ số phút là giả định cần đo lại**:
 
@@ -74,7 +74,7 @@ Quy trình hiện tại - **30 phút/tuần, toàn bộ số phút là giả đ�
 | Success metric | Baseline minh họa **45 phút/lần** → mục tiêu **≤20 phút/lần**; đo với 3 lần mua tương đương, đối chiếu số thông số quan trọng bỏ sót (mục tiêu 0). |
 | Phương án không dùng AI | Mẫu bảng so sánh cố định gồm giá cuối, model, bảo hành, phí, đổi trả; ưu tiên nguồn chính thức. |
 | Giả thuyết về AI | Trích và chuẩn hóa các điều kiện từ trang người mua cung cấp, kèm nguồn để đối chiếu; không tự khẳng định giá hiện tại. |
-| Cảm nhận nhanh | **Workflow**, chưa chốt. |
+| Cảm nhận nhanh | **Workflow**|
 
 Quy trình hiện tại - **45 phút/lần, giả định**:
 
@@ -96,7 +96,7 @@ Quy trình hiện tại - **45 phút/lần, giả định**:
 | Success metric | Baseline minh họa **19 phút/lần** → mục tiêu **≤7 phút/lần**; đo thời gian chốt và số lần phải sửa bảng chia tiền (mục tiêu 0). |
 | Phương án không dùng AI | Bảng chia tiền có công thức hoặc ứng dụng split bill; mọi người xác nhận trước khi chuyển. |
 | Giả thuyết về AI | Có thể đọc hóa đơn để gợi ý các khoản, nhưng công thức chia tiền và xác nhận con người vẫn là trọng tâm; AI có thể không cần thiết. |
-| Cảm nhận nhanh | **No AI / Rule**, ưu tiên phương án đơn giản. |
+| Cảm nhận nhanh | **No AI / Rule**|
 
 Quy trình hiện tại - **19 phút/lần, giả định**:
 
@@ -114,7 +114,7 @@ Quy trình hiện tại - **19 phút/lần, giả định**:
 ### AI phản biện card thế nào (mẫu phản biện để tự đối chiếu)
 | Điểm yếu AI chỉ ra | Đồng ý? | Cần sửa / đã sửa trong bản nháp |
 |---|---|---|
-| Chưa chứng minh người dùng thực sự làm việc này hàng tuần; có thể họ không quan tâm theo dõi. | Có | Thu hẹp actor: người **đã** theo dõi chi tiêu; yêu cầu ghi lại 2–3 lần gần nhất. |
+| Chưa chứng minh người dùng thực sự làm việc này hàng tuần; có thể họ không quan tâm theo dõi. | Có | Thu hẹp actor: người đã theo dõi chi tiêu; yêu cầu ghi lại 2–3 lần gần nhất. |
 | Không phải ngân hàng/ứng dụng nào cũng cho trích xuất dữ liệu; rủi ro bảo mật tài chính. | Có | Giới hạn ở dữ liệu tự nhập hoặc mẫu giao dịch ẩn danh; không yêu cầu mật khẩu hay kết nối tài khoản. |
 | Với chia tiền, công thức và app sẵn có có thể giải quyết đủ tốt, không cần AI. | Có | Giữ No AI / Rule như phương án chính để so sánh. |
 | Thời gian giả định không chứng minh impact thật. | Có | Đánh dấu rõ mọi thời gian là minh họa; đo bằng đồng hồ và log trước khi đưa vào báo cáo chính thức. |
