@@ -131,8 +131,10 @@ Quy trình hiện tại - **19 phút/lần, giả định**:
 | Phản biện bài của bạn khác | Hỏi: "Agent hỗ trợ Intern liệu có cần thiết không khi nếu dự án đã private thì chẳng lẽ công ty lại không cho dùng công cụ code hỗ trợ để gỡ bỏ các bug?" | Nhận được câu trả lời: "Các công ty thưởng sẽ không cung cấp model dùng token cho intern, vì vậy mới cần một model local nhỏ giúp hỗ trợ vấn đề này." |
 | Nhận phản biện | "Với problem liên quan tới AI giúp kiểm soát chi tiêu, liệu có nhất thiết phải dùng AI không khi mà suy nghĩ kĩ lại thì rule thôi là cũng ổn" | Đồng ý với ý kiến này, vì vậy card muốn pick là cái #2|
 | Nhận phản biện | "Với việc dùng AI để tổng hợp ra các kênh, trang của sản phẩm, vấn đề là việc lấy API từ các kênh, có nơi không cho, hoặc API cũng sẽ quá nhiều" | Có thể ưu tiên các API  chính thức, hay là cho người dùng cung cấp website hay dùng chẳng hạn.|
-| Kiểm chứng / research | | |
-
+| Kiểm chứng / research | Research thị trường: Tìm kiếm các giải pháp Agri-tech hiện có tại Việt Nam và Thế giới | Kết quả kiểm chứng: Phát hiện các app quốc tế như Plantix làm rất tốt phần nhận diện bệnh (Vision), các app VN thì chủ yếu ghi chép nhật ký nông vụ tĩnh. Chưa có app nào làm RAG real-time về tiêu chuẩn xuất khẩu/hóa chất cấm. Điều này chứng minh USP (Lợi thế độc quyền) của nhóm rất rõ ràng và khả thi |
+Quy trình nhóm | Trình bày ý tưởng -> Phản biện -> Research -> Chốt vấn đề	| Thống nhất được vấn đề chung của nhóm
+Problem Statement | Góp ý vào quá trình hình thành statement cuối | Nông dân trồng Thanh Long gặp khó khăn trong việc chẩn đoán bệnh chính xác và cập nhật kịp thời các thay đổi về tiêu chuẩn xuất khẩu (dư lượng hóa chất), dẫn đến rủi ro bị trả hàng và thiệt hại kinh tế lớn 
+Mức can thiệp AI | Xác định giới hạn hành động của AI (AI làm đến đâu, con người làm đến đâu) | Chốt mức: AI chỉ đóng vai trò phân tích ảnh bệnh và tra cứu luật/cảnh báo hóa chất cấm. Quyết định cuối cùng vẫn thuộc về nông dân.
 ---
 
 ## 5. Dùng AI
@@ -154,7 +156,7 @@ Trả lời bằng trải nghiệm thật của bạn, tối thiểu 200 từ ch
 
 **6.2. Nhóm có lúc nào bị "solution-first" (nghĩ giải pháp trước khi hiểu vấn đề) không? Lúc đó nhóm nhận ra và xử lý thế nào?** 
 
-Không, nhóm luôn hướng tới việc problem-first.
+Có, khi bàn về dự án nông nghiệp vì lúc đầu ý tưởng dùng RAG cập nhật dữ liệu tư vấn cho nông dân. Nhưng vấn đề không phải là nông dân cần RAG mà "đau" của họ là do thiệt hại kinh tế do thanh long bị trả về. 
 
 **6.3. Tôi có đổi ý sau khi bị phản biện không? Kể một lần cụ thể.**
 
@@ -162,20 +164,28 @@ Có, cụ thể như việc chuyển first pick thừ card #1 sáng card #2 như
 
 **6.4. Kết quả kiểm chứng (phỏng vấn/survey/research) có làm tôi bất ngờ không? Điều gì?**
 
-Về research thì có thể nói vấn đề được nhóm chọn khá bất ngờ là chưa phổ biến khi Việt Nam là nước nông nghiệp mà problem này lại chưa có nhiều.
+Về research thì có thể nói vấn đề được nhóm chọn khá bất ngờ là chưa phổ biến khi Việt Nam là nước nông nghiệp mà problem này lại chưa có nhiều. Các app Việt Nam thì đa số chỉ là sổ ghi chép nhật ký nông vụ tĩnh. Gần như chưa có bên nào làm tính năng RAG real-time cảnh báo tức thời về danh mục hóa chất bị cấm hay tiêu chuẩn dư lượng của các thị trường khó tính (như bên Nhật, Úc).
 
 **6.5. Điều khó nhất khi viết Problem Statement là gì?**
 
-Suy nghĩ ra nhiều các problem, đồng thời chuẩn xác nó thành các bước. 
+Do là dân công nghệ hay nhét giải pháp về AI vào problem.
 
 **6.6. Nếu làm lại, tôi sẽ đổi gì? Tôi sẽ phản biện nhóm mạnh hơn ở điểm nào?**
 
-Trước mắt chưa có suy nghĩ gì.
+Trước mắt chưa có suy nghĩ gì. Nếu có thì muốn mọi người giảm thời gian làm individual đi, nhưng có thể hiểu vì mỗi người 1 problem nên dài cũng đành chấp nhận.
 
 **6.7. Hiểu bài:** giải thích bằng 5–8 câu, không nhìn tài liệu, chuỗi *problem → quy trình → metric → boundary → mức can thiệp AI → quyết định* của bài nhóm mình.
+
+- Problem của nhóm là việc nông dân trồng thanh long bị thiệt hại kinh tế nặng nề do bị trả hàng vì không cập nhật kịp luật kiểm dịch hoặc dư lượng hóa chất xuất khẩu và chẩn đoán sai bệnh.
+- Quy trình hiện tại dựa vào kinh nghiệm mắt thường để bắt bệnh nên rất thụ động
+- Metric thành công của dự án là giảm tỷ lệ lô hàng thanh long xuất khẩu bị đánh trượt do lỗi hóa chất và sâu bệnh.
+Boundary của hệ thống được khoanh vùng: AI chỉ phân tích ảnh bệnh và tra cứu luật, không tham gia vào can thiệp giá
+- Mức can thiệp AI được chốt ở mức Copilot, AI chỉ đưa ra gợi ý, cảnh báo.
+- Quyết dịnh là do con người tự đưa ra để tránh các rủi ro.
 
 ---
 
 ## 7. Tài liệu tham khảo
 
--
+- Plantix App (PEAT GmbH), ứng dụng nhận diện bệnh cây trồng bằng AI
+- Các quy định về Dư lượng tối đa cho phép đối với nông sản nhập khẩu của Bộ Nông nghiệp, Lâm nghiệp và Thủy sản Nhật Bản (MAFF) và Bộ Nông nghiệp Úc.
