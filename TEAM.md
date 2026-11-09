@@ -5,14 +5,14 @@
 ## Thông tin nhóm
 
 - Tên nhóm: NhomBanDau
-- Candidate problem nhóm chọn (1 câu): HTX và nông dân trồng Thanh Long xuất khẩu thiếu hệ thống quản lý, đối chiếu tình trạng cây trồng thực tế với tiêu chuẩn dư lượng hóa chất (MRLs), dẫn đến rủi ro bị trả hàng và thiệt hại kinh tế.
+- Candidate problem nhóm chọn (1 câu): HTX và nông dân trồng Thanh Long xuất khẩu thiếu hệ thống quản lý, hướng dẫn chăm sóc và đối chiếu tình trạng cây trồng thực tế với tiêu chuẩn dư lượng hóa chất (MRLs), dẫn đến rủi ro bị trả hàng và thiệt hại kinh tế.
 - Quyết định cuối (Go / Not Yet / No-Go): Go
 
 ## Thành viên
 
 | STT | Họ và tên | MSSV | Vai trò trong nhóm | Tài khoản GitHub |
 |---:|---|---|---|---|
-| 2 | Lê Hiền Hiếu | 2A202603940 | Người phản biện chính, Cố vấn AI | hieulhaiwork |
+| 2 | Lê Hiền Hiếu | 2A202603940 | Người Điều Phối Ý Tưởng, Thiết Kế Quy Trình | hieulhaiwork |
 | 3 | Trần Duy Thành | 2A202603919 | Đánh giá rủi ro (Risk Assessment), Viết Problem Statement | thanh289 |
 | 4 | Cao Minh Quang | 2A202603906 | Metrics, Boundary & Formatting | quang011105 |
 
@@ -24,7 +24,7 @@ Gợi ý vai trò (một người có thể giữ nhiều vai): điều phối t
 
 | Checkpoint | Người chính | Người hỗ trợ | Sản phẩm |
 |---|---|---|---|
-| CP3 — Hội tụ nhóm |Lê Hiền Hiếu  | | Cluster, cây OST, bảng chấm điểm |
+| CP3 — Hội tụ nhóm |Lê Hiền Hiếu  | | Bảng chấm điểm |
 | CP4 — Kiểm chứng | Cao Minh Quang | Trần Duy Thành | Assumption map, snapshot hoặc survey |
 | CP4 — Research | Cao Minh Quang | Trịnh Gia Huy | Bảng research có link |
 | CP5 — Quy trình trước/sau |Lê Hiền Hiếu  | | Quy trình + bảng before/after |
@@ -44,8 +44,8 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 
 **Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
 - Trong bước Hội tụ nhóm, tôi đã chủ động đề xuất bỏ qua bước gom Cluster và vẽ cây OST hình thức để tiết kiệm thời gian.
-- Thay vào đó, tôi đề xuất nhóm đi thẳng vào việc mổ xẻ rào cản kỹ thuật (như web chặn crawl data của app so sánh giá, RAG bị nhiễu của bot intern và scope quá nhỏ, AI tóm tắt thì không có gì hơn được NotebookLM).
-- Qua đó, tôi giúp nhóm lập Bảng chấm điểm nhanh gọn và chốt dự án giám sát Thanh Long.
+- Thay vào đó, tôi đề xuất nhóm đi thẳng vào việc mổ xẻ rào cản kỹ thuật (như web chặn crawl data của app so sánh giá, RAG bị nhiễu của bot intern và scope quá nhỏ, AI tóm tắt thì không có gì hơn được NotebookLM). Qua đó, tôi giúp nhóm lập Bảng chấm điểm nhanh gọn và chốt dự án giám sát Thanh Long.
+- Ở CP5, tôi vẽ sơ đồ quy trình 4 bước
 
 **Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
 - Mục 5. Problem Statement v0 và Mục 8. Quyết định (CP6) trong `group_report.md`.
