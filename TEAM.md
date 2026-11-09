@@ -12,6 +12,7 @@
 
 | STT | Họ và tên | MSSV | Vai trò trong nhóm | Tài khoản GitHub |
 |---:|---|---|---|---|
+| 2 | Lê Hiền Hiếu | 2A202603940 | Người phản biện chính, Cố vấn AI | hieulhaiwork |
 | 3 | Trần Duy Thành | 2A202603919 | Đánh giá rủi ro (Risk Assessment), Viết Problem Statement | thanh289 |
 | 4 | Cao Minh Quang | 2A202603906 | Metrics, Boundary & Formatting | quang011105 |
 
@@ -23,10 +24,10 @@ Gợi ý vai trò (một người có thể giữ nhiều vai): điều phối t
 
 | Checkpoint | Người chính | Người hỗ trợ | Sản phẩm |
 |---|---|---|---|
-| CP3 — Hội tụ nhóm |  | | Cluster, cây OST, bảng chấm điểm |
+| CP3 — Hội tụ nhóm |Lê Hiền Hiếu  | | Cluster, cây OST, bảng chấm điểm |
 | CP4 — Kiểm chứng | Cao Minh Quang | Trần Duy Thành | Assumption map, snapshot hoặc survey |
 | CP4 — Research | Cao Minh Quang | Trịnh Gia Huy | Bảng research có link |
-| CP5 — Quy trình trước/sau |  | | Quy trình + bảng before/after |
+| CP5 — Quy trình trước/sau |Lê Hiền Hiếu  | | Quy trình + bảng before/after |
 | CP5 — Problem Statement v0 | Trần Duy Thành | Cả nhóm | Problem Statement v0 |
 | CP6 — Mức can thiệp + Problem Statement v1 | Cao Minh Quang | Trần Duy Thành | Ma trận, AI Canvas, eval, Problem Statement v1 |
 | CP6 — Quyết định | Trần Duy Thành | Cao Minh Quang | 4 rủi ro + Go/Not Yet/No-Go |
@@ -35,6 +36,24 @@ Gợi ý vai trò (một người có thể giữ nhiều vai): điều phối t
 
 Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `HoVaTen-MSSV`.
 
+### LeHienHieu-2A202603940
+
+**Phần việc phụ trách:**
+- Dẫn dắt quá trình tổng hợp ở CP3: Điều phối việc đánh giá chéo và loại suy trực tiếp các ý tưởng để lập bảng chấm điểm chốt Candidate Problem.
+- Thiết kế và chuẩn hóa quy trình ở CP5: Sơ đồ hóa luồng vận hành hiện tại và thiết kế luồng tương lai với các điểm nghẽn được xử lý.
+
+**Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
+- Trong bước Hội tụ nhóm, tôi đã chủ động đề xuất bỏ qua bước gom Cluster và vẽ cây OST hình thức để tiết kiệm thời gian.
+- Thay vào đó, tôi đề xuất nhóm đi thẳng vào việc mổ xẻ rào cản kỹ thuật (như web chặn crawl data của app so sánh giá, RAG bị nhiễu của bot intern và scope quá nhỏ, AI tóm tắt thì không có gì hơn được NotebookLM).
+- Qua đó, tôi giúp nhóm lập Bảng chấm điểm nhanh gọn và chốt dự án giám sát Thanh Long.
+
+**Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
+- Mục 5. Problem Statement v0 và Mục 8. Quyết định (CP6) trong `group_report.md`.
+- Commit: `thanh289: fill TEAM.md`
+
+**Điều mình học được từ phần nhóm:**
+- Càng đào sâu vào một ngách hẹp (1 loại cây, 1 hợp tác xã), các rủi ro (Viability, Usability) càng dễ kiểm soát hơn là vẽ ra một "siêu ứng dụng" cho toàn ngành nông nghiệp.
+- 
 ### Trần Duy Thành - 2A202603919
 
 **Phần việc phụ trách:**
