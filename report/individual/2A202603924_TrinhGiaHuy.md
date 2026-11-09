@@ -175,24 +175,123 @@ Doanh nghiệp đối chiếu yêu cầu
 | AI có thể đưa ra kết luận sai về chất lượng cây trồng. | Có | AI chỉ đưa ra dấu hiệu và mức tin cậy; cán bộ kỹ thuật xác nhận. |
 | Chưa có bằng chứng khách hàng sẵn sàng trả tiền. | Có | Bổ sung mục tiêu kiểm chứng willingness-to-pay trong giai đoạn pilot. |
 
+### Idea sau phản biện: thu hẹp scope (cập nhật sau CP3–CP4)
+
+> Bản tinh gọn idea của tôi sau khi nhận phản biện và sau khi nhóm chốt bài Thanh Long. Nguyên tắc: **problem trước, giải pháp sau**. Các công cụ AI đã có sẵn (chẩn đoán bệnh qua ảnh, mô hình đọc ảnh và chữ viết tay, LLM) là thứ để tận dụng, không phải thứ để tự xây. Mọi con số chưa có nguồn đều là **giả định cần kiểm**.
+
+**Từ card lúc pitch đến idea hiện tại**
+
+| | Lúc pitch (Card #1) | Sau phản biện |
+|---|---|---|
+| Cây trồng | Nhiều loại cây | Chỉ Thanh Long |
+| Actor | Giám đốc HTX, cán bộ kỹ thuật, nông dân, doanh nghiệp | Một người dùng chính: cán bộ kỹ thuật (phụ trách chất lượng) của 1 HTX |
+| Bài toán | Quản lý và tổng hợp mọi dữ liệu sản xuất | Một bước: kiểm hồ sơ phun thuốc của từng hộ trước khi chốt hộ nào được thu hoạch cho lô xuất khẩu |
+| Thị trường | Chưa nói rõ | 1 thị trường (Úc, theo pilot của nhóm) |
+| Vai trò AI | CV nhận diện bệnh, báo cáo tự động | AI chỉ đọc và chuẩn hóa nhật ký phun thuốc; Rule kết luận; cán bộ duyệt |
+
+#### 1. Persona
+
+Cán bộ kỹ thuật (hoặc người phụ trách chất lượng) của **một HTX Thanh Long đã có mã số vùng trồng xuất khẩu**, quản lý nhóm hộ thành viên (ước tính 10–30 hộ, cần kiểm). Trước mỗi đợt thu hoạch cho lô xuất, người này phải xác nhận hộ nào đủ điều kiện đưa hàng vào lô.
+
+- Không phải persona chính: nông dân (người cung cấp dữ liệu), doanh nghiệp thu mua (người nhận hồ sơ).
+
+#### 2. Problem statement (bản của tôi)
+
+> Trước mỗi đợt thu hoạch Thanh Long xuất khẩu, cán bộ kỹ thuật HTX phải gom nhật ký phun thuốc của từng hộ (sổ viết tay, ảnh gửi qua Zalo), tự tra tên thuốc thương mại ra hoạt chất, rồi đối chiếu với danh mục hoạt chất bị cấm, mức dư lượng tối đa (MRL) của thị trường nhập khẩu và thời gian cách ly. Việc này làm thủ công, dễ sót, và chỉ cần sót một hộ thì cả lô có thể bị trả về hoặc HTX bị cảnh báo mã vùng trồng.
+
+| Trường | Nội dung |
+|---|---|
+| Actor | Cán bộ kỹ thuật HTX Thanh Long xuất khẩu |
+| Bottleneck | Bước đối chiếu: đọc nhật ký viết tay → tra tên thương mại ra hoạt chất → so với quy định thị trường và thời gian cách ly. Số phút/hộ: **chưa đo**, đo ở tuần 1–2 pilot |
+| Impact | Lô bị trả hoặc hủy, HTX mất hợp đồng, nông dân bị loại khỏi lô. Mức thiệt hại: **cần số liệu thật** |
+| Không phải bài toán này | Chẩn đoán bệnh, khuyên dùng thuốc gì, dự báo năng suất |
+
+So với bài nhóm: nhóm đang chọn Workflow gồm Vision bắt bệnh + RAG tra luật. Bản của tôi giữ Workflow nhưng đề xuất (1) để Vision sang giai đoạn 2 và dùng công cụ có sẵn, vì bệnh cây không phải nguyên nhân trực tiếp khiến lô bị trả do dư lượng (giả định cần kiểm); (2) thay RAG bằng bảng tra có cấu trúc + Rule ở bước kết luận, vì kết luận về luật phải xác định và giải thích được.
+
+#### 3. How Might We
+
+> **Chúng ta có thể dùng AI để đọc và chuẩn hóa nhật ký phun thuốc (ảnh sổ viết tay, ảnh bao bì thuốc) thành bảng dữ liệu không?**
+> **Dùng ở đâu:** chỉ ở bước "gom và đọc nhật ký" trước khi đối chiếu. **Không** dùng AI ở bước kết luận hộ đạt / không đạt; bước đó do Rule làm và cán bộ duyệt.
+
+#### 4. Stakeholder map: 5 vai trò quanh hệ thống
+
+| Vai trò | Ai | Họ cần gì / sợ gì |
+|---|---|---|
+| **Ai dùng** | Nông dân: chụp sổ hoặc bao bì sau mỗi lần phun. Cán bộ kỹ thuật: xem bảng đối chiếu theo hộ | Nông dân không muốn gõ, không muốn mất thời gian. Cán bộ cần thấy ngay hộ nào có vấn đề |
+| **Ai duyệt output** | Cán bộ kỹ thuật HTX: sửa dòng AI đọc sai, xác nhận danh sách hộ đủ điều kiện | Cần thấy ảnh gốc ngay cạnh dòng AI đã đọc để so |
+| **Ai chịu rủi ro** | Doanh nghiệp xuất khẩu (bị trả container), HTX (mất hợp đồng, bị cảnh báo mã vùng trồng), nông dân (bị loại khỏi lô, rớt giá) | Sợ nhất là **bỏ sót** vi phạm |
+| **Ai approve** | Giám đốc HTX: quyết định đưa vào quy trình và ký hồ sơ gửi doanh nghiệp. Doanh nghiệp thu mua: chấp nhận hồ sơ này thay cách cũ | Trách nhiệm pháp lý khi ký |
+| **Ai trả tiền** | Giả thuyết: doanh nghiệp thu mua / xuất khẩu (đang chịu thiệt hại khi lô bị trả), hoặc HTX. Nông dân không trả | Chưa kiểm chứng willingness-to-pay |
+
+Hệ quả: người dùng (nông dân) khác người trả tiền (doanh nghiệp). Với nông dân, sản phẩm phải gần như không tốn công. Với doanh nghiệp, giá trị phải chứng minh bằng metric "không lọt vi phạm".
+
+#### 5. AI Leverage: AI tạo khác biệt ở đúng bước nào
+
+| Bước | Ai / cái gì làm | Vì sao |
+|---:|---|---|
+| 1. Chụp sổ nhật ký, bao bì thuốc | Nông dân | Thay cho gõ form, vì "lười nhập liệu" là rủi ro lớn nhất (phản biện của Quang) |
+| 2. Đọc ảnh: tên thuốc, liều, ngày phun, lô vườn | **AI**: mô hình đọc ảnh có sẵn qua API, không tự train | Rule không đọc được chữ viết tay lộn xộn. Đây là chỗ duy nhất AI tạo khác biệt so với form nhập tay |
+| 3. Tên thương mại → hoạt chất | Bảng tra (Rule); AI chỉ gợi ý khi tên viết sai, viết tắt | Danh mục thuốc BVTV được phép là dữ liệu có cấu trúc, tra chính xác tốt hơn để AI đoán |
+| 4. Đối chiếu chất cấm, MRL, thời gian cách ly | **Rule** | Kết luận phải xác định và giải thích được, không giao cho AI |
+| 5. Duyệt | Cán bộ kỹ thuật (HITL) | AI không chắc hoặc ảnh mờ → yêu cầu chụp lại hoặc nhập tay (phương án quay về) |
+| 6. Xuất hồ sơ theo hộ / lô | Phần mềm thường | Không cần AI |
+
+- **Không tự xây model.** Khác biệt không nằm ở model mà ở **bảng quy định đã chuẩn hóa theo thị trường + quy trình duyệt của HTX**.
+- **Vì sao không chọn mức đơn giản hơn:** No AI (Google Form / Sheet) bắt nông dân gõ, dự đoán tỷ lệ ghi nhật ký thấp. Nếu tuần 1–2 cho thấy nông dân vẫn chịu gõ form thì **bỏ AI**, chỉ dùng form + Rule.
+
+#### 6. MVP scope
+
+| Trong MVP | Ngoài MVP |
+|---|---|
+| 1 HTX, 10–20 hộ, 1 thị trường (Úc), 1 đợt thu hoạch | Nhiều cây, nhiều thị trường |
+| Chụp nhật ký → AI đọc → cán bộ sửa → Rule đối chiếu → bảng hộ đạt / cần kiểm | Chẩn đoán bệnh qua ảnh, khuyên dùng thuốc |
+| Nông dân gửi ảnh qua kênh đã quen (Zalo hoặc form đơn giản) | App riêng, IoT, drone, dự báo năng suất, blockchain |
+| Bảng hoạt chất cấm / MRL của 1 thị trường, nhập tay từ nguồn chính thức | Tự động cập nhật luật real-time |
+
+Lộ trình 8 tuần:
+
+1. **Tuần 1–2 (làm tay, chưa có AI):** cán bộ đối chiếu như hiện tại, nhóm bấm giờ để có baseline; thu 50–100 ảnh nhật ký thật.
+2. **Tuần 3–4:** chạy AI đọc ảnh trên ảnh đã thu, so với bản cán bộ đọc. Dưới ngưỡng thì dừng phần AI, giữ form + Rule.
+3. **Tuần 5–8:** chạy quy trình mới cho 1 đợt thu hoạch, so với baseline.
+
+#### 7. Metric
+
+| Loại | Metric | Baseline | Target | Cách đo |
+|---|---|---|---|---|
+| **Truth metric** | Số vi phạm (chất cấm, chưa đủ thời gian cách ly) phát hiện trước thu hoạch so với số vi phạm lộ ra ở khâu kiểm dư lượng | Chưa có | Không vi phạm nào lọt đến khâu kiểm dư lượng | Đối chiếu kết quả test dư lượng của lô (nếu doanh nghiệp chia sẻ) |
+| Thời gian | Phút cán bộ cần để kiểm xong hồ sơ 1 hộ | Đo tuần 1–2 | Giảm ≥ 50% | Bấm giờ |
+| Độ phủ | % hộ có nhật ký đầy đủ trước thu hoạch | Đo tuần 1–2 | ≥ 90% | Đếm trên bảng dữ liệu |
+| Chất lượng AI | % trường đọc đúng (tên thuốc, ngày phun, liều) so với bản cán bộ đã sửa | — | ≥ 90%; trường không chắc phải được gắn cờ | Bộ 50 ảnh có nhãn |
+| Adoption | % lần phun được nông dân chụp gửi | — | ≥ 70%; dưới 30% sau 4 tuần thì dừng (ngưỡng của nhóm) | Log gửi ảnh |
+| Trả tiền | Doanh nghiệp / HTX đồng ý trả hoặc làm tiếp sau pilot | — | Ít nhất 1 cam kết | Biên bản sau pilot |
+
+Hạn chế: truth metric là chỉ số trễ, 8 tuần có thể chỉ đủ 1 đợt thu hoạch nên chưa đủ kết luận.
+
+#### 8. Giả định chưa kiểm (phải hỏi người thật, không hỏi AI)
+
+1. Lô Thanh Long bị trả chủ yếu do dư lượng / hoạt chất cấm, không phải do sâu bệnh hay hình thức quả. Nếu sai → quay về hướng chẩn đoán bệnh của nhóm.
+2. Nông dân có ghi sổ phun thuốc và chịu chụp ảnh sau mỗi lần phun.
+3. Cán bộ HTX hiện tốn nhiều thời gian ở bước đối chiếu.
+4. Doanh nghiệp thu mua sẵn sàng trả tiền cho hồ sơ này.
+
+Câu hỏi phỏng vấn (Mom Test): "Lần gần nhất có lô bị trả hoặc bị cảnh báo là khi nào, nguyên nhân là gì?"; "Trước đợt thu hoạch vừa rồi, anh/chị kiểm hồ sơ phun thuốc của các hộ thế nào, mất bao lâu?"
+
 ---
 
 ## 4. Tôi đã tham gia phần nào (CP3 → CP7)
 
-*Các nội dung dưới đây là khung mô tả công việc dự kiến theo hướng dự án. Chỉ giữ những hoạt động thực sự đã thực hiện và bổ sung kết quả cụ thể.*
-
 | Hoạt động | Tôi đã làm gì? | Kết quả / ảnh hưởng tới bài nhóm |
 |---|---|---|
-| Pitch Problem Card | Trình bày vấn đề HTX gặp khó khăn trong việc quản lý và tổng hợp tình trạng cây trồng của nhiều hộ. | Đề xuất tập trung vào một quy trình nghiệp vụ thay vì phát triển ứng dụng nông nghiệp tổng quát. |
-| Phản biện bài của bạn khác | Mỗi bạn nghiên cứu môt ý tưởng (AI tóm tắt bài học, AI phân tích chi tiêu, AI phân tích log lỗi của intern, gửi ticket đến senior khi lỗi level cao hơn). Câu hỏi tôi đã đặt. 1) Cho AI tóm tắt bài học: Có giải pháp nào đã có chưa cho ? NotebookLM đã làm được hết thì bạn có gì tốt hơn, 2) Phân tích chi tiêu: Có thật sự cần ai không? Đã có ai làm? Có tính năng gì hơn? Tại sao phản trả tiền cho tính năng này. 3) Bài phân tích log: dự án này bán được cho ai? Tại sao công ty công nghệ không thể tự build? có khó khi tự build không | Bổ sung góc nhìn về persona và mô hình khách hàng. |
-| Nhận phản biện | Câu hỏi tôi nhận được: AI có thực sự cần thiết không, Scope có đang quá rộng không? Đã có sản phẩm ở thị trường chưa? Có ở quốc tế chưa? | Cần kiểm tra khả năng giải quyết bằng phần mềm thông thường trước khi quyết định sử dụng AI. |
-| Gom cluster / cây OST | Gom các vấn đề thành nhóm quản lý dữ liệu, giám sát cây trồng, kiểm tra chất lượng và báo cáo. | Xác định hướng giải pháp tập trung vào quản lý chất lượng vùng trồng. |
-| Chọn candidate problem | Chọn vấn đề tổng hợp và theo dõi dữ liệu sản xuất của các hộ HTX. | Phạm vi có thể kiểm chứng bằng pilot trong 8 tuần. |
-| Kiểm chứng / research | Nghiên cứu các giải pháp Plantix, mobiAgri, NextFarm, Agrio; tìm hiểu tiêu chuẩn và khả năng ứng dụng CV. | Nhận thấy không nên cạnh tranh bằng chức năng nhận diện bệnh cây đơn thuần. |
-| Quy trình nhóm | Đề xuất quy trình từ thiết lập tiêu chuẩn, tạo baseline, thu thập dữ liệu đến phân tích, xác nhận và báo cáo, quy trình được tổng hợp và phân tích từ nguồn uy tín, baseline end to end từ chính phủ đến từng hộ gia đình. | Hình thành quy trình nghiệp vụ thống nhất. |
-| Problem Statement | Xác định khó khăn trong thu thập, quản lý và đối chiếu dữ liệu chất lượng cây trồng giữa nhiều hộ. | Chuyển mô tả giải pháp thành một vấn đề cụ thể của HTX. |
-| Mức can thiệp AI | Đề xuất CV hỗ trợ kiểm tra ảnh và phát hiện dấu hiệu bất thường; Rule Engine đối chiếu checklist. | Giới hạn vai trò AI và giữ quyết định cuối cùng cho cán bộ kỹ thuật. |
-| Quyết định | Đề xuất MVP một HTX, một loại cây, 10–20 hộ, thử nghiệm trong 8 tuần. | Có phạm vi, chỉ số và điều kiện đánh giá khả thi hơn. |
+| Pitch Problem Card | Pitch Card #1: HTX khó theo dõi và tổng hợp tình trạng cây trồng của nhiều hộ theo chu kỳ. Actor: giám đốc HTX, cán bộ kỹ thuật. Bottleneck: gom dữ liệu rải rác ở sổ, Excel, Zalo. Câu hỏi tôi đưa nhóm phản biện: "HTX đã dùng Excel, Zalo thì sản phẩm khác biệt ở đâu để họ chịu chuyển?" | Card được nhóm chọn làm nền, sau đó gộp với ý Vision/RAG của Hiếu và thu hẹp vào Thanh Long xuất khẩu. |
+| Phản biện bài của bạn khác | Câu hỏi tôi đã đặt:<br>1. **Quang (tóm tắt slide thành đề cương ôn thi):** "NotebookLM đã tóm tắt được PDF rồi, ý tưởng của bạn làm được gì tốt hơn?"<br>2. **Thành (tổng hợp, phân tích chi tiêu cá nhân):** "Có thật sự cần AI không hay Rule là đủ? Đã có app nào làm chưa? Mình có tính năng gì hơn họ? Vì sao người dùng phải trả tiền cho tính năng này?"<br>3. **Hiếu (bot đọc log lỗi giúp intern setup Docker/CycleGAN, lỗi khó thì đẩy ticket lên senior):** "Sản phẩm này bán cho ai? Vì sao công ty công nghệ không tự build? Tự build có khó không?" | 1. Quang thừa nhận khoảng trống so với NotebookLM chưa đủ rõ; ý bị loại ở CP3.<br>2. Thành đồng ý Rule là đủ cho bài chi tiêu, chuyển sang card #2 (so sánh thông tin trước khi mua); ý này sau đó bị loại vì rào cản crawl dữ liệu và API của các sàn.<br>3. Hiếu thu hẹp định vị từ "giải pháp nội bộ cho cả công ty" xuống "trợ lý cho từng dự án". Ý này có điểm cao nhất (33) nhưng nhóm không chọn vì impact nhỏ hơn bài Thanh Long. |
+| Nhận phản biện | Câu hỏi tôi nhận được:<br>1. **Quang:** nông dân kén công nghệ, lười nhập liệu; ảnh chụp rung, thiếu sáng; scope quá rộng nếu làm cho mọi loại cây.<br>2. **Hiếu:** scope tư vấn luật xuất khẩu quá lớn, phủ mọi loại cây, làm sao bảo đảm RAG trả lời đúng? (Hiếu đề xuất thêm chụp ảnh phân tích bệnh.)<br>3. **Cả nhóm:** AI có thật sự cần không? Thị trường Việt Nam và quốc tế đã có sản phẩm nào chưa? | Tôi đã sửa (chi tiết ở mục 3, "Idea sau phản biện"):<br>- Thu hẹp còn 1 cây (Thanh Long), 1 thị trường (Úc), 1 HTX 10–20 hộ.<br>- Với "lười nhập liệu": nông dân chỉ chụp ảnh sổ hoặc bao bì, AI đọc thay vì bắt gõ form; ảnh mờ thì yêu cầu chụp lại.<br>- Với "RAG có đúng không": không để AI kết luận về luật; danh mục chất cấm và MRL để trong bảng có cấu trúc, Rule đối chiếu, cán bộ duyệt.<br>- Với "đã có sản phẩm chưa": research Plantix, NextFarm, mobiAgri, Agrio, thấy không nên cạnh tranh ở nhận diện bệnh mà tận dụng công cụ có sẵn. |
+| Gom cluster / cây OST | Cùng nhóm gom candidate thành 3 cụm: A. Công cụ cá nhân / học tập (tóm tắt slide, chi tiêu, so sánh mua hàng); B. Công cụ nội bộ / DevOps (bot intern); C. B2B / Agritech (giám sát vùng trồng). Outcome chung: giảm tỷ lệ lô Thanh Long bị trả về do lỗi chất lượng và dư lượng hóa chất. Trong cụm C, tôi tách các vấn đề của mình thành quản lý dữ liệu, giám sát cây trồng, kiểm tra chất lượng và báo cáo. | Thấy rõ cụm A đã có công cụ lớn (NotebookLM, sàn TMĐT), cụm B quy mô hẹp, cụm C có impact kinh tế lớn nhất. |
+| Chọn candidate problem | Cùng nhóm chấm shortlist: Agritech 32 điểm, bot intern 33 điểm. Tôi ủng hộ Agritech vì impact: một lô bị trả là thiệt hại cả lô hàng, còn bot intern chỉ tiết kiệm thời gian của mentor. | Nhóm chốt bài Thanh Long xuất khẩu cho HTX, gộp Workflow của tôi với ý Vision/RAG của Hiếu. |
+| Kiểm chứng / research | Hỗ trợ Quang làm bảng research: tìm hiểu Plantix, mobiAgri, NextFarm, Agrio; tìm hiểu tiêu chuẩn VietGAP và khả năng ứng dụng CV. | Nhận thấy không nên cạnh tranh bằng chức năng nhận diện bệnh cây đơn thuần. |
+| Quy trình nhóm | Đề xuất quy trình end-to-end: thiết lập tiêu chuẩn → tạo baseline → thu thập dữ liệu theo chu kỳ → phân tích → cán bộ xác nhận → báo cáo, tổng hợp từ quy định nhà nước xuống đến từng hộ. | Làm khung cho quy trình trước/sau của nhóm. |
+| Problem Statement | Xác định khó khăn trong thu thập, quản lý và đối chiếu dữ liệu chất lượng cây trồng giữa nhiều hộ. Sau phản biện, đề xuất thu về một bottleneck: bước đối chiếu nhật ký phun thuốc với quy định thị trường trước thu hoạch. | Problem Statement có một bước nghẽn cụ thể, đo được bằng phút / hộ. |
+| Mức can thiệp AI | Đề xuất Workflow: AI đọc ảnh, Rule đối chiếu checklist, cán bộ kỹ thuật duyệt. | Giới hạn vai trò AI và giữ quyết định cuối cùng cho cán bộ kỹ thuật. |
+| Quyết định | Đề xuất MVP 1 HTX, 1 loại cây, 10–20 hộ, thử nghiệm 8 tuần. | Nhóm chốt Go với pilot 1 HTX, 10 hộ, thị trường Úc, 8 tuần; dừng nếu sau 4 tuần tỷ lệ nông dân chụp ảnh dưới 30%. |
 
 ---
 
@@ -206,6 +305,7 @@ Doanh nghiệp đối chiếu yêu cầu
 | CP5 Quy trình | Xây dựng quy trình giám sát cây trồng theo chu kỳ. | Hỗ trợ mô tả các bước thu thập, xử lý và xác nhận. | Quy trình ban đầu có nhiều chức năng vượt quá MVP. | Giới hạn một loại cây, một HTX và một luồng kiểm tra. |
 | CP5–6 Problem Statement | Hỗ trợ viết lại vấn đề theo Actor, bối cảnh, pain và impact. | Làm rõ đối tượng chịu ảnh hưởng và kết quả mong muốn. | Có thể đưa ra các tác động chưa có số liệu. | Để các số liệu chưa xác minh ở dạng giả thuyết cần khảo sát. |
 | CP6 Mức can thiệp / quyết định | So sánh No AI, Rule, Workflow và AI. | Xác định phần việc nào thực sự cần Computer Vision. | Có xu hướng đề xuất nhiều mô hình và công nghệ không cần thiết. | Chỉ dùng CV cho phân tích ảnh; các chức năng quản lý, phân quyền và báo cáo sử dụng logic thông thường. |
+| Sau lab: tinh gọn idea (mục 3, mục 4) | Dùng Claude Code đối chiếu báo cáo của tôi với báo cáo của 3 bạn để ghi đúng ai hỏi gì; gợi ý khung Persona / Problem / AI Leverage / MVP / Metric / Stakeholder map. | Chỉ ra idea còn rộng và AI đang đặt sai chỗ (giao kết luận về luật cho RAG thay vì Rule). | *(Huy tự điền)* | *(Huy tự điền)* |
 
 ---
 
