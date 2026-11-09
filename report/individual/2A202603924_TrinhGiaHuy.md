@@ -1,14 +1,14 @@
-# Báo cáo cá nhân — MSSV_HoTen
+# Báo cáo cá nhân — 2A202603924_TrinhGiaHuy
 
-> Đổi tên file theo quy tắc `MSSV_HoTen.md` trước khi commit. Ví dụ: `20241234_NguyenVanAn.md`.
+> Template chi tiết và prompt mẫu cho từng mục: [docs/01-worksheet.md](../../docs/01-worksheet.md).
 
 ## 1. Thông tin học viên
 
-- Họ tên: [Điền họ tên]
-- MSSV: [Điền MSSV]
-- Email trường: [Điền nếu muốn]
-- Tên nhóm: [Điền tên nhóm]
-- Link repo nhóm: [Điền link GitHub]
+- Họ tên: Trịnh Gia Huy
+- MSSV: 2A202603924
+- Email trường (không bắt buộc, repo có thể để public):
+- Tên nhóm: NhomBanDau
+- Link repo nhóm: https://github.com/TrGiaHuy1710-valid/K5-L3B-DAY02-NhomBanDau-DiscoveryProblemFraming/tree/main
 
 ---
 
