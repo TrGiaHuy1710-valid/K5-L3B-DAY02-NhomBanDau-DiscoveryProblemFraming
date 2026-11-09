@@ -128,6 +128,7 @@ Quy trình hiện tại - **19 phút/lần, giả định**:
 |---|---|---|
 | Pitch Problem Card | Tạo pitch này | Đã được mọi người xem xét |
 | Phản biện bài của bạn khác | Hỏi: "AI tóm tắt slide đã có rồi, như NoteLLM, nếu có thể tạo ưu thê thì sẽ làm private nhưng LLM thì rất khó" | Giúp loại bỏ bớt problem này. |
+| Phản biện bài của bạn khác | Hỏi: "Agent hỗ trợ Intern liệu có cần thiết không khi nếu dự án đã private thì chẳng lẽ công ty lại không cho dùng công cụ code hỗ trợ để gỡ bỏ các bug?" | Nhận được câu trả lời: "Các công ty thưởng sẽ không cung cấp model dùng token cho intern, vì vậy mới cần một model local nhỏ giúp hỗ trợ vấn đề này." |
 | Nhận phản biện | "Với problem liên quan tới AI giúp kiểm soát chi tiêu, liệu có nhất thiết phải dùng AI không khi mà suy nghĩ kĩ lại thì rule thôi là cũng ổn" | Đồng ý với ý kiến này, vì vậy card muốn pick là cái #2|
 | Nhận phản biện | "Với việc dùng AI để tổng hợp ra các kênh, trang của sản phẩm, vấn đề là việc lấy API từ các kênh, có nơi không cho, hoặc API cũng sẽ quá nhiều" | Có thể ưu tiên các API  chính thức, hay là cho người dùng cung cấp website hay dùng chẳng hạn.|
 | Kiểm chứng / research | | |
