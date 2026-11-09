@@ -30,7 +30,6 @@
 | 9 | Lặp lại | Khi đến hạn đóng điện, nước, mạng hoặc phí nhà, tôi muốn đối chiếu khoản đã thanh toán với hóa đơn, để tránh quên hoặc trả lặp. | Người tự trả hóa đơn sinh hoạt | Khoảng 15 phút/tháng; kiểm bằng lịch thanh toán thực. |
 | 10 | Tốn thời gian | Khi cần quyết định có đủ ngân sách cho một khoản mua lớn, tôi muốn biết số tiền còn lại sau các khoản cố định, để không chi quá mức. | Người có ngân sách cá nhân | Khoảng 20 phút/lần; kiểm bằng bản tính trước và sau mua. |
 
-**Về AI:** Mười tình huống trên do AI gợi ý để mở rộng lựa chọn; chưa được xác minh là vấn đề của người nộp. Khi nộp, ghi rõ ý nào giữ lại, ý nào bỏ và vì sao, dựa trên hành vi đã xảy ra.
 
 ## 3. Top 3 Problem Cards + quy trình nháp (CP2)
 
@@ -48,7 +47,7 @@
 | Actor | Người tự theo dõi chi tiêu cá nhân và dùng từ hai kênh thanh toán trở lên. |
 | Thời điểm / bối cảnh | Cuối tuần, sau khi có nhiều khoản chi nhỏ. |
 | Quy trình hiện tại (3–7 bước) | Mở lịch sử ngân hàng → xem ví điện tử → nhớ khoản tiền mặt → nhập vào bảng → phân loại → soát lại. |
-| Bottleneck | Nhập thủ công và phân loại các giao dịch (~12 phút/tuần, **giả định**). |
+| Bottleneck | Nhập thủ công và phân loại các giao dịch (~12 phút/tuần). |
 | Impact | Mất thời gian, bỏ sót khoản tiền mặt, khó nhận ra nhóm tiêu vượt dự kiến. |
 | Success metric | Baseline minh họa **30 phút/tuần** → mục tiêu **≤12 phút/tuần**; đo đồng hồ 3 tuần liên tiếp, so với số giao dịch thực tế; số giao dịch bị phân loại sai ≤1/tuần. |
 | Phương án không dùng AI | Một bảng theo mẫu thống nhất, quy tắc phân loại theo từ khóa và lịch chốt giao dịch cố định. |
@@ -70,7 +69,7 @@ Quy trình hiện tại - **30 phút/tuần, toàn bộ số phút là giả đ�
 | Actor | Người thường mua đồ trên các sàn hoặc trang bán lẻ trực tuyến. |
 | Thời điểm / bối cảnh | Trước khi đặt món hàng có giá trị đủ lớn để cân nhắc. |
 | Quy trình hiện tại (3–7 bước) | Chọn tiêu chí → mở các nơi bán → ghi thông số → tính giá thực trả → đọc bảo hành/đổi trả → chọn. |
-| Bottleneck | Đối chiếu thông số, điều kiện và giá từ các trang khác nhau (~18 phút/lần, **giả định**). |
+| Bottleneck | Đối chiếu thông số, điều kiện và giá từ các trang khác nhau (~18 phút/lần). |
 | Impact | Mất thời gian, có thể bỏ sót phí, điều kiện đổi trả hoặc chọn sai phiên bản. |
 | Success metric | Baseline minh họa **45 phút/lần** → mục tiêu **≤20 phút/lần**; đo với 3 lần mua tương đương, đối chiếu số thông số quan trọng bỏ sót (mục tiêu 0). |
 | Phương án không dùng AI | Mẫu bảng so sánh cố định gồm giá cuối, model, bảo hành, phí, đổi trả; ưu tiên nguồn chính thức. |
@@ -92,7 +91,7 @@ Quy trình hiện tại - **45 phút/lần, giả định**:
 | Actor | Nhóm bạn bè hoặc người ở chung có các khoản mua chung. |
 | Thời điểm / bối cảnh | Sau bữa ăn, mua đồ sinh hoạt hoặc chuyến đi ngắn. |
 | Quy trình hiện tại (3–7 bước) | Gom hóa đơn → xác định ai dùng món nào → tính phần mỗi người → gửi số tiền → theo dõi thanh toán → nhắc người chưa trả. |
-| Bottleneck | Tính phần mỗi người khi có món riêng/chung, phí và khuyến mãi (~8 phút/lần, **giả định**). |
+| Bottleneck | Tính phần mỗi người khi có món riêng/chung, phí và khuyến mãi (~8 phút/lần). |
 | Impact | Tính sai, phải chuyển bù hoặc nhắc lại, gây khó chịu cho người trong nhóm. |
 | Success metric | Baseline minh họa **19 phút/lần** → mục tiêu **≤7 phút/lần**; đo thời gian chốt và số lần phải sửa bảng chia tiền (mục tiêu 0). |
 | Phương án không dùng AI | Bảng chia tiền có công thức hoặc ứng dụng split bill; mọi người xác nhận trước khi chuyển. |
