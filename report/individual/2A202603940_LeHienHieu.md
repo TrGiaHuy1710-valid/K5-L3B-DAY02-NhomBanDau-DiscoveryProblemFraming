@@ -179,18 +179,12 @@ Khó nhất là cưỡng lại thói quen "nhét giải pháp và công nghệ" 
 Nếu làm lại, tôi sẽ mạnh tay ngắt lời và cắt thời gian thảo luận ở những ý tưởng không khả thi sớm hơn. Trong lúc chọn Candidate Problem, nhóm đã tốn hơi nhiều thời gian để tranh luận về tính khả thi kỹ thuật của app gom nhóm mua sắm, trong khi lẽ ra tôi nên đề xuất về Impact của bài toán Nông nghiệp, nếu không giải quyết thì sao? Nó là ý tưởng cấp thiết và thiết thực hơn.
 
 **6.7. Hiểu bài:** giải thích bằng 5–8 câu, không nhìn tài liệu, chuỗi *problem → quy trình → metric → boundary → mức can thiệp AI → quyết định* của bài nhóm mình.
-(1) Problem của nhóm là việc nông dân trồng thanh long bị thiệt hại kinh tế nặng nề do bị trả hàng vì không cập nhật kịp luật kiểm dịch hoặc dư lượng hóa chất xuất khẩu và chẩn đoán sai bệnh.
-
-(2) Quy trình hiện tại của họ rất thụ động: dựa vào kinh nghiệm mắt thường để bắt bệnh và chỉ biết thông tin hóa chất cấm khi nghe thương lái báo lại.
-
-(3) Metric thành công của dự án là giảm tỷ lệ lô hàng thanh long xuất khẩu bị đánh trượt do lỗi hóa chất và sâu bệnh.
-
-(4) Boundary của hệ thống được khoanh vùng chặt chẽ: AI chỉ phân tích ảnh bệnh và tra cứu luật, tuyệt đối không can thiệp vào logistics hay định giá bán.
-
-(5) Mức can thiệp AI được chốt ở mức Copilot, AI chỉ đưa ra gợi ý, cảnh báo.
-
-(6) Quyết định cuối cùng (chốt phun loại thuốc gì, thu hoạch ngày nào) bắt buộc phải do con người tự đưa ra để tránh các rủi ro pháp lý về mùa màng.
----
+- Problem của nhóm là việc nông dân trồng thanh long bị thiệt hại kinh tế nặng nề do bị trả hàng vì không cập nhật kịp luật kiểm dịch hoặc dư lượng hóa chất xuất khẩu và chẩn đoán sai bệnh.
+- Quy trình hiện tại của họ rất thụ động: dựa vào kinh nghiệm mắt thường để bắt bệnh và chỉ biết thông tin hóa chất cấm khi nghe thương lái báo lại.
+- Metric thành công của dự án là giảm tỷ lệ lô hàng thanh long xuất khẩu bị đánh trượt do lỗi hóa chất và sâu bệnh.
+- Boundary của hệ thống được khoanh vùng chặt chẽ: AI chỉ phân tích ảnh bệnh và tra cứu luật, tuyệt đối không can thiệp vào logistics hay định giá bán.
+- Mức can thiệp AI được chốt ở mức Copilot, AI chỉ đưa ra gợi ý, cảnh báo.
+- Quyết định cuối cùng (chốt phun loại thuốc gì, thu hoạch ngày nào) bắt buộc phải do con người tự đưa ra để tránh các rủi ro pháp lý về mùa màng.
 
 ## 7. Tài liệu tham khảo
 - Plantix App (PEAT GmbH), ứng dụng nhận diện bệnh cây trồng bằng AI
