@@ -107,17 +107,17 @@ Quy trình hiện tại - **19 phút/lần, giả định**:
 ```
 
 ### Card muốn pitch nhất
-- **Card số:** 1 - Tổng hợp chi tiêu đa kênh.
-- **Vì sao:** Có hành vi lặp lại, dễ xác định bottleneck, có thể đo thử trong một tuần; có thể đánh giá liệu quy tắc đơn giản đã đủ hay cần AI.
-- **Câu hỏi muốn nhóm phản biện:** “Nếu ngân hàng hoặc ví đã có báo cáo chi tiêu, pain còn nằm ở đâu, và chúng ta có bằng chứng rằng người dùng thực sự phải tổng hợp nhiều nơi không?”
+- **Card số:** 2 - So sánh thông tin trước khi mua hàng.
+- **Vì sao:** Trước khi mua một món hàng có nhiều phiên bản hoặc nhà bán, thông tin về thông số, giá sau ưu đãi, phí vận chuyển, bảo hành và đổi trả nằm rải rác ở nhiều nơi, đôi khi khác cách trình bày. Người mua phải tự mở từng trang, chuẩn hóa thông tin rồi đối chiếu. Đây là bottleneck cụ thể, có thể bấm giờ và kiểm tra mức độ bỏ sót. Bài toán có thể được cải thiện trước bằng bảng tiêu chí chuẩn; AI giúp hỗ trợ trích xuất và tổng hợp thông tin có dẫn nguồn.
+- **Câu hỏi muốn nhóm phản biện:** “Việc dành thời gian so sánh trước khi mua là khó khăn thật hay là hành vi cần thiết để ra quyết định tốt? Nếu các sàn đã có bộ lọc, bảng so sánh và đánh giá, phần nào vẫn phải làm thủ công, và bằng chứng nào cho thấy pain đó đủ lớn?”
 
-### AI phản biện card thế nào (mẫu phản biện để tự đối chiếu)
-| Điểm yếu AI chỉ ra | Đồng ý? | Cần sửa / đã sửa trong bản nháp |
+### AI phản biện card thế nào
+| Điểm yếu AI chỉ ra | Đồng ý? | Đã sửa |
 |---|---|---|
-| Chưa chứng minh người dùng thực sự làm việc này hàng tuần; có thể họ không quan tâm theo dõi. | Có | Thu hẹp actor: người đã theo dõi chi tiêu; yêu cầu ghi lại 2–3 lần gần nhất. |
-| Không phải ngân hàng/ứng dụng nào cũng cho trích xuất dữ liệu; rủi ro bảo mật tài chính. | Có | Giới hạn ở dữ liệu tự nhập hoặc mẫu giao dịch ẩn danh; không yêu cầu mật khẩu hay kết nối tài khoản. |
-| Với chia tiền, công thức và app sẵn có có thể giải quyết đủ tốt, không cần AI. | Có | Giữ No AI / Rule như phương án chính để so sánh. |
-| Thời gian giả định không chứng minh impact thật. | Có | Đánh dấu rõ mọi thời gian là minh họa; đo bằng đồng hồ và log trước khi đưa vào báo cáo chính thức. |
+| Chưa tách được thời gian tìm hiểu cần thiết với thời gian lãng phí do thông tin phân tán. | Có | Chỉ xem là bottleneck các thao tác lặp lại: sao chép thông số, quy đổi giá cuối và đọc điều kiện ở nhiều nguồn; không coi toàn bộ thời gian cân nhắc là lãng phí. |
+| Các sàn và website đã có bộ lọc, đánh giá và so sánh sản phẩm; chưa chứng minh khoảng trống. | Có | Kiểm tra 3 trường hợp mua thật: người mua phải mở mấy trang, dữ liệu quan trọng nào không thể đối chiếu ngay trên một màn hình. |
+| Giá, khuyến mãi và chính sách có thể thay đổi; AI dễ tổng hợp sai hoặc bịa nguồn. | Có | Mỗi thông tin quan trọng cần lưu đường dẫn và thời điểm kiểm tra; đối chiếu lại tại bước thanh toán, không để AI tự quyết định mua. |
+| Thời gian 45 phút và mục tiêu 20 phút chưa phải số đo thực tế. | Có | Nếu có thể cần đo ít nhất 3 lần so sánh sản phẩm tương tự, ghi thời gian theo bước và số thông tin bị bỏ sót. |
 
 
 ---
@@ -126,16 +126,11 @@ Quy trình hiện tại - **19 phút/lần, giả định**:
 
 | Hoạt động | Tôi đã làm gì? | Kết quả / ảnh hưởng tới bài nhóm |
 |---|---|---|
-| Pitch Problem Card | | |
-| Phản biện bài của bạn khác | Câu hỏi tôi đã đặt: | |
-| Nhận phản biện | Câu hỏi tôi nhận được: | Tôi đã sửa gì: |
-| Gom cluster / cây OST | | |
-| Chọn candidate problem | | |
+| Pitch Problem Card | Tạo pitch này | Đã được mọi người xem xét |
+| Phản biện bài của bạn khác | Hỏi: "AI tóm tắt slide đã có rồi, như NoteLLM, nếu có thể tạo ưu thê thì sẽ làm private nhưng LLM thì rất khó" | Giúp loại bỏ bớt problem này. |
+| Nhận phản biện | "Với problem liên quan tới AI giúp kiểm soát chi tiêu, liệu có nhất thiết phải dùng AI không khi mà suy nghĩ kĩ lại thì rule thôi là cũng ổn" | Đồng ý với ý kiến này, vì vậy card muốn pick là cái #2|
+| Nhận phản biện | "Với việc dùng AI để tổng hợp ra các kênh, trang của sản phẩm, vấn đề là việc lấy API từ các kênh, có nơi không cho, hoặc API cũng sẽ quá nhiều" | Có thể ưu tiên các API  chính thức, hay là cho người dùng cung cấp website hay dùng chẳng hạn.|
 | Kiểm chứng / research | | |
-| Quy trình nhóm | | |
-| Problem Statement | | |
-| Mức can thiệp AI | | |
-| Quyết định | | |
 
 ---
 
@@ -143,12 +138,8 @@ Quy trình hiện tại - **19 phút/lần, giả định**:
 
 | Checkpoint | Tôi dùng AI để làm gì? | AI hữu ích ở đâu? | AI sai hoặc hời hợt ở đâu? | Tôi sửa gì bằng nhận định của mình? |
 |---|---|---|---|---|
-| CP1 Scan | | | | |
-| CP2 Problem Card | | | | |
-| CP4 Research | | | | |
-| CP5 Quy trình | | | | |
-| CP5–6 Problem Statement | | | | |
-| CP6 Mức can thiệp / quyết định | | | | |
+| CP1 | Gợi ý thêm 4 pain | Mở rộng các bối cảnh đời sống. | Số liệu hiện tại vẫn chỉ tạm thời là giả định, chưa đo thật. | Tạm thời giữ nguyên số liệu. |
+| CP2 | Đóng vai PM hoài nghi | Làm rõ actor, bước nghẽn, cách đo. | Tất cả thời gian/tần suất đang là giả định. | Trước mắt dựa trên tình hình cá nhân để cho ra quy trình theo làm thật. |
 
 ---
 
@@ -158,15 +149,27 @@ Trả lời bằng trải nghiệm thật của bạn, tối thiểu 200 từ ch
 
 **6.1. Tôi học được gì khi nghe top 3 problems của các bạn khác?**
 
-**6.2. Nhóm có lúc nào bị "solution-first" (nghĩ giải pháp trước khi hiểu vấn đề) không? Lúc đó nhóm nhận ra và xử lý thế nào?**
+Ý tưởng của mọi người đến từ những lĩnh vực khác nhau, cho cái nhìn rộng mở hơn về các vấn đề. Nghe mọi người trình bày, phản biện cũng giúp làm rõ hơn các vướng mắc, vấn đề.
+
+**6.2. Nhóm có lúc nào bị "solution-first" (nghĩ giải pháp trước khi hiểu vấn đề) không? Lúc đó nhóm nhận ra và xử lý thế nào?** 
+
+Không, nhóm luôn hướng tới việc problem-first.
 
 **6.3. Tôi có đổi ý sau khi bị phản biện không? Kể một lần cụ thể.**
 
+Có, cụ thể như việc chuyển first pick thừ card #1 sáng card #2 như đã nói ở trên
+
 **6.4. Kết quả kiểm chứng (phỏng vấn/survey/research) có làm tôi bất ngờ không? Điều gì?**
+
+Về research thì có thể nói vấn đề được nhóm chọn khá bất ngờ là chưa phổ biến khi Việt Nam là nước nông nghiệp mà problem này lại chưa có nhiều.
 
 **6.5. Điều khó nhất khi viết Problem Statement là gì?**
 
+Suy nghĩ ra nhiều các problem, đồng thời chuẩn xác nó thành các bước. 
+
 **6.6. Nếu làm lại, tôi sẽ đổi gì? Tôi sẽ phản biện nhóm mạnh hơn ở điểm nào?**
+
+Trước mắt chưa có suy nghĩ gì.
 
 **6.7. Hiểu bài:** giải thích bằng 5–8 câu, không nhìn tài liệu, chuỗi *problem → quy trình → metric → boundary → mức can thiệp AI → quyết định* của bài nhóm mình.
 
