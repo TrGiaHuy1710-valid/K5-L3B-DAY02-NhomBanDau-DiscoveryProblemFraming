@@ -18,18 +18,20 @@
 
 | # | Người đưa ra | Candidate (Job Story ngắn) | Actor | Bottleneck | Câu hỏi phản biện nhận được (ai hỏi) |
 |---:|---|---|---|---|---|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
-| 6 | | | | | |
-| 7 | | | | | |
-| 8 | | | | | |
-| 9 | | | | | |
-| 10 | | | | | |
-| 11 | | | | | |
-| 12 | | | | | |
+| 1 | Cao Minh Quang | Khi đến mùa thi, tôi muốn tổng hợp slide thành đề cương ngắn gọn để ôn tập nhanh mà không bỏ sót kiến thức quan trọng. | Sinh viên | Đọc, lọc và tổng hợp nội dung từ nhiều slide (4–6 giờ/môn). | TranDuyThanh, TrinhGiaHuy, LeHienHieu |
+| 2 | Cao Minh Quang | Khi ôn thi, tôi muốn chuyển định nghĩa và công thức thành câu hỏi tự kiểm tra để ghi nhớ kiến thức tốt hơn. | Sinh viên | Trích xuất kiến thức và xây dựng từng cặp câu hỏi–đáp án thủ công. | TranDuyThanh, TrinhGiaHuy, LeHienHieu |
+| 3 | Cao Minh Quang | Khi ôn thi theo đề cương bộ môn, tôi muốn đối chiếu câu hỏi với slide để tìm đúng nội dung cần học. | Sinh viên | Tìm và đối chiếu nội dung nằm rải rác ở nhiều tuần học. | TranDuyThanh, TrinhGiaHuy, LeHienHieu |
+| 4 | Trần Duy Thành | Khi quản lý chi tiêu, tôi muốn tổng hợp giao dịch từ nhiều kênh thanh toán để biết mình đã chi bao nhiêu và vào việc gì. | Người sử dụng nhiều kênh thanh toán | Thu thập và phân loại giao dịch từ nhiều nguồn khác nhau. | LeHienHieu, TrinhGiaHuy |
+| 5 | Trần Duy Thành | Khi mua sản phẩm có nhiều lựa chọn, tôi muốn đối chiếu giá, thông số và chính sách để chọn phương án phù hợp. | Người mua hàng | Đọc và chuẩn hóa thông tin từ nhiều nhà bán để so sánh. | CaoMinhQuang, TrinhGiaHuy, LeHienHieu |
+| 6 | Trần Duy Thành | Khi mua chung với người khác, tôi muốn đối soát và chia chi phí để mọi người thanh toán đúng phần của mình. | Người tham gia mua chung | Tổng hợp khoản chi, tính phần mỗi người và đối soát chuyển tiền. | TrinhGiaHuy |
+| 7 | Trịnh Gia Huy | Khi theo dõi nhiều hộ trồng, tôi muốn tổng hợp tình trạng cây theo chu kỳ để quản lý và báo cáo kịp thời. | Cán bộ HTX | Thu thập và tổng hợp dữ liệu tình trạng cây từ nhiều hộ. | CaoMinhQuang, LeHienHieu, TranDuyThanh |
+| 8 | Trịnh Gia Huy | Khi kiểm tra nhiều khu vực trồng, tôi muốn phát hiện sớm dấu hiệu bất thường để ưu tiên xử lý đúng nơi. | Cán bộ kỹ thuật nông nghiệp | Kiểm tra thủ công nhiều khu vực để nhận diện dấu hiệu bất thường. | CaoMinhQuang, LeHienHieu, TranDuyThanh |
+| 9 | Trịnh Gia Huy | Khi chuẩn bị thu mua, tôi muốn có dữ liệu thống nhất về vùng nguyên liệu để đánh giá chất lượng và quyết định thu mua. | Doanh nghiệp thu mua nông sản | Thu thập và đối chiếu dữ liệu chất lượng từ nhiều nguồn thiếu thống nhất. | LeHienHieu |
+| 10 | Lê Hiền Hiếu | Khi thiết kế API và chọn mô hình LLM, tôi muốn đối chiếu tài liệu kỹ thuật để chọn phương án phù hợp và tránh phải làm lại. | AI Engineer | Đọc và đối chiếu tài liệu kỹ thuật, framework và quy định (2–3 giờ). | TrinhGiaHuy, TranDuyThanh, CaoMinhQuang |
+| 11 | Lê Hiền Hiếu | Khi thuê máy chủ GPU mới, tôi muốn thiết lập môi trường nhanh để bắt đầu huấn luyện mà không lặp lại thao tác cũ. | AI Engineer / ML Engineer | Cài đặt lại Docker, thư viện và cấu hình mỗi lần đổi máy chủ (2–3 lần/tuần). | CaoMinhQuang, TranDuyThanh |
+| 12 | Lê Hiền Hiếu | Khi hỗ trợ nhân sự mới, tôi muốn giảm số lần gián đoạn để duy trì công việc chuyên sâu mà người mới vẫn xử lý được lỗi. | Mentor / Kỹ sư kỹ thuật | Phải dừng công việc để hướng dẫn setup và xử lý lỗi CycleGAN (4–5 lần/ngày khi có người mới). | TrinhGiaHuy, TranDuyThanh, CaoMinhQuang |
+
+Sau khi thảo luận 12 Candidates trên chúng tôi quyết định rút gọn thành 4 Candidates mà mỗi người cảm thấy tự tin nhất để bàn bạc sâu hơn. Trong đó ý tưởng #7 của Trịnh Gia Huy được chúng tôi đặt một sự quan tâm cao hơn, phản biện nhiều hơn và điều chỉnh phạm vi, đối tượng, chức năng của ý tưởng đó thành một ý tưởng AI hoàn chỉnh hơn.
 
 ### 2.2. Cluster
 
