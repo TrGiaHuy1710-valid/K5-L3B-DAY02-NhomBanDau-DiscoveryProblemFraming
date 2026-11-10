@@ -7,8 +7,8 @@
 
 - Tên nhóm: NhomBanDau
 - Thành viên: xem `TEAM.md`
-- Candidate problem được chọn (1 câu): 
-- Quyết định cuối: Go / Not Yet / No-Go
+- Candidate problem được chọn (1 câu): Người trồng thanh long gặp khó khăn trong việc tiếp cận hoặc xác minh thông tin chăm sóc cây, đặc biệt là các quy định và hướng dẫn liên quan đến thuốc, hóa chất phục vụ xuất khẩu.
+- Quyết định cuối: Not Yet
 
 ---
 
@@ -86,49 +86,32 @@ Những ý đã gạch bỏ vì là solution đội lốt opportunity:
 
 | # | Giả định | Loại (Value / Usability / Feasibility / Viability) | Quan trọng (1–5) | Đã có bằng chứng (1–5) | Kiểm chứng trước? |
 |---:|---|---|---:|---:|---|
-| 1 | Người trồng thanh long có nhu cầu chủ động tự tra cứu và xác minh thuốc BVTV/quy định xuất khẩu trước khi phun, thay vì chỉ phụ thuộc hoàn toàn vào tư vấn của đại lý bán thuốc. | Value | 5 | 3 | Có |
-| 2 | Hộ nông dân (độ tuổi trung niên, ít thành thạo công nghệ) có thể tự sử dụng một công cụ tra cứu số đơn giản (gõ tên thương mại tiếng Việt hoặc giọng nói) để hiểu đúng hoạt chất và thời gian cách ly (PHI). | Usability | 5 | 2 | Có |
-| 3 | Có thể xây dựng cơ sở dữ liệu ánh xạ (mapping) chính xác giữa hàng nghìn tên thương mại thuốc BVTV lưu hành tại Việt Nam với tên hoạt chất hóa học và ngưỡng MRLs của các thị trường xuất khẩu đích. | Feasibility | 4 | 3 | Có |
-| 4 | Nông dân tin tưởng thông tin khuyến cáo từ công cụ số đủ để thay đổi hành vi canh tác và lựa chọn thuốc thực tế. | Usability / Value | 4 | 2 | Có |
-| 5 | HTX sẵn sàng đóng vai trò điểm tựa (hỗ trợ xác minh chuyên môn và bảo chứng vùng trồng) mà không cần can thiệp trực tiếp vào từng lượt tra cứu hàng ngày của nông dân. | Viability | 4 | 3 | Không |
+| 1 | Người trồng thanh long có nhu cầu chủ động tự tra cứu và xác minh thuốc BVTV/quy định xuất khẩu trước khi phun, thay vì chỉ phụ thuộc hoàn toàn vào tư vấn của đại lý bán thuốc. | Value | 5 | 1 | Có (Ưu tiên số 1) |
+| 2 | Hộ nông dân (độ tuổi trung niên, ít thành thạo công nghệ) có thể tự sử dụng một công cụ tra cứu số đơn giản (gõ tên thương mại tiếng Việt hoặc giọng nói) để hiểu đúng hoạt chất và thời gian cách ly (PHI). | Usability | 5 | 1 | Có (Ưu tiên số 2) |
+| 3 | Có thể xây dựng cơ sở dữ liệu ánh xạ (mapping) chính xác giữa hàng nghìn tên thương mại thuốc BVTV lưu hành tại Việt Nam với tên hoạt chất hóa học và ngưỡng MRLs của các thị trường xuất khẩu đích. | Feasibility | 4 | 3 | Có (Đã kiểm tra nguồn luật) |
+| 4 | Nông dân tin tưởng thông tin khuyến cáo từ công cụ số đủ để thay đổi hành vi canh tác và lựa chọn thuốc thực tế. | Usability / Value | 4 | 1 | Có |
+| 5 | HTX sẵn sàng đóng vai trò điểm tựa (hỗ trợ xác minh chuyên môn và bảo chứng vùng trồng) mà không cần can thiệp trực tiếp vào từng lượt tra cứu hàng ngày của nông dân. | Viability | 4 | 2 | Không |
 
-*Giả định nhóm kiểm chứng trong buổi này:* Giả định 1 (Nhu cầu chủ động xác minh thông tin thuốc), Giả định 2 (Khả năng tiếp cận công nghệ của nông dân), và Giả định 3 (Tính khả thi của việc đối chiếu tên thuốc với quy chuẩn xuất khẩu).
+*Giả định nhóm cần kiểm chứng:* Giả định 1 (Nhu cầu tự tra cứu thực sự của nông dân) và Giả định 2 (Khả năng tiếp cận công nghệ). Hiện tại các giả định về hành vi người dùng mới chỉ ở mức bằng chứng 1/5 (chưa có khảo sát thực tế).
 
 ### 3.2. Kiểm chứng
 
-Cách đã dùng: Phỏng vấn sâu (In-depth Interview) kết hợp rà soát báo cáo giám sát chuyên ngành từ Cục Bảo vệ Thực vật & Văn phòng SPS Việt Nam.
+**Thực trạng kiểm chứng tại CP4:**
 
-#### Interview Snapshot 1
+> **Do giới hạn thời gian của buổi Lab và việc chưa tiếp cận được đúng đối tượng người dùng, nhóm chưa hoàn thành phỏng vấn/survey trực tiếp với nông dân trồng thanh long và cán bộ HTX. Vì vậy, những pain point và quy trình hiện tại nhóm đưa ra vẫn là giả thuyết hình thành từ quá trình research, chưa được kiểm chứng bằng hành vi thực tế.**
 
-| Trường | Nội dung |
-|---|---|
-| Người được hỏi (vai trò, không ghi tên thật) | Chú B. (52 tuổi), nông dân trực tiếp canh tác 1.5 ha thanh long ruột đỏ tại huyện Chợ Gạo, tỉnh Tiền Giang. |
-| Câu nói đáng nhớ nhất (nguyên văn) | *"Ra tiệm bảo vệ thực vật, đại lý đưa thuốc gì thì mình xịt thuốc nấy chứ bao bì toàn chữ nhỏ li ti với tên hoạt chất tiếng Tây, nông dân biết đường nào mà lần. Đến chừng HTX hay thương lái test mẫu kêu dính chất cấm xuất khẩu thì trái chín mẹ trên cây rồi, trừ tiền mình chứ trừ ai!"* |
-| Lần gần nhất gặp vấn đề này: chuyện gì đã xảy ra? | Vụ nghịch vừa rồi cây bị đốm nâu (nấm tắc kè), chú ra tiệm quen mua thuốc xịt. Đến sát ngày thu hoạch, HTX lấy mẫu xét nghiệm nhanh phát hiện dính dư lượng hoạt chất nhóm Dithiocarbamate vượt ngưỡng EU. Toàn bộ 4 tấn trái không được gom xuất khẩu, phải dạt bán chợ nội địa giá 4.000đ/kg (thay vì giá hợp đồng xuất khẩu 18.000đ/kg), lỗ gần 50 triệu đồng tiền phân thuốc. |
-| Hiện đang xử lý bằng cách nào (workaround)? | Tin tưởng tuyệt đối vào đại lý bán thuốc gần nhà; thỉnh thoảng xem tờ giấy photo danh mục thuốc khuyến cáo do HTX phát từ đầu năm nhưng tờ giấy hay bị ướt, rách hoặc thất lạc. |
-| Mất bao lâu, bao lần? | Mỗi vụ mất 3–4 lần đắn đo đi hỏi tiệm thuốc; mỗi đợt sâu bệnh tốn 1–2 ngày vừa mua vừa lo ngay ngáy không biết có phạm quy chuẩn xuất khẩu không. |
-| Insight / opportunity rút ra | Nông dân rất sợ rủi ro rớt kiểm định bị trừ tiền, nhưng họ thiếu một phương tiện cầm tay để gõ ngay tên chai thuốc trên tay và biết tức thì: *Thuốc này thị trường xuất khẩu có cho xịt không, xịt xong cách ly mấy ngày thì được hái?* |
+Để đảm bảo tính liêm chính học thuật (không bịa đặt số liệu phỏng vấn người dùng theo đúng Rubric C7), nhóm đã:
+1. Đánh giá lại toàn bộ các giả định về người dùng ở mức "chưa có bằng chứng thực tế" (1/5).
+2. Xây dựng một kế hoạch kiểm chứng thực địa chi tiết để thực hiện sau buổi Lab: [`report/assets/cp4-validation-plan.md`](../assets/cp4-validation-plan.md) (bao gồm tiêu chí chọn mẫu 5–8 hộ nông dân, 2 cán bộ HTX, 2 đại lý thuốc; bộ câu hỏi phỏng vấn chuẩn Discovery không dẫn dụ; và tiêu chí chuyển đổi trạng thái quyết định).
 
-#### Interview Snapshot 2
+**Dữ kiện đã được kiểm chứng thông qua Desk Research (Tài liệu thứ cấp chính thống):**
 
-| Trường | Nội dung |
-|---|---|
-| Người được hỏi (vai trò, không ghi tên thật) | Anh T. (34 tuổi), Cán bộ kỹ thuật phụ trách kiểm soát chất lượng tại HTX Nông nghiệp Thanh Long. |
-| Câu nói đáng nhớ nhất (nguyên văn) | *"Quy định MRLs của EU, Nhật hay Hàn Quốc thay đổi xoành xoạch, có chất tháng trước cho dùng tháng này đã hạ ngưỡng xuống 0.01 mg/kg. Cán bộ HTX chỉ có 2 người mà quản lý cả trăm hộ, không thể nào ngày nào cũng chạy ra từng vườn canh nông dân pha thuốc gì vào bình."* |
-| Lần gần nhất gặp vấn đề này: chuyện gì đã xảy ra? | Tháng trước EU cập nhật cảnh báo kiểm soát tăng cường theo Quy định 2019/1793 đối với thanh long Việt Nam. Cán bộ gửi thông báo PDF vào nhóm Zalo của HTX nhưng đa số xã viên lớn tuổi không mở file đọc hoặc không nhớ tên hoạt chất để đối chiếu khi đi mua thuốc ngoài tiệm. |
-| Hiện đang xử lý bằng cách nào (workaround)? | Định kỳ in giấy phát cho các tổ trưởng tổ hợp tác; tổ chức các buổi tập huấn VietGAP nhưng nông dân chỉ đi dự đông đủ lúc đầu vụ rồi đâu lại vào đấy. |
-| Mất bao lâu, bao lần? | Mất 2–3 ngày mỗi tháng để soạn tài liệu và trả lời từng cuộc gọi của xã viên hỏi "thuốc này thuốc kia xịt được không". |
-| Insight / opportunity rút ra | Cần một công cụ để chính nông dân tự kiểm tra trước tại vườn (Farmer-first), còn HTX đóng vai trò điểm tựa xác minh chuyên môn khi có hoạt chất lạ hoặc có tranh chấp kỹ thuật (Cooperative-supported). |
+| Nguồn tài liệu | Dữ kiện xác thực | Tác động đến bài toán của nhóm |
+|---|---|---|
+| Báo cáo giám sát từ Cục BVTV & Văn phòng SPS Việt Nam | Thanh long Việt Nam liên tục nằm trong danh sách kiểm soát tăng cường tại EU (theo Quy định EU 2019/1793) với tần suất kiểm tra 30–50% do phát hiện dư lượng hoạt chất (Carbendazim, Dithiocarbamates, Difenoconazole). | Xác thực tầm quan trọng vĩ mô của vấn đề: rủi ro vi phạm dư lượng hóa chất xuất khẩu là có thật và gây thiệt hại kinh tế nghiêm trọng cho ngành hàng. |
+| Hệ thống tra cứu quy chuẩn MRLs quốc tế (EU Pesticides Database, DAFF Úc, MAFF Nhật) | Danh mục MRLs liên tục cập nhật, sử dụng thuật ngữ hóa học tiếng Anh và mã hóa ngưỡng mg/kg kỹ thuật cao; không có sự liên kết trực tiếp với tên thương phẩm thuốc bán tại thị trường VN. | Xác thực khoảng trống thông tin: Nông dân và HTX thiếu một công cụ "thông dịch" từ tên thuốc mua ngoài tiệm sang ngưỡng an toàn xuất khẩu. |
 
-#### Bảng tổng hợp kiểm chứng
-
-| Nguồn | Số người / số mẫu | Tín hiệu xác nhận | Tín hiệu phản bác |
-|---|---:|---|---|
-| Phỏng vấn sâu nông dân trực tiếp | 3 hộ trồng thanh long (Tiền Giang, Bình Thuận) | Cả 3 hộ đều từng gặp tình trạng hoang mang về quy định thuốc xuất khẩu, phụ thuộc hoàn toàn vào đại lý bán thuốc và từng chịu thiệt hại do hàng rớt chuẩn. | Nông dân phản đối kịch liệt nếu ứng dụng bắt tạo tài khoản rườm rà, bắt gõ văn bản dài hoặc bắt điền form nhật ký phức tạp. Họ chỉ muốn mở lên là tra cứu được ngay. |
-| Phỏng vấn cán bộ HTX nông nghiệp | 2 cán bộ kỹ thuật HTX | Xác nhận HTX quá tải trong việc truyền đạt và giám sát danh mục hoạt chất MRLs xuất khẩu biến động liên tục. Rất ủng hộ việc trao công cụ tự kiểm tra cho người trồng. | HTX không muốn phần mềm can thiệp thay thế hoàn toàn vai trò của họ; các trường hợp nhạy cảm hoặc thuốc mới vẫn cần cán bộ bấm xác nhận bảo chứng. |
-| Báo cáo chuyên ngành (Cục BVTV & Văn phòng SPS VN) | 5 văn bản / báo cáo giám sát 2023–2026 | Thanh long Việt Nam liên tục nằm trong danh sách kiểm soát tăng cường tại EU với tần suất kiểm tra 30–50% do vi phạm dư lượng MRLs (như Carbendazim, Dithiocarbamates, Difenoconazole). | Rào cản không nằm ở chỗ "thiếu thuốc an toàn" mà nằm ở khâu "nông dân thiếu thông tin đối chiếu giữa tên thương phẩm trên thị trường với ngưỡng MRLs của nước nhập khẩu". |
-
-**Nhóm đã sửa problem thế nào sau kiểm chứng:**
+**Nhóm đã sửa định hướng problem thế nào sau research:**
 - **Định hình triết lý sản phẩm:** Nhất quán theo nguyên tắc **Farmer-first, Cooperative-supported**. Người nông dân là người dùng chính (Primary User) trực tiếp nhận thông tin cảnh báo thuốc; HTX là bên hỗ trợ (Supporting Stakeholder) bảo chứng nguồn dữ liệu và giải quyết ngoại lệ.
 - **Thu hẹp phạm vi giải pháp (tránh bẫy công nghệ):** Tuyệt đối không sa đà vào các bài toán phức tạp ngoài luồng (như Computer Vision bắt bệnh tự động, drone phun thuốc, dự báo sản lượng) theo đúng Dependency A; giải quyết chính xác nút thắt: **Hỗ trợ người trồng tiếp cận, tra cứu và xác minh tính hợp chuẩn của thuốc BVTV đối với thị trường xuất khẩu**.
 
@@ -266,18 +249,20 @@ LUỒNG DUY TRÌ BẢNG QUY ĐỊNH (khi có văn bản mới)
 
 ## 5. Problem Statement v0 (CP5)
 
+*(Trần Duy Thành phụ trách)*
+
 | Trường | Nội dung |
 |---|---|
-| **Actor** | |
-| **Quy trình** | |
-| **Bottleneck** | |
-| **Impact** | |
-| **Success Metric** (baseline → target, cách đo) | |
-| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) | |
+| **Actor** | Primary: Hộ nông dân trực tiếp canh tác Thanh Long phục vụ xuất khẩu. Secondary: Cán bộ kỹ thuật HTX nông nghiệp. |
+| **Quy trình** | Khi phát sinh nhu cầu phòng trừ sâu bệnh hoặc chăm sóc vườn $\rightarrow$ Hỏi thông tin từ đại lý thuốc/người quen $\rightarrow$ (Nếu cần) liên hệ cán bộ kỹ thuật HTX để xác minh quy định xuất khẩu $\rightarrow$ Cán bộ tra cứu thủ công từ các văn bản rời rạc $\rightarrow$ Nông dân quyết định mua và phun thuốc (§4.1). |
+| **Bottleneck** | **[Giả thuyết cần kiểm chứng]** Nông dân gặp khó khăn khi tự xác minh tính hợp chuẩn của thuốc đối với thị trường xuất khẩu đích do thông tin MRLs phân tán, ngôn ngữ kỹ thuật phức tạp; việc phụ thuộc vào cán bộ HTX gây nghẽn thời gian vì cán bộ không thể túc trực hỗ trợ tức thời mọi lúc. |
+| **Impact** | **[Giả thuyết cần kiểm chứng]** Nguy cơ sử dụng sai hoạt chất hoặc không tuân thủ thời gian cách ly (PHI) dẫn đến dư lượng hóa chất vượt ngưỡng, trái bị từ chối xuất khẩu hoặc bị tiêu hủy, gây thiệt hại tài chính nặng nề cho nông dân và ảnh hưởng uy tín HTX. |
+| **Success Metric** (baseline → target, cách đo) | - **M1 (% lần phun đúng chuẩn MRLs):** Baseline [CHỜ KIỂM CHỨNG THEO VALIDATION PLAN] $\rightarrow$ Target đề xuất: $\ge 90\%$; đo bằng audit nhật ký canh tác định kỳ.<br>- **M2 (Thời gian xác minh thuốc):** Baseline [CHỜ ĐO ĐẠC THỰC TẾ] $\rightarrow$ Target đề xuất: giảm xuống dưới 5 phút cho các hoạt chất đã có trong bảng duyệt; đo bằng log thời gian gửi câu hỏi.<br>- **M3 (Độ chính xác thông tin thuốc):** 100% câu trả lời có trích dẫn nguồn văn bản pháp lý chính thống. |
+| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) | AI **tuyệt đối không** tự ý chẩn đoán bệnh cây, không tự kê đơn thuốc ngoài danh mục đã được phê duyệt, không tự bịa ra con số liều lượng/ngày cách ly. Cán bộ kỹ thuật HTX là người duy nhất duyệt bảng quy định; nông dân là người tự chịu trách nhiệm đưa ra quyết định phun thuốc cuối cùng. |
 
 Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng ý không:
 
--
+- Phản biện từ nhóm: Cần làm rõ ranh giới giữa giả thuyết nghiên cứu và dữ liệu thực tế. Nhóm đồng ý đánh dấu toàn bộ Bottleneck, Impact và Baseline là các **giả thuyết cần kiểm chứng thực địa**, không lấy số liệu giả định làm baseline.
 
 ---
 
@@ -340,7 +325,9 @@ Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng
 
 | Trường | v0 | v1 | Vì sao đổi |
 |---|---|---|---|
-| Tất cả | [PENDING §5]: v0 chưa được viết | — | Sẽ điền khi §5 hoàn tất. v1 phải giữ nguyên các dữ kiện của v0, trừ thay đổi có lý do |
+| AI intervention point | Chưa phân tách các điểm can thiệp kỹ thuật | Tách rõ 4 điểm can thiệp: (1) Phân loại câu hỏi; (2) Truy xuất câu chăm sóc; (3) Diễn đạt lại tra cứu thuốc; (4) Trích xuất văn bản thành dòng bảng. Kết luận về thuốc do **Rule** thực hiện | Làm rõ ranh giới: AI chỉ hỗ trợ ngôn ngữ/truy xuất, Rule đảm bảo tính chính xác tuyệt đối của con số |
+| Rủi ro & Boundary | Nêu nguyên tắc chung | Bổ sung cơ chế khóa dòng khi có văn bản mới, cơ chế fallback chuyển người (HITL) và 2 tiêu chí chặn trong eval | Đảm bảo an toàn tối đa cho bài toán xuất khẩu nông sản |
+| Metrics & Baseline | Đặt target kỳ vọng | Giữ nguyên target đề xuất, nhấn mạnh baseline phải chờ đo đạc thực địa theo validation plan | Tránh tạo số liệu baseline giả, đảm bảo tính liêm chính |
 
 **Tiêu chí đánh giá đầu ra của AI (3–5 tiêu chí):**
 
@@ -360,21 +347,30 @@ Tiêu chí 1 và 3 là **chặn** (một lỗi là không đạt cả bộ eval)
 
 ## 8. Quyết định (CP6)
 
+*(Trần Duy Thành phụ trách)*
+
 ### 8.1. Bốn rủi ro
 
 | Rủi ro | Câu hỏi | Mức độ rủi ro (Thấp = an toàn / TB / Cao = nguy hiểm) | Lý do / bằng chứng |
 |---|---|---|---|
-| **Value** | Người dùng có cần không? | Cao | Nếu HTX không ép, nông dân sẽ lười chụp ảnh. |
-| **Usability** | Có biết dùng không? | TB | App cần UI chỉ có 1 nút chụp ảnh thật to. |
-| **Feasibility** | Có đủ dữ liệu không? | TB | Ảnh Thanh Long VN có thể thiếu dataset chuẩn, cần thu thập tay. |
-| **Viability** | Ai trả tiền? | TB | HTX hoặc Doanh nghiệp thu mua (chi phí phòng ngừa rủi ro). |
+| **Value** | Người dùng có thật sự cần và sẽ dùng không? | **Cao** | Chưa phỏng vấn trực tiếp nông dân để xác nhận họ có thực sự muốn tự tra cứu hay vẫn giữ thói quen ra đại lý thuốc bảo gì xịt nấy. |
+| **Usability** | Người dùng có dùng được, có hiểu và sửa được đầu ra của AI không? | **Cao** | Nông dân trồng thanh long đa số lớn tuổi, mắt kém, thao tác điện thoại hạn chế; chưa kiểm chứng được họ có đọc hiểu được hướng dẫn tra cứu hay không. |
+| **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng để làm không? | **TB** | Dữ liệu quy định pháp lý có trên cổng SPS và Cục BVTV, nhưng việc ánh xạ (mapping) từ tên thương mại sang hoạt chất và ngưỡng MRLs đòi hỏi nhiều công sức làm sạch và chuẩn hóa. |
+| **Viability** | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành? | **TB / Cao** | Chưa có cam kết từ HTX về việc cử cán bộ kỹ thuật kiểm duyệt bảng dữ liệu định kỳ; chưa rõ ai sẽ chi trả chi phí duy trì hệ thống. |
 
 ### 8.2. Kết luận
 
-* **Quyết định:** Go
-* **Lý do:** Nỗi đau kinh tế quá rõ ràng. Giải pháp là sự kết hợp hoàn hảo giữa chuẩn hóa quy trình (Workflow) và điểm chạm công nghệ (Vision/RAG).
-* **Pilot nhỏ nhất:** 1 HTX Thanh Long, 10 hộ nông dân, 1 bộ luật MRLs của thị trường Úc trong 8 tuần.
-* **Ngưỡng dừng:** Nếu sau 4 tuần, tỷ lệ nông dân chịu mở app chụp ảnh thấp dưới 30% $\rightarrow$ Dừng, quay về xài app như Zalo và cán bộ tự check tay.
+* **Quyết định:** **Not Yet**
+* **Lý do:** Do giới hạn thời gian của buổi Lab và việc chưa tiếp cận được đúng đối tượng người dùng, nhóm chưa hoàn thành phỏng vấn/survey trực tiếp với nông dân trồng thanh long và cán bộ HTX. Vì vậy, những pain point và quy trình hiện tại nhóm đưa ra vẫn là giả thuyết hình thành từ quá trình research, chưa được kiểm chứng bằng hành vi thực tế. Các rủi ro về Value và Usability hiện tại vẫn đang ở mức Cao.
+* **Tuyên bố của nhóm:** Nhóm quyết định **Not Yet** thay vì vội vàng triển khai giải pháp AI. Bước tiếp theo là phỏng vấn người dùng, kiểm chứng bottleneck, đo baseline và thử phương án tra cứu đơn giản không dùng AI trước khi quyết định có tiếp tục hay không.
+* **Nếu Not Yet — Cần kiểm chứng gì trước (Kế hoạch hành động):**
+  - Triển khai kiểm chứng thực địa theo kế hoạch tại: [`report/assets/cp4-validation-plan.md`](../assets/cp4-validation-plan.md).
+  - Phỏng vấn sâu tối thiểu 5–8 hộ nông dân và 2 cán bộ HTX tại vùng chuyên canh (Bình Thuận / Tiền Giang) theo bộ câu hỏi hành vi quá khứ.
+  - Đo đạc baseline thật về thời gian tra cứu và tỷ lệ lần phun đúng quy định.
+  - Thử nghiệm phương án tra cứu đơn giản No-AI (Bảng tra cứu giấy ép plastic hoặc file tra cứu nhanh trên Zalo) để đo độ sẵn sàng của nông dân.
+* **Ngưỡng dừng & Điều kiện xem xét lại quyết định:**
+  - *Chuyển sang "Go":* Khi $\ge 70\%$ nông dân được hỏi xác nhận gặp khó khăn khi tra cứu thuốc xuất khẩu và sẵn sàng dùng công cụ số; đo được baseline thời gian tra cứu $\ge 30$ phút; và HTX cam kết cử nhân sự duyệt bảng quy định.
+  - *Chuyển sang "No-Go":* Nếu phỏng vấn cho thấy nông dân hoàn toàn phó mặc cho tiệm thuốc/thương lái và không có nhu cầu tự kiểm tra; hoặc phương án No-AI (bảng tra cứu Zalo) đã giải quyết trọn vẹn nhu cầu mà không cần đến AI.
 
 ---
 
@@ -384,7 +380,6 @@ Tiêu chí 1 và 3 là **chặn** (một lỗi là không đạt cả bộ eval)
 
 ## 10. Tài liệu tham khảo
 
-*(Cao Minh Quang tổng hợp)*
 
 1. **Cục Bảo vệ Thực vật — Bộ Nông nghiệp và Phát triển Nông thôn:**
    - Cơ sở dữ liệu trực tuyến về Danh mục thuốc bảo vệ thực vật được phép, hạn chế và cấm sử dụng tại Việt Nam: https://ppd.gov.vn

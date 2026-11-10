@@ -5,8 +5,8 @@
 ## Thông tin nhóm
 
 - Tên nhóm: NhomBanDau
-- Candidate problem nhóm chọn (1 câu): HTX và nông dân trồng Thanh Long xuất khẩu thiếu hệ thống quản lý, hướng dẫn chăm sóc và đối chiếu tình trạng cây trồng thực tế với tiêu chuẩn dư lượng hóa chất (MRLs), dẫn đến rủi ro bị trả hàng và thiệt hại kinh tế.
-- Quyết định cuối (Go / Not Yet / No-Go): Go
+- Candidate problem nhóm chọn (1 câu): Người trồng thanh long gặp khó khăn trong việc tiếp cận hoặc xác minh thông tin chăm sóc cây, đặc biệt là các quy định và hướng dẫn liên quan đến thuốc, hóa chất phục vụ xuất khẩu.
+- Quyết định cuối (Go / Not Yet / No-Go): Not Yet
 
 ## Thành viên
 
@@ -92,7 +92,7 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 **Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
 - Loại bỏ các ý tưởng cào dữ liệu TMĐT vướng rào cản pháp lý (chặn API).
 - Chốt bảng đánh giá rủi ro, phân định rõ ràng giữa người dùng (nông dân) và người trả tiền (HTX/Doanh nghiệp thu mua).
-- Đưa ra quyết định "Go" với quy mô Pilot nhỏ nhất gọn gàng.
+- Đưa ra quyết định "Not Yet" do các rủi ro Value và Usability còn ở mức cao khi chưa có phỏng vấn thực địa.
 
 **Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
 - Mục 5. Problem Statement v0 và Mục 8. Quyết định (CP6) trong `group_report.md`.
@@ -105,27 +105,29 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 
 **Phần việc phụ trách:**
 
-- Phụ trách chính §3.1 (Assumption Map) và §3.2 (Kiểm chứng / Validation) trong Báo cáo nhóm (`group_report.md`).
+- Phụ trách chính §3.1 (Assumption Map) và §3.2 (Thực trạng kiểm chứng & Kế hoạch kiểm chứng thực địa) trong Báo cáo nhóm (`group_report.md`).
 - Phụ trách chính §3.3 (Research giải pháp hiện có: Ứng dụng Thuốc BVTV của Cục BVTV, mobiAgri, Cổng SPS Việt Nam & EU Pesticides Database).
+- Lập kế hoạch kiểm chứng thực địa chi tiết trong file asset: `report/assets/cp4-validation-plan.md`.
 - Tổng hợp và hoàn thiện §10 (Tài liệu tham khảo) với các nguồn chính thống từ cơ quan quản lý nhà nước và quốc tế.
-- Hỗ trợ nhóm rà soát tính nhất quán về dữ liệu đầu vào (bằng chứng phỏng vấn, số liệu thiệt hại thực tế, rào cản MRLs xuất khẩu) để làm căn cứ cho quy trình As-Is (§4) và Problem Statement v0 (§5).
+- Hỗ trợ nhóm rà soát tính liêm chính của dữ liệu, đề xuất nhóm giữ quyết định **Not Yet** thay vì tự tạo baseline giả.
 
 **Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
 
-- Xây dựng Assumption Map (§3.1) gồm 5 giả định bao phủ 4 khía cạnh Value, Usability, Feasibility, Viability theo nguyên tắc Farmer-first, Cooperative-supported.
-- Thực hiện 2 cuộc phỏng vấn sâu (§3.2) với nông dân trực tiếp canh tác thanh long (chú B., Tiền Giang) và cán bộ kỹ thuật HTX (anh T.), thu thập các dữ kiện thật về hành vi đã xảy ra (thiệt hại 50 triệu/vụ do dính chất cấm EU, khó khăn khi đọc nhãn thuốc, thói quen phụ thuộc đại lý).
-- Tổng hợp bảng tín hiệu xác nhận và phản bác (§3.2), rút ra bài học giúp nhóm sửa định hướng bài toán: trao công cụ tự tra cứu thuốc cho nông dân, HTX giữ vai trò bảo chứng xác minh.
+- Xây dựng Assumption Map (§3.1) gồm 5 giả định, hạ mức bằng chứng các giả định về người dùng về 1/5 để phản ánh đúng thực tế chưa khảo sát hiện trường.
+- Viết trung thực thực trạng kiểm chứng ở §3.2: Nêu rõ do giới hạn thời gian lab chưa kịp phỏng vấn trực tiếp nông dân, toàn bộ pain point và bottleneck hiện tại là giả thuyết nghiên cứu.
+- Soạn thảo kế hoạch kiểm chứng thực địa [`report/assets/cp4-validation-plan.md`](report/assets/cp4-validation-plan.md) chuẩn phương pháp Discovery: xác định 3 nhóm đối tượng cần hỏi (nông dân, cán bộ HTX, đại lý thuốc), bộ câu hỏi hành vi quá khứ không dẫn dụ, kế hoạch thử nghiệm giải pháp No-AI và tiêu chí chuyển trạng thái quyết định.
 - Phân tích chi tiết 3 giải pháp hiện có (§3.3) với link uy tín, chỉ ra rõ khoảng trống cốt lõi (thiếu dữ liệu MRLs xuất khẩu, thuật ngữ tiếng Anh phức tạp) để định vị bài học thiết kế cho nhóm.
 - Tổng hợp danh mục 7 tài liệu tham khảo chính thống (§10) từ Cục BVTV, Văn phòng SPS Việt Nam, Quy định EU 2019/1793, DAFF Úc, MAFF Nhật Bản, VietGAP TCVN 11892-1:2017.
 
 **Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
 
-- Section 3: §3.1 (Assumption Map), §3.2 (Kiểm chứng & Interview Snapshots), §3.3 (Bảng research giải pháp hiện có) trong `report/team/group_report.md`.
+- Section 3: §3.1 (Assumption Map), §3.2 (Thực trạng kiểm chứng), §3.3 (Bảng research giải pháp hiện có) trong `report/team/group_report.md`.
+- File kế hoạch kiểm chứng: `report/assets/cp4-validation-plan.md`.
 - Section 10: §10 (Tài liệu tham khảo tổng hợp) trong `report/team/group_report.md`.
 - Báo cáo cá nhân: `report/individual/2A202603906_CaoMinhQuang.md`.
 
 **Điều mình học được từ phần nhóm:**
 
-- Hiểu sâu sắc phương pháp kiểm chứng (Validation) trong Discovery: Phải hỏi về hành vi và sự việc ĐÃ XẢY RA trong quá khứ kèm con số thiệt hại thực tế, tuyệt đối không hỏi câu hỏi giả định ("Bạn có muốn...").
-- Nắm vững nguyên tắc Dependency giữa các section: Dữ liệu từ khâu Research & Validation (CP4) là nền móng bắt buộc để xây dựng quy trình thực tế (CP5) và viết Problem Statement sắc bén, không được để các phần sau tự tạo số liệu.
-- Học được tư duy Farmer-first: Thiết kế giải pháp cho nông dân phải giải quyết đúng nút thắt tâm lý (sợ bị trừ tiền nhưng ngại nhập liệu phức tạp), biến công nghệ thành công cụ tra cứu tức thì thay vì một phần mềm quản lý hành chính cồng kềnh.
+- Hiểu sâu sắc tinh thần liêm chính học thuật trong Discovery: Không được bịa đặt kết quả phỏng vấn khi chưa thực sự làm; dũng cảm chọn **Not Yet** khi chưa đủ bằng chứng thực tế về nỗi đau của người dùng thay vì vội vàng lao vào giải pháp AI.
+- Nắm vững phương pháp thiết kế kế hoạch kiểm chứng (Validation Plan): Phải hỏi về hành vi ĐÃ XẢY RA trong quá khứ, không hỏi câu hỏi giả định ("Bạn có muốn...").
+- Học được tư duy thử nghiệm No-AI trước: Luôn kiểm tra xem phương án đơn giản không dùng AI (như bảng tra cứu Zalo/giấy) có đủ giải quyết vấn đề trước khi đầu tư nguồn lực làm AI.
