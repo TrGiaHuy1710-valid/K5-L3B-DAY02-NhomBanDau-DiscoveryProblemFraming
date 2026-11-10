@@ -52,12 +52,12 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 - Pitch hướng bài toán Thanh Long (Candidate C); trả lời phản biện về scope, mức cần AI và đối thủ có sẵn.
 - Phản biện 3 candidate còn lại (tóm tắt slide, so sánh mua hàng, hỗ trợ intern) bằng câu hỏi về đối thủ có sẵn, người trả tiền và có cần AI không.
 - Research Plantix, mobiAgri, NextFarm, Agrio; tìm văn bản quy định thuốc BVTV (Thông tư 75/2025/TT-BNNMT) và MRL của Úc (Schedule 20).
-- §4: viết quy trình hiện tại với actor primary / secondary, bottleneck đề xuất; quy trình tương lai tách bước AI / Rule / con người, boundary, phương án quay về; bảng before/after và bộ metric M1–M3 để §5, §7, §8 dùng chung. Các ô chưa có dữ liệu để [PENDING CP4], không tự tạo số liệu.
-- §7: bản nháp Problem Statement v1 và 5 tiêu chí eval (2 tiêu chí chặn: đúng con số về thuốc, biết từ chối và chuyển người).
+- §4: viết quy trình hiện tại với actor primary / secondary, bottleneck đề xuất; quy trình tương lai tách bước AI / Rule / con người, boundary, phương án quay về; bảng before/after và bộ metric M1–M5 để §5, §7, §8 dùng chung; mọi số liệu lấy từ §3.2 và ghi rõ cỡ mẫu.
+- §7: Problem Statement v1, bảng so sánh v0 → v1, 5 tiêu chí eval (2 tiêu chí chặn: đúng trạng thái và con số về thuốc, biết dừng và chuyển người) và bộ eval 10 cặp `report/assets/cp6-eval-set.md`.
 
 **Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
 
-- Mục 4 và Mục 7 trong `report/team/group_report.md`.
+- Mục 4 và Mục 7 trong `report/team/group_report.md`; bộ eval `report/assets/cp6-eval-set.md`.
 - Báo cáo cá nhân: `report/individual/2A202603924_TrinhGiaHuy.md` (mục 3 "Idea sau phản biện", mục 4).
 - Commit: `2A202603924 individual report`, `2A202603924 individual report v2`, `Add and update 2A202603924_TrinhGiaHuy.md`, `Add and update 2A202603924_TrinhGiaHuy.md and my role in team`.
 

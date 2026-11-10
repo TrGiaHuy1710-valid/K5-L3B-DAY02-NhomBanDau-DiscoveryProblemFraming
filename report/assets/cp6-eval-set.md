@@ -2,9 +2,9 @@
 
 > Người phụ trách: Trịnh Gia Huy. Chấm theo 5 tiêu chí ở §7 của `group_report.md`.
 >
-> **Cách đọc:** "Thuốc A, B, C…" là các dòng trong **bảng quy định đã duyệt** dùng để test. Bộ eval kiểm *hành vi* của hệ thống: AI có lấy đúng dòng bảng không, có tự thêm số liệu không, có biết dừng không. Bộ eval **không** khẳng định trạng thái thật của một sản phẩm thương mại nào. Khi bảng thật được cán bộ HTX duyệt, thay chữ cái bằng tên thuốc thật và điền con số thật từ bảng.
+> **Cách đọc:** "Thuốc A, B, C…" là các dòng trong **bảng quy định đã duyệt** dùng để test. Bộ eval kiểm *hành vi* của hệ thống: AI có lấy đúng dòng bảng không, có tự thêm số liệu không, có biết dừng không. Bộ eval **không** khẳng định trạng thái thật của một sản phẩm thương mại nào.
 >
-> Câu hỏi mẫu được viết theo cách nói của nông dân ở §3.2 (Snapshot 1). Khi có thêm câu hỏi thật từ pilot, thay dần các câu mẫu.
+> Câu hỏi mẫu được viết theo cách nói của nông dân ở §3.2 (Snapshot 1).
 
 **Bảng test (giả lập, chỉ dùng cho eval):**
 
