@@ -296,38 +296,62 @@ Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng
 
 ### 6.1. Ma trận độ mơ hồ × độ phức tạp
 
-* **Bài của nhóm nằm ở ô:** 
+* **Bài của nhóm nằm ở ô:** Độ mơ hồ Cao × Độ phức tạp Cao
 * **Vì sao:**
+  - Về độ mơ hồ: Cao
+    - Người trồng thanh long thường đặt câu hỏi theo ngôn ngữ đời thường, sử dụng tên thương mại của thuốc thay vì tên hoạt chất. Một câu hỏi có thể thiếu thông tin về đối tượng phòng trừ, thị trường xuất khẩu hoặc thời điểm thu hoạch.
+    - Cùng một loại thuốc có thể cần đối chiếu nhiều điều kiện khác nhau: đăng ký sử dụng tại Việt Nam, hướng dẫn trên nhãn, thời gian cách ly và giới hạn dư lượng tối đa tại thị trường đích.
+    - Kết quả CP4 cho thấy nông dân gặp khó khăn khi đọc thuật ngữ kỹ thuật, trong khi cán bộ HTX phải xử lý thông tin từ nhiều nguồn. Hệ thống cần nhận biết những trường hợp thiếu dữ kiện hoặc không thể đưa ra kết luận.
+  - Về độ phức tạp: Cao
+    - Quy trình xác minh liên quan đến nhiều nguồn dữ liệu có cấu trúc và phi cấu trúc: danh mục thuốc BVTV, nhãn thuốc, tài liệu kỹ thuật, quy định MRL và cảnh báo SPS.
+    - Hệ thống cần kết hợp các bước: phân loại câu hỏi, chuẩn hóa tên thuốc, tra cứu dữ liệu, kiểm tra điều kiện, tạo câu trả lời dễ hiểu và chuyển cán bộ kỹ thuật khi gặp ngoại lệ.
+    - Dữ liệu quy định có thể thay đổi, đòi hỏi cơ chế cập nhật, xác minh và khóa thông tin chưa được duyệt.
+
+Bài toán có độ mơ hồ cao tại khâu hiểu câu hỏi và diễn đạt thông tin, nhưng phần kiểm tra điều kiện thuốc phải được chuẩn hóa thành các quy tắc rõ ràng. Vì vậy, nhóm ưu tiên phối hợp AI với Rule và Human-in-the-Loop, thay vì để AI tự quyết định toàn bộ quy trình.
 
 ### 6.2. So sánh 4 mức
 
 | Mức | Phương án cho bài của nhóm | Đủ khi nào | Rủi ro | Chọn? |
 | --- | --- | --- | --- | --- |
-| **No AI** |  |  |  |  |
-| **Rule** |  | | | |
-| **Workflow** |  | | | |
-| **Agent** |  |  | | |
+| **No AI** |HTX chuẩn hóa danh mục thuốc, hướng dẫn canh tác và quy định xuất khẩu thành tài liệu đơn giản; cập nhật định kỳ và phổ biến qua Zalo, bản in hoặc tập huấn |Phạm vi thuốc nhỏ, quy định ít thay đổi; nông dân có thể tự tìm đúng thông tin hoặc dễ dàng liên hệ cán bộ  |Thông tin dễ lỗi thời; nông dân vẫn phải tìm kiếm thủ công; cán bộ HTX tiếp tục chịu tải tư vấn| Không ưu tiên |
+| **Rule** |Xây dựng bảng tra cứu tên thương mại → hoạt chất → đăng ký sử dụng → thông tin nhãn → MRL thị trường đích; lọc và cảnh báo theo điều kiện đã được phê duyệt|Dữ liệu đã chuẩn hóa, người dùng nhập đủ thông tin theo biểu mẫu và chủ yếu cần tra cứu các trường hợp xác định |Khó xử lý câu hỏi tự nhiên, tên thuốc nhập sai, thông tin thiếu hoặc yêu cầu giải thích phức tạp |Chọn làm thành phần kiểm tra bắt buộc |
+| **Workflow** |Quy trình cố định: tiếp nhận câu hỏi → AI phân loại → truy xuất dữ liệu/tài liệu → Rule kiểm tra thông tin thuốc → AI diễn đạt kết quả có dẫn nguồn → chuyển cán bộ khi thiếu dữ liệu hoặc có ngoại lệ |Các nhánh nghiệp vụ xác định được từ trước, AI chỉ cần xử lý ngôn ngữ và tổng hợp thông tin trong phạm vi kiểm soát |AI có thể phân loại sai hoặc diễn đạt sai; dữ liệu nguồn lỗi thời; cần cơ chế kiểm tra, fallback và bảo trì |Đề xuất chọn |
+| **Agent** |AI tự quyết định các bước tra cứu tiếp theo, lựa chọn nguồn/công cụ, yêu cầu bổ sung thông tin và điều phối các tác vụ tùy tình huống  |Quy trình có nhiều tình huống khó dự đoán, cần lập kế hoạch động mà Workflow cố định không đáp ứng được |Khó kiểm soát đường đi xử lý, khó truy vết lỗi, chi phí và độ phức tạp cao hơn; tăng rủi ro khi liên quan đến thông tin thuốc BVTV |Chưa cần thiết |
 
 
-**Mức chọn:** 
+**Mức chọn:** Workflow kết hợp Rule và Human-in-the-Loop
 
 **Vì sao không chọn mức đơn giản hơn:**
+- No AI chưa giải quyết triệt để bottleneck: Theo CP4, HTX đã sử dụng tài liệu in, PDF và tập huấn nhưng người trồng vẫn gặp khó khăn trong việc tìm kiếm, hiểu và đối chiếu thông tin. Chỉ cải thiện tài liệu có thể giảm một phần khó khăn nhưng chưa đáp ứng tốt nhu cầu tra cứu trực tiếp tại vườn.
+- Rule đơn thuần chưa đủ cho toàn bộ trải nghiệm: Rule phù hợp để kiểm tra dữ liệu chuẩn hóa, nhưng người dùng thường đặt câu hỏi bằng tiếng Việt tự nhiên, tên thương mại hoặc thông tin không đầy đủ. Việc yêu cầu nông dân điền biểu mẫu phức tạp cũng mâu thuẫn với tín hiệu phản bác về khả năng sử dụng ở CP4.
+- Workflow giải quyết phần còn thiếu: AI hỗ trợ hiểu yêu cầu, tìm tài liệu và diễn đạt thông tin; Rule chịu trách nhiệm kiểm tra các điều kiện có cấu trúc; cán bộ HTX xác minh ngoại lệ.
 
 ### 6.3. AI Canvas rút gọn
 
 | Thành phần | Nội dung |
 |---|---|
-| **Prediction** — AI dự đoán / tạo ra gì? |  |
-| **Judgment** — Con người cân nhắc, quyết định gì? |  |
-| **Action** — Hành động cuối cùng là gì, ai làm? |  |
-| **Outcome** — Đo kết quả bằng gì? | |
-| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? |  |
-| **Feedback** — Lấy phản hồi ở đâu để cải thiện? |  |
+| **Prediction** — AI dự đoán / tạo ra gì? |Phân loại câu hỏi của nông dân thành chăm sóc cây, thuốc/hóa chất hoặc ngoài phạm vi; nhận diện thông tin còn thiếu; truy xuất và tổng hợp hướng dẫn từ nguồn đã được chọn; diễn đạt kết quả bằng ngôn ngữ dễ hiểu, có dẫn nguồn. AI không tự dự đoán mức dư lượng thực tế hoặc tự kết luận thuốc an toàn cho xuất khẩu  |
+| **Judgment** — Con người cân nhắc, quyết định gì? |Nông dân quyết định hành động canh tác sau khi xem thông tin và hướng dẫn chính thức. Cán bộ kỹ thuật HTX hoặc chuyên gia xác minh trường hợp chưa đủ dữ kiện, thuốc chưa có trong bảng hoặc nguồn mâu thuẫn. Người phụ trách dữ liệu duyệt các bản ghi quy định trước khi sử dụng  |
+| **Action** — Hành động cuối cùng là gì, ai làm? |Hệ thống cung cấp thông tin tra cứu có nguồn, ngày cập nhật và cảnh báo khi chưa thể kết luận. Nông dân đối chiếu hướng dẫn và quyết định bước tiếp theo; trường hợp nhạy cảm được chuyển cho cán bộ kỹ thuật xác minh. AI không tự thực hiện hoặc phê duyệt việc sử dụng thuốc |
+| **Outcome** — Đo kết quả bằng gì? |M1: Tỷ lệ lần phun trong pilot đáp ứng các điều kiện sử dụng thuốc được kiểm tra qua nhật ký và hồ sơ liên quan. M2: Thời gian từ lúc gửi câu hỏi đến khi nhận được thông tin đã xác minh. M3: Tỷ lệ câu trả lời về thuốc có nguồn và khớp bảng dữ liệu đã duyệt (target đề xuất: 100%). Baseline và target của M1/M2 cần được nhóm xác nhận theo §4.3 và §5 |
+| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? |Câu hỏi tiếng Việt của nông dân; tên thương mại/hoạt chất; cây trồng, mục đích sử dụng, thị trường đích và thông tin liên quan nếu cần. Nguồn tham chiếu gồm danh mục thuốc BVTV, dữ liệu nhãn, hướng dẫn kỹ thuật và MRL theo thị trường. CP4 đã xác định các loại nguồn có thể tra cứu, nhưng chưa chứng minh đã có cơ sở dữ liệu mapping đầy đủ, chính xác và được cập nhật |
+| **Feedback** — Lấy phản hồi ở đâu để cải thiện? |Phản hồi của nông dân về mức dễ hiểu và tính hữu ích của câu trả lời; các trường hợp được cán bộ HTX kiểm tra/chỉnh sửa; log câu hỏi bị chuyển người; kết quả chấm bộ eval; lịch sử cập nhật dữ liệu. Cán bộ chuyên môn rà soát lỗi để cập nhật bảng dữ liệu, quy tắc và tài liệu tham chiếu |
 
 ### 6.4. Hai câu hỏi của Google PAIR
 
-- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**?: 
-- AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**? Vì sao, và thiết kế đã xử lý thế nào:
+- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**?: Chọn: Augment - hỗ trợ ra quyết định, không tự động quyết định thay người dùng. Lý do:
+  - Nông dân gặp khó khăn khi đối chiếu tên thương mại trên chai thuốc với hoạt chất và quy định xuất khẩu. Nhu cầu được ghi nhận là có thể tự tra cứu nhanh, ngay tại vườn.
+  - Các hộ được phỏng vấn phản đối giao diện yêu cầu tạo tài khoản phức tạp, nhập văn bản dài hoặc điền nhiều biểu mẫu.
+  - Cán bộ HTX muốn giảm khối lượng tư vấn lặp lại nhưng vẫn duy trì trách nhiệm xác minh những trường hợp nhạy cảm.
+  - Do đó, hệ thống nên tự động hóa các thao tác hỗ trợ như phân loại câu hỏi, tìm kiếm và tổng hợp thông tin. Việc kiểm tra quy định được thực hiện bằng Rule trên dữ liệu đã duyệt; các quyết định canh tác vẫn thuộc con người.
+- AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**? Vì sao, và thiết kế đã xử lý thế nào: Ưu tiên kiểm soát lỗi báo nhầm theo nghĩa khẳng định sai rằng một phương án sử dụng thuốc là phù hợp hoặc an toàn cho mục tiêu xuất khẩu.
+  - Hậu quả có thể là người dùng tin vào kết luận sai, áp dụng thuốc không phù hợp, làm tăng rủi ro không đạt yêu cầu thu mua hoặc kiểm nghiệm.
+  - Thiết kế:
+    - Không để LLM tự kết luận thuốc được phép sử dụng; sử dụng Rule dựa trên dữ liệu đã duyệt để kiểm tra các điều kiện xác định.
+    - Chỉ cung cấp thông tin khi có nguồn phù hợp, nêu rõ giới hạn của kết quả và thời điểm cập nhật.
+    - Không suy ra rằng sản phẩm chắc chắn đạt tiêu chuẩn xuất khẩu chỉ từ một giá trị MRL hoặc thời gian cách ly.
+    - Nếu dữ liệu thiếu, mâu thuẫn hoặc chưa được phê duyệt, hệ thống phải trả trạng thái "Chưa đủ thông tin để xác minh" và chuyển cán bộ kỹ thuật.
+    - Có cơ chế khóa dữ liệu bị ảnh hưởng bởi thay đổi quy định cho đến khi được rà soát.
 
 ---
 
