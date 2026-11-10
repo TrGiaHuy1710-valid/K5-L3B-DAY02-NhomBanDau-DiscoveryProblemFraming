@@ -25,7 +25,7 @@ Gợi ý vai trò (một người có thể giữ nhiều vai): điều phối t
 
 | Checkpoint | Người chính | Người hỗ trợ | Sản phẩm |
 |---|---|---|---|
-| CP3 — Hội tụ nhóm |Lê Hiền Hiếu  | | Bảng chấm điểm |
+| CP3 — Hội tụ nhóm |Lê Hiền Hiếu  | | Clustering, OST, Bảng chấm điểm |
 | CP4 — Kiểm chứng | Cao Minh Quang | Trần Duy Thành | Assumption map, snapshot hoặc survey |
 | CP4 — Research | Cao Minh Quang | Trịnh Gia Huy | Bảng research có link |
 | CP5 — Quy trình trước/sau | Trịnh Gia Huy | Lê Hiền Hiếu | Quy trình + bảng before/after |
