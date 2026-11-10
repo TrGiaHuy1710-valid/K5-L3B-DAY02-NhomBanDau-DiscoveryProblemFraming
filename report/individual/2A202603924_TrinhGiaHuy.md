@@ -175,24 +175,228 @@ Doanh nghiệp đối chiếu yêu cầu
 | AI có thể đưa ra kết luận sai về chất lượng cây trồng. | Có | AI chỉ đưa ra dấu hiệu và mức tin cậy; cán bộ kỹ thuật xác nhận. |
 | Chưa có bằng chứng khách hàng sẵn sàng trả tiền. | Có | Bổ sung mục tiêu kiểm chứng willingness-to-pay trong giai đoạn pilot. |
 
+### Idea sau phản biện: Trợ lý chăm sóc Thanh Long đạt chuẩn xuất khẩu (cập nhật sau CP3–CP4)
+
+> Bản chi tiết idea của tôi sau khi nhận phản biện và sau khi nhóm chốt bài Thanh Long. Nguyên tắc: **problem trước, giải pháp sau**. LLM, RAG, embedding là công cụ có sẵn để tận dụng, không tự xây model. Mọi con số chưa có nguồn đều là **giả định cần kiểm**. Đây là đề xuất cá nhân: mức can thiệp AI do nhóm chốt ở §6, quy trình chính thức của nhóm nằm ở §4 báo cáo nhóm.
+
+**Idea trong 1 câu:** một trợ lý trên Zalo cho người trồng Thanh Long hỏi trực tiếp, HTX hỗ trợ triển khai và xác minh (Farmer-first, Cooperative-supported), làm 3 việc: (1) trả lời câu hỏi chăm sóc Thanh Long theo đúng quy trình kỹ thuật của HTX; (2) trả lời "thuốc này có được dùng không, pha liều bao nhiêu, cách ly mấy ngày" theo danh mục thuốc BVTV của Việt Nam và mức dư lượng tối đa (MRL) của thị trường xuất khẩu; (3) gửi tin nhắc chăm sóc theo giai đoạn cây cho từng nhóm hộ (tuyên truyền). Mọi câu trả lời về thuốc đều kèm nguồn. Câu nào không có nguồn thì chuyển cho cán bộ kỹ thuật.
+
+**Idea đã thay đổi qua 3 bản**
+
+| | Bản 1: lúc pitch (Card #1) | Bản 2: thu hẹp lần 1 | Bản 3: hiện tại |
+|---|---|---|---|
+| Phạm vi | Mọi loại cây, mọi dữ liệu sản xuất của HTX | Thanh Long, 1 HTX, thị trường Úc | Thanh Long, 1 HTX, thị trường Úc |
+| Người dùng chính | Giám đốc HTX, cán bộ kỹ thuật | Cán bộ kỹ thuật | Nông dân thành viên HTX (cán bộ kỹ thuật duyệt) |
+| Thời điểm can thiệp | Sau khi có dữ liệu, lúc lập báo cáo | **Sau khi phun**: kiểm nhật ký trước thu hoạch | **Trước khi phun**: lúc nông dân chọn thuốc và pha liều |
+| Vai trò AI | CV nhận diện bệnh, báo cáo tự động | Đọc ảnh nhật ký viết tay | RAG trích xuất quy định + trả lời có nguồn; con số lấy từ bảng đã duyệt |
+
+**Vì sao đổi từ bản 2 sang bản 3:** kiểm nhật ký sau khi phun chỉ *phát hiện* vi phạm khi thuốc đã phun, không rút lại được, và hộ đó bị loại khỏi lô. Chặn ở thời điểm nông dân chọn thuốc thì rẻ hơn và đúng với gốc của vấn đề hơn (giả định: nông dân dùng sai vì *không biết* quy định, không phải cố tình). Candidate của nhóm cũng có vế "thiếu hướng dẫn chăm sóc".
+
+#### 1. Persona
+
+**Người dùng chính:** hộ nông dân thành viên của **một HTX Thanh Long đã có mã số vùng trồng xuất khẩu**. Đặc điểm (giả định, cần kiểm khi phỏng vấn):
+
+- Tự quyết định mua và phun thuốc, thường theo tư vấn của đại lý thuốc, hàng xóm hoặc nhóm Zalo.
+- Dùng Zalo hằng ngày; không đọc văn bản pháp luật, không biết MRL của thị trường nhập khẩu là gì.
+- Bán trái qua HTX vào lô xuất khẩu; nếu bị loại thì phải bán nội địa giá thấp hơn.
+
+**Người dùng phụ, đồng thời là người duyệt:** cán bộ kỹ thuật HTX, người đang phải phổ biến quy trình và trả lời câu hỏi của các hộ.
+
+**Không nhắm tới:** nông dân trồng bán nội địa, nông dân ngoài HTX, các loại cây khác.
+
+#### 2. Problem (chưa nói giải pháp)
+
+**Job Story (nông dân):** Khi chuẩn bị phun thuốc cho vườn Thanh Long đang nuôi trái bán xuất khẩu, tôi muốn biết chắc thuốc này có được dùng cho thị trường đó không, pha liều bao nhiêu và phải cách ly bao nhiêu ngày trước khi hái, để trái của tôi không bị loại khỏi lô xuất.
+
+**Job Story (cán bộ kỹ thuật):** Khi bước vào giai đoạn chăm sóc mới hoặc có quy định mới, tôi muốn phổ biến đúng và đủ cho mọi hộ và trả lời được các câu hỏi lặp lại, để không hộ nào dùng sai thuốc chỉ vì không biết.
+
+**Quy trình hiện tại** (thời gian là giả định, đo ở tuần 1–2 pilot):
+
+| Bước | Actor | Việc | Thời gian / tần suất |
+|---:|---|---|---|
+| 1 | Nông dân | Thấy sâu bệnh hoặc đến lịch phun | Nhiều lần mỗi vụ |
+| 2 | Nông dân | Hỏi đại lý thuốc, hàng xóm, nhóm Zalo | Vài phút đến vài giờ |
+| 3 | Nông dân → cán bộ | (Đôi khi) nhắn hỏi cán bộ HTX rồi chờ | **Vài giờ đến 1 ngày (chưa đo)** |
+| 4 | Cán bộ | Tra tên thương mại ra hoạt chất, tra danh mục thuốc được phép, nhãn thuốc (liều, cách ly), MRL thị trường | **Chưa đo; tài liệu dài, rải rác** |
+| 5 | Cán bộ | Trả lời từng người, cùng một câu hỏi lặp lại nhiều lần | Chưa đo |
+| 6 | Nông dân | Pha thuốc, phun, ghi sổ (hoặc không ghi) | — |
+| song song | Cán bộ | Tuyên truyền: họp HTX, phát tờ hướng dẫn theo mùa | Vài lần mỗi vụ; không theo từng hộ, tờ cũ vẫn lưu hành khi quy định đổi |
+
+**Bottleneck:** bước 3–4. Nông dân phải quyết định *ngay*, cán bộ tra và trả lời không kịp. Vì vậy quyết định thực tế dựa vào đại lý, mà đại lý là người bán thuốc nên có xung đột lợi ích.
+
+**Problem Statement (bản của tôi)**
+
+| Trường | Nội dung |
+|---|---|
+| **Actor** | Nông dân thành viên 1 HTX Thanh Long xuất khẩu (người hỏi); cán bộ kỹ thuật HTX (người trả lời, người duyệt) |
+| **Quy trình** | Chọn thuốc → hỏi → tra quy định → pha liều → phun → cách ly → thu hoạch vào lô xuất |
+| **Bottleneck** | Tra và trả lời "thuốc nào được dùng, liều bao nhiêu, cách ly mấy ngày" cho thị trường xuất khẩu, tại thời điểm nông dân cần quyết định |
+| **Impact** | Hộ dùng thuốc không được phép hoặc không đủ thời gian cách ly → trái bị loại khỏi lô, lô có thể bị trả, HTX có thể bị cảnh báo mã vùng trồng. Mức thiệt hại: **cần số liệu thật** |
+| **Success Metric** | Tỷ lệ lần phun đúng quy định (xem mục 10): baseline đo bằng audit sổ nhật ký tuần 1–2 → target ≥ 95% và 0 lần dùng chất cấm |
+| **Boundary** | AI không chẩn đoán bệnh, không tự đưa ra con số liều hay thời gian cách ly ngoài bảng đã duyệt, không trả lời khi không có nguồn (xem mục 11) |
+
+#### 3. How Might We
+
+| # | Chúng ta có thể dùng AI để… không? | Dùng ở đâu |
+|---:|---|---|
+| 1 | …trả lời ngay câu hỏi "thuốc này dùng được không, liều bao nhiêu, cách ly mấy ngày" từ đúng văn bản quy định, có trích nguồn | Bước 3–4, thay cho việc chờ cán bộ tra |
+| 2 | …trích xuất văn bản quy định dài (Thông tư, nhãn thuốc, bảng MRL) thành bảng có cấu trúc để cán bộ duyệt | Khâu chuẩn bị dữ liệu, chạy trước, không chạy lúc nông dân hỏi |
+| 3 | …soạn tin tuyên truyền theo giai đoạn cây (ra hoa, nuôi trái, trước thu hoạch) cho từng nhóm hộ | Lịch nhắc chăm sóc; cán bộ duyệt trước khi gửi |
+
+**Không dùng AI ở:** kết luận thuốc có được phép hay không và các con số liều, thời gian cách ly (lấy từ bảng đã duyệt bằng Rule); chẩn đoán bệnh.
+
+#### 4. Cách hoạt động: 2 kho tri thức, 1 bảng đã duyệt
+
+| Kho | Nguồn | AI làm gì | Ai kiểm |
+|---|---|---|---|
+| **A. Quy trình chăm sóc** | Quy trình kỹ thuật Thanh Long mà HTX đang áp dụng, tài liệu khuyến nông, VietGAP | RAG: tìm đoạn liên quan và trả lời câu hỏi chăm sóc (bón phân, tỉa cành, xử lý ra hoa, bao trái…), có trích đoạn nguồn | Cán bộ chọn tài liệu nào được đưa vào kho |
+| **B. Quy định thuốc** | Danh mục thuốc BVTV được phép sử dụng tại Việt Nam (Thông tư 75/2025/TT-BNNMT, sửa đổi bởi Thông tư 28/2026/TT-BNNMT); nhãn thuốc đã đăng ký (liều, thời gian cách ly); MRL của Úc (Schedule 20, Food Standards Code) | RAG trích xuất thành bảng: tên thương mại, hoạt chất, có đăng ký cho Thanh Long không, liều, thời gian cách ly, MRL Úc, nguồn, ngày cập nhật | **Cán bộ duyệt từng dòng** trước khi bảng được dùng |
+
+Khi nông dân hỏi về thuốc: tra bảng đã duyệt (Rule), LLM chỉ diễn đạt lại cho dễ hiểu và gắn nguồn. Không có trong bảng thì trả lời "chưa có thông tin đã kiểm, đã chuyển cán bộ".
+
+Một rule quan trọng: theo Food Standards Code của Úc, nếu không có MRL cho hoạt chất đó trên loại thực phẩm đó thì không được bán khi phát hiện dư lượng. Vì vậy **hoạt chất không có MRL cho Thanh Long trong Schedule 20 thì mặc định "không dùng cho lô xuất Úc"**.
+
+**Quy trình tương lai**
+
+```text
+Nông dân nhắn câu hỏi trên Zalo
+        |
+        v
+[AI] Hiểu câu hỏi, phân loại: chăm sóc / thuốc / ngoài phạm vi
+        |
+        +-- chăm sóc ----> [AI] RAG kho A -> trả lời + trích đoạn nguồn
+        |
+        +-- thuốc -------> [Rule] tra bảng đã duyệt (kho B)
+        |                     |-- có    -> [AI] diễn đạt lại + nguồn + ngày cập nhật
+        |                     |-- không -> chuyển cán bộ
+        |
+        +-- ngoài phạm vi / chẩn đoán bệnh / AI không chắc --> [Người] cán bộ kỹ thuật trả lời
+
+Song song:
+[AI] trích xuất văn bản mới -> [Người] cán bộ duyệt từng dòng -> cập nhật bảng (kho B)
+[AI] soạn tin nhắc theo giai đoạn cây -> [Người] cán bộ duyệt -> gửi cho nhóm hộ
+
+Phương án quay về: tắt tự trả lời câu về thuốc, quay về cán bộ trả lời trên Zalo
++ bảng tra in sẵn từ kho B (bảng vẫn dùng được khi không có AI).
+```
+
+#### 5. Mức can thiệp: gọi là "trợ lý AI" nhưng kiến trúc là Workflow
+
+| Mức | Phương án cho idea này | Đủ khi nào | Rủi ro | Chọn? |
+|---|---|---|---|---|
+| **No AI** | Cán bộ làm bảng tra in sẵn, họp HTX, trả lời Zalo | Ít thuốc, nông dân chịu tra bảng | Bảng lỗi thời; nông dân không tra; cán bộ quá tải | Giữ làm phương án quay về |
+| **Rule** | Chatbot menu: chọn tên thuốc → trả về từ bảng | Nông dân gõ đúng tên thương mại | Không hiểu câu hỏi tự nhiên, viết tắt, sai chính tả; không trả lời được câu chăm sóc | Dùng cho bước kết luận về thuốc |
+| **Workflow** | Các bước cố định như sơ đồ trên: phân loại → truy xuất → tra bảng → trả lời có nguồn → không chắc thì chuyển người | Các bước đã biết trước | Trả lời sai nếu bảng sai → cán bộ duyệt bảng | **Có** |
+| **Agent** | AI tự quyết bước tiếp: tự tìm web, tự khuyến nghị thuốc theo bệnh, tự gửi tin | — | Tự sinh liều, dùng nguồn chưa kiểm, khó truy trách nhiệm | Không |
+
+- **Vì sao không chọn mức đơn giản hơn:** câu hỏi thật của nông dân là ngôn ngữ tự nhiên ("xịt con nhện đỏ bằng thuốc gì", tên thuốc viết tắt), Rule không hiểu được. Văn bản quy định dài hàng trăm trang; nếu nhập tay toàn bộ thì cán bộ không làm nổi, nên cần AI trích xuất để cán bộ chỉ phải duyệt.
+- **Vì sao không lên Agent:** các bước đã biết trước, không cần AI tự lên kế hoạch. Cho AI tự quyết trong bài có rủi ro hóa chất là thêm rủi ro mà không thêm giá trị.
+
+#### 6. Stakeholder map: 5 vai trò quanh hệ thống
+
+| Vai trò | Ai | Họ cần gì / sợ gì |
+|---|---|---|
+| **Ai dùng** | Nông dân: hỏi trên Zalo, nhận tin nhắc. Cán bộ kỹ thuật: dùng để trả lời nhanh và soạn tin tuyên truyền | Nông dân cần câu trả lời ngắn, nhanh, dễ hiểu, không phải cài app. Cán bộ cần giảm số câu hỏi lặp lại |
+| **Ai duyệt output** | Cán bộ kỹ thuật HTX: duyệt bảng thuốc, duyệt tin tuyên truyền, trả lời câu được chuyển lên | Cần thấy nguồn gốc của từng dòng trong bảng; cần biết câu nào AI không chắc |
+| **Ai chịu rủi ro** | Nông dân (trái bị loại, cây bị hại nếu sai liều), HTX (mất hợp đồng, bị cảnh báo mã vùng trồng), doanh nghiệp xuất khẩu (bị trả lô) | Sợ nhất là AI nói "được dùng" cho thuốc không được phép |
+| **Ai approve** | Giám đốc HTX: quyết định đưa trợ lý vào quy trình, chịu trách nhiệm về nội dung HTX phát ra. Doanh nghiệp thu mua: chấp nhận đây là hướng dẫn chính thức cho vùng nguyên liệu | Trách nhiệm pháp lý với nội dung hướng dẫn |
+| **Ai trả tiền** | Giả thuyết: HTX (phí dịch vụ hoặc nguồn hỗ trợ khuyến nông, chuyển đổi số) hoặc doanh nghiệp thu mua (giảm rủi ro vùng nguyên liệu). Nông dân không trả | Chưa kiểm chứng willingness-to-pay |
+
+Hệ quả: người dùng (nông dân) khác người trả tiền (HTX, doanh nghiệp). Với nông dân, sản phẩm phải gần như không tốn công: dùng Zalo, không cài app, không nhập liệu. Với người trả tiền, giá trị phải chứng minh bằng metric "lần phun đúng quy định" và "lô đạt kiểm dư lượng".
+
+#### 7. AI Leverage: khác biệt nằm ở đâu
+
+| So với | Họ đã làm được | Idea này khác ở đâu |
+|---|---|---|
+| Hỏi thẳng ChatGPT / Gemini | Hiểu câu hỏi tự nhiên, trả lời nhanh | Không gắn với danh mục thuốc Việt Nam hiện hành, MRL Úc và quy trình của HTX; có thể bịa liều. Ở đây mọi con số lấy từ bảng đã duyệt, có nguồn và ngày cập nhật |
+| Plantix | Chẩn đoán bệnh qua ảnh, gợi ý xử lý | Không xét quy định của thị trường xuất khẩu (theo research của nhóm, cần kiểm lại). Idea này không làm chẩn đoán |
+| NextFarm, mobiAgri | Nhật ký điện tử, quản lý trang trại | Nông dân phải nhập liệu; không trả lời câu hỏi về quy định |
+| Đại lý thuốc, nhóm Zalo | Trả lời ngay, gần gũi | Đại lý bán thuốc nên có xung đột lợi ích; thông tin không có nguồn |
+| Tờ rơi, họp HTX | Chính thống | Không cá nhân hóa, lỗi thời khi quy định đổi |
+
+- **Tận dụng có sẵn:** LLM qua API cho hiểu câu hỏi và trích xuất văn bản; embedding và vector DB có sẵn cho RAG; Zalo làm kênh. Không train model.
+- **Lợi thế thật không nằm ở model** mà ở: (1) bảng quy định đã được cán bộ duyệt theo từng thị trường; (2) niềm tin vì nội dung do HTX phát ra; (3) dữ liệu câu hỏi thật của nông dân để cải thiện kho A.
+
+#### 8. MVP scope
+
+| Trong MVP | Ngoài MVP |
+|---|---|
+| 1 HTX, 10–20 hộ, 1 thị trường (Úc), 1 vụ trái (ra hoa → thu hoạch) | Nhiều cây, nhiều thị trường |
+| Kho A: 1 bộ quy trình kỹ thuật HTX đang dùng | Tự động cập nhật văn bản pháp luật mới |
+| Kho B: chỉ những thuốc các hộ pilot thực sự dùng (số lượng đếm ở tuần 1) | Toàn bộ danh mục thuốc BVTV |
+| Kênh Zalo, chỉ nhắn chữ | App riêng, hỏi bằng giọng nói (giai đoạn 2) |
+| Tin nhắc theo giai đoạn cây, cán bộ duyệt trước khi gửi | Chẩn đoán bệnh qua ảnh (dùng công cụ có sẵn nếu cần), bán thuốc, đặt hàng |
+
+**Lộ trình 8 tuần**
+
+1. **Tuần 1–2 (baseline, chưa có AI):** đếm số câu hỏi cán bộ nhận mỗi tuần, đo thời gian trả lời; audit sổ nhật ký 1 tháng gần nhất của các hộ pilot; thu 50 câu hỏi thật làm bộ eval; AI trích xuất kho B, cán bộ duyệt từng dòng.
+2. **Tuần 3:** chạy eval offline trên 50 câu. Không đạt tiêu chí ở mục 10 thì sửa kho hoặc dừng.
+3. **Tuần 4–5 (shadow mode):** AI soạn câu trả lời, cán bộ duyệt rồi mới gửi. Đo tỷ lệ cán bộ phải sửa.
+4. **Tuần 6–8:** tự trả lời câu chăm sóc và câu về thuốc có trong bảng; câu ngoài bảng vẫn qua cán bộ. Audit sổ nhật ký lần 2, so với baseline.
+
+#### 9. Chi phí vận hành (công thức, chưa có số thật)
+
+- **Chi phí AI mỗi tháng** ≈ số hộ × số câu hỏi/hộ/tháng × chi phí mỗi câu (token vào + token ra × giá model), cộng chi phí trích xuất lại kho B mỗi khi có văn bản mới.
+- **Chi phí người:** giờ cán bộ duyệt bảng và duyệt tin tuyên truyền. Dự đoán đây mới là chi phí lớn nhất, lớn hơn chi phí AI. Cần đo ở tuần 1–2.
+- **Hạ tầng:** Zalo OA, server nhỏ, vector DB.
+- Tính lại cho 3 mức: 20 hộ (pilot), 200 hộ (cả HTX), 2.000 hộ (nhiều HTX), để xem chi phí mỗi hộ có giảm khi mở rộng không.
+
+#### 10. Metric
+
+| Loại | Metric | Baseline | Target | Cách đo |
+|---|---|---|---|---|
+| **Truth metric** | % lần phun (theo sổ nhật ký hộ pilot) dùng thuốc được phép cho thị trường Úc, đúng liều, đủ thời gian cách ly | Audit tuần 1–2 | ≥ 95%; 0 lần dùng chất cấm | Cán bộ audit sổ mỗi 2 tuần |
+| Kết quả trễ | Lô của hộ pilot đạt kiểm dư lượng | Kết quả vụ trước (nếu HTX có) | Không lô nào bị loại vì dư lượng | Kết quả kiểm của doanh nghiệp |
+| Chất lượng AI (thuốc) | Con số liều, thời gian cách ly trong câu trả lời khớp bảng đã duyệt | — | **100%**; sai 1 con số là không đạt | Bộ eval 50 câu hỏi thật |
+| Chất lượng AI (nguồn) | % câu trả lời về thuốc có ghi nguồn và ngày cập nhật | — | 100% | Bộ eval |
+| An toàn | % câu ngoài phạm vi / không có nguồn được chuyển cán bộ thay vì tự trả lời | — | ≥ 95% | Bộ eval có câu "bẫy" |
+| Chất lượng AI (chăm sóc) | % câu trả lời chăm sóc được cán bộ chấm đúng | — | ≥ 85% | Cán bộ chấm trong shadow mode |
+| Tốc độ | Thời gian từ lúc hỏi đến lúc có câu trả lời | Đo tuần 1–2 | Dưới 2 phút với câu AI trả lời; dưới 24 giờ với câu chuyển cán bộ | Log Zalo |
+| Tải cán bộ | Số câu cán bộ phải tự trả lời mỗi tuần | Đo tuần 1–2 | Giảm ≥ 50% | Log |
+| Adoption | % hộ hỏi ít nhất 1 lần trong 2 tuần | — | ≥ 60% | Log |
+| Trả tiền | HTX hoặc doanh nghiệp đồng ý trả, hoặc làm tiếp sau pilot | — | Ít nhất 1 cam kết | Biên bản sau pilot |
+
+**Ngưỡng dừng:**
+- Sau 4 tuần mà dưới 30% hộ dùng → dừng, quay về bảng tra in sẵn + cán bộ trả lời Zalo.
+- Chỉ cần 1 câu trả lời sai liều hoặc sai thời gian cách ly đến tay nông dân → tắt tự trả lời câu về thuốc, quay lại shadow mode.
+
+#### 11. Boundary
+
+- **AI không được:** chẩn đoán bệnh; khuyến nghị thuốc ngoài bảng đã duyệt; tự đưa ra con số liều hoặc thời gian cách ly; trả lời khi không tìm thấy nguồn; trả lời cho cây khác hoặc thị trường khác.
+- **Khi nào cần con người (HITL):** cán bộ duyệt từng dòng bảng thuốc trước khi phát hành; duyệt mọi tin tuyên truyền trước khi gửi; trả lời mọi câu được chuyển lên. Khi có văn bản quy định mới, các dòng liên quan bị khóa cho tới khi duyệt lại.
+- **Báo nhầm hay bỏ sót tệ hơn:** bỏ sót tệ hơn, tức là nói "được dùng" cho thuốc không được phép. Vì vậy khi không chắc, mặc định trả lời "chưa xác nhận, hỏi cán bộ".
+
+#### 12. Giả định chưa kiểm (phải hỏi người thật, không hỏi AI)
+
+| # | Giả định | Nếu sai thì sao |
+|---:|---|---|
+| 1 | Nông dân chọn thuốc chủ yếu theo đại lý hoặc hàng xóm, không theo danh mục của thị trường | Bottleneck không nằm ở thông tin → quay lại bản 2 (kiểm nhật ký) |
+| 2 | Có lô hoặc hộ bị loại vì dư lượng, chất cấm | Impact nhỏ → Not Yet |
+| 3 | Nông dân sẽ nhắn hỏi trước khi phun | Chuyển trọng tâm sang tin nhắc chủ động |
+| 4 | Cán bộ nhận nhiều câu hỏi lặp lại | Giá trị với HTX thấp |
+| 5 | HTX có quy trình kỹ thuật bằng văn bản để làm kho A | Phải soạn quy trình trước, tăng chi phí |
+| 6 | HTX hoặc doanh nghiệp sẵn sàng trả tiền | Không có mô hình thu tiền → No-Go về thương mại |
+
+**Câu hỏi phỏng vấn (Mom Test):**
+- Nông dân: "Lần phun thuốc gần nhất, anh/chị chọn thuốc đó thế nào, hỏi ai?"; "Lần gần nhất có trái bị HTX loại khỏi lô là khi nào, vì sao?"
+- Cán bộ: "Tuần trước anh/chị nhận bao nhiêu câu hỏi về thuốc, trả lời mỗi câu mất bao lâu?"; "Lần gần nhất có quy định thuốc thay đổi, anh/chị phổ biến cho các hộ thế nào?"
+
 ---
 
 ## 4. Tôi đã tham gia phần nào (CP3 → CP7)
 
-*Các nội dung dưới đây là khung mô tả công việc dự kiến theo hướng dự án. Chỉ giữ những hoạt động thực sự đã thực hiện và bổ sung kết quả cụ thể.*
-
 | Hoạt động | Tôi đã làm gì? | Kết quả / ảnh hưởng tới bài nhóm |
 |---|---|---|
-| Pitch Problem Card | Trình bày vấn đề HTX gặp khó khăn trong việc quản lý và tổng hợp tình trạng cây trồng của nhiều hộ. | Đề xuất tập trung vào một quy trình nghiệp vụ thay vì phát triển ứng dụng nông nghiệp tổng quát. |
-| Phản biện bài của bạn khác | Mỗi bạn nghiên cứu môt ý tưởng (AI tóm tắt bài học, AI phân tích chi tiêu, AI phân tích log lỗi của intern, gửi ticket đến senior khi lỗi level cao hơn). Câu hỏi tôi đã đặt. 1) Cho AI tóm tắt bài học: Có giải pháp nào đã có chưa cho ? NotebookLM đã làm được hết thì bạn có gì tốt hơn, 2) Phân tích chi tiêu: Có thật sự cần ai không? Đã có ai làm? Có tính năng gì hơn? Tại sao phản trả tiền cho tính năng này. 3) Bài phân tích log: dự án này bán được cho ai? Tại sao công ty công nghệ không thể tự build? có khó khi tự build không | Bổ sung góc nhìn về persona và mô hình khách hàng. |
-| Nhận phản biện | Câu hỏi tôi nhận được: AI có thực sự cần thiết không, Scope có đang quá rộng không? Đã có sản phẩm ở thị trường chưa? Có ở quốc tế chưa? | Cần kiểm tra khả năng giải quyết bằng phần mềm thông thường trước khi quyết định sử dụng AI. |
-| Gom cluster / cây OST | Gom các vấn đề thành nhóm quản lý dữ liệu, giám sát cây trồng, kiểm tra chất lượng và báo cáo. | Xác định hướng giải pháp tập trung vào quản lý chất lượng vùng trồng. |
-| Chọn candidate problem | Chọn vấn đề tổng hợp và theo dõi dữ liệu sản xuất của các hộ HTX. | Phạm vi có thể kiểm chứng bằng pilot trong 8 tuần. |
-| Kiểm chứng / research | Nghiên cứu các giải pháp Plantix, mobiAgri, NextFarm, Agrio; tìm hiểu tiêu chuẩn và khả năng ứng dụng CV. | Nhận thấy không nên cạnh tranh bằng chức năng nhận diện bệnh cây đơn thuần. |
-| Quy trình nhóm | Đề xuất quy trình từ thiết lập tiêu chuẩn, tạo baseline, thu thập dữ liệu đến phân tích, xác nhận và báo cáo, quy trình được tổng hợp và phân tích từ nguồn uy tín, baseline end to end từ chính phủ đến từng hộ gia đình. | Hình thành quy trình nghiệp vụ thống nhất. |
-| Problem Statement | Xác định khó khăn trong thu thập, quản lý và đối chiếu dữ liệu chất lượng cây trồng giữa nhiều hộ. | Chuyển mô tả giải pháp thành một vấn đề cụ thể của HTX. |
-| Mức can thiệp AI | Đề xuất CV hỗ trợ kiểm tra ảnh và phát hiện dấu hiệu bất thường; Rule Engine đối chiếu checklist. | Giới hạn vai trò AI và giữ quyết định cuối cùng cho cán bộ kỹ thuật. |
-| Quyết định | Đề xuất MVP một HTX, một loại cây, 10–20 hộ, thử nghiệm trong 8 tuần. | Có phạm vi, chỉ số và điều kiện đánh giá khả thi hơn. |
+| Pitch Problem Card | Pitch Card #1: HTX khó theo dõi và tổng hợp tình trạng cây trồng của nhiều hộ theo chu kỳ. Actor: giám đốc HTX, cán bộ kỹ thuật. Bottleneck: gom dữ liệu rải rác ở sổ, Excel, Zalo. Câu hỏi tôi đưa nhóm phản biện: "HTX đã dùng Excel, Zalo thì sản phẩm khác biệt ở đâu để họ chịu chuyển?" | Hướng bài toán được nhóm ghi lại thành Candidate C ở §2.4 báo cáo nhóm: "Tra cứu kiến thức chăm sóc thanh long và quy định sử dụng thuốc, hóa chất". Nhóm chọn Candidate C. |
+| Phản biện bài của bạn khác | Câu hỏi tôi đã đặt:<br>1. **Quang (tóm tắt slide thành đề cương ôn thi):** "NotebookLM đã tóm tắt được PDF rồi, ý tưởng của bạn làm được gì tốt hơn?"<br>2. **Thành (tổng hợp, phân tích chi tiêu cá nhân):** "Có thật sự cần AI không hay Rule là đủ? Đã có app nào làm chưa? Mình có tính năng gì hơn họ? Vì sao người dùng phải trả tiền cho tính năng này?"<br>3. **Hiếu (bot đọc log lỗi giúp intern setup Docker/CycleGAN, lỗi khó thì đẩy ticket lên senior):** "Sản phẩm này bán cho ai? Vì sao công ty công nghệ không tự build? Tự build có khó không?" | 1. Quang thừa nhận khoảng trống so với NotebookLM chưa đủ rõ; ý bị loại ở CP3.<br>2. Thành đồng ý Rule là đủ cho bài chi tiêu, chuyển sang card #2 (so sánh thông tin trước khi mua); ý này sau đó bị loại vì rào cản crawl dữ liệu và API của các sàn.<br>3. Hiếu thu hẹp định vị từ "giải pháp nội bộ cho cả công ty" xuống "trợ lý cho từng dự án". Nhóm loại ý này (26/35) vì khó có dữ liệu đủ để làm RAG chuẩn xác, lo ngại bảo mật dữ liệu doanh nghiệp và tệp người dùng hẹp (§2.4). |
+| Nhận phản biện | Câu hỏi tôi nhận được:<br>1. **Quang:** nông dân kén công nghệ, lười nhập liệu; ảnh chụp rung, thiếu sáng; scope quá rộng nếu làm cho mọi loại cây.<br>2. **Hiếu:** scope tư vấn luật xuất khẩu quá lớn, phủ mọi loại cây, làm sao bảo đảm RAG trả lời đúng? (Hiếu đề xuất thêm chụp ảnh phân tích bệnh.)<br>3. **Cả nhóm:** AI có thật sự cần không? Thị trường Việt Nam và quốc tế đã có sản phẩm nào chưa? | Tôi đã sửa (chi tiết ở mục 3, "Idea sau phản biện"):<br>- Thu hẹp còn 1 cây (Thanh Long), 1 thị trường (Úc), 1 HTX 10–20 hộ.<br>- Với "lười nhập liệu": nông dân không phải nhập liệu, chỉ nhắn hỏi trên Zalo đang dùng hằng ngày; không phải cài app.<br>- Với "RAG có đúng không": RAG chỉ dùng để trích xuất văn bản và tìm đoạn nguồn; con số liều, thời gian cách ly lấy từ bảng đã được cán bộ duyệt từng dòng; câu không có nguồn thì chuyển cán bộ.<br>- Với ý chụp ảnh bệnh của Hiếu: để ngoài MVP vì Plantix đã làm; idea của tôi tập trung vào bước nông dân chọn thuốc.<br>- Với "đã có sản phẩm chưa": research Plantix, NextFarm, mobiAgri, Agrio, thấy chưa ai trả lời câu hỏi thuốc theo quy định thị trường xuất khẩu (cần kiểm thêm). |
+| Gom cluster / cây OST | Cùng nhóm gom 4 candidate thành 3 cụm (§2.2): A. Tổng hợp và kiểm chứng thông tin (ôn thi, so sánh sản phẩm, chăm sóc Thanh Long); B. Hỗ trợ ra quyết định chuyên môn (chăm sóc Thanh Long, xử lý lỗi kỹ thuật); C. Giảm thao tác thủ công (cả 4). Outcome chung: giảm thời gian và sai sót khi tìm kiếm, tổng hợp và kiểm chứng thông tin. | Bài Thanh Long nằm ở cả cụm A và B: vừa là bài kiểm chứng thông tin rời rạc, vừa là bài người thiếu chuyên môn phải phụ thuộc người có chuyên môn. |
+| Chọn candidate problem | Cùng nhóm chấm shortlist (§2.4): Quang 32/35, Thành 27/35, Hiếu 26/35, Candidate C của tôi 24/35. Candidate C điểm thấp nhất ở "Nhóm hiểu domain" (2) và "Quy trình rõ" (3). Tôi nhận phần bù hai điểm yếu này bằng việc vẽ quy trình (§4) và tìm văn bản quy định. | Nhóm chọn Candidate C dù điểm thấp nhất, với lý do impact kinh tế và khoảng trống thị trường. Primary user: hộ nông dân trồng Thanh Long. |
+| Kiểm chứng / research | Hỗ trợ Quang làm bảng research: tìm hiểu Plantix, mobiAgri, NextFarm, Agrio; tìm hiểu tiêu chuẩn VietGAP và khả năng ứng dụng CV. | Nhận thấy không nên cạnh tranh bằng chức năng nhận diện bệnh cây đơn thuần. |
+| Quy trình nhóm (người phụ trách §4, CP5) | Viết §4 báo cáo nhóm: quy trình hiện tại 6 bước với primary actor là nông dân, secondary là cán bộ kỹ thuật; bottleneck đề xuất ở bước 2–4 (xác minh thuốc phải đối chiếu nhiều văn bản rời rạc); quy trình tương lai tách bước AI / Rule / con người, boundary, phương án quay về; bảng before/after và metric M1–M3. Các ô thời gian chưa có dữ liệu CP4 đều để [PENDING CP4], không tự đặt số. | §4 báo cáo nhóm; cung cấp actor, bottleneck và metric chung cho §5, §7, §8. |
+| Problem Statement (người phụ trách §7, CP6) | Viết bản nháp Problem Statement v1 và 5 tiêu chí eval ở §7. Bottleneck: lúc nông dân chọn thuốc, khó xác minh thuốc nào được dùng cho trái xuất khẩu, liều bao nhiêu, cách ly mấy ngày. Chuyển từ kiểm sau khi phun sang hỗ trợ trước khi phun. Bảng so sánh v0 → v1 chờ §5 (v0) hoàn tất. | Problem Statement có một bước nghẽn cụ thể và truth metric đo được (M1: % lần phun đúng quy định). |
+| Mức can thiệp AI | Đề xuất cá nhân, mức do Hiếu chốt ở §6: Workflow, không phải Agent. RAG trả lời câu chăm sóc và trích xuất quy định thuốc; Rule tra bảng đã duyệt cho con số liều, thời gian cách ly; cán bộ kỹ thuật duyệt bảng và nhận câu AI không chắc. Đề nghị nhóm không đưa chẩn đoán bệnh qua ảnh vào phạm vi chính vì CP3 không chọn hướng đó. | Giới hạn vai trò AI, giữ con số và quyết định cuối cùng cho bảng đã duyệt và cán bộ kỹ thuật. |
+| Quyết định | Đề xuất MVP 1 HTX, 1 loại cây, 10–20 hộ, thử nghiệm 8 tuần, có 2 tuần đo baseline và 2 tuần shadow mode. Đề xuất thêm ngưỡng dừng: chỉ cần 1 câu trả lời sai liều đến tay nông dân thì tắt tự trả lời câu về thuốc. | Nhóm chốt Go với pilot 1 HTX, 10 hộ, thị trường Úc, 8 tuần; dừng nếu sau 4 tuần tỷ lệ nông dân dùng dưới 30%. |
 
 ---
 
@@ -206,6 +410,7 @@ Doanh nghiệp đối chiếu yêu cầu
 | CP5 Quy trình | Xây dựng quy trình giám sát cây trồng theo chu kỳ. | Hỗ trợ mô tả các bước thu thập, xử lý và xác nhận. | Quy trình ban đầu có nhiều chức năng vượt quá MVP. | Giới hạn một loại cây, một HTX và một luồng kiểm tra. |
 | CP5–6 Problem Statement | Hỗ trợ viết lại vấn đề theo Actor, bối cảnh, pain và impact. | Làm rõ đối tượng chịu ảnh hưởng và kết quả mong muốn. | Có thể đưa ra các tác động chưa có số liệu. | Để các số liệu chưa xác minh ở dạng giả thuyết cần khảo sát. |
 | CP6 Mức can thiệp / quyết định | So sánh No AI, Rule, Workflow và AI. | Xác định phần việc nào thực sự cần Computer Vision. | Có xu hướng đề xuất nhiều mô hình và công nghệ không cần thiết. | Chỉ dùng CV cho phân tích ảnh; các chức năng quản lý, phân quyền và báo cáo sử dụng logic thông thường. |
+| Sau lab: tinh gọn idea (mục 3, mục 4) | Dùng Claude Code đối chiếu báo cáo của tôi với báo cáo của 3 bạn để ghi đúng ai hỏi gì; trình bày chi tiết idea trợ lý chăm sóc Thanh Long theo khung Persona / Problem / AI Leverage / MVP / Metric / Stakeholder map; tìm nguồn văn bản quy định thuốc. | Chỉ ra RAG không nên tự sinh con số liều, thời gian cách ly mà phải lấy từ bảng đã duyệt; tìm được Thông tư 75/2025/TT-BNNMT và Schedule 20 của Úc. | *(Huy tự điền)* | *(Huy tự điền)* |
 
 ---
 
@@ -264,8 +469,11 @@ Bài toán nhóm lựa chọn là khó khăn trong việc quản lý và giám s
 2. mobiAgri – Giải pháp nông nghiệp số: https://mobiagri.vn/
 3. NextFarm – Giải pháp quản lý trang trại: https://nextfarm.vn/
 4. Agrio – AI crop monitoring: https://agrio.app/
-5. TCVN 11892-1:2026 – VietGAP trồng trọt. Cần đối chiếu văn bản tiêu chuẩn chính thức trước khi sử dụng làm căn cứ pháp lý.
+5. TCVN 11892-1 – VietGAP trồng trọt. Cần kiểm lại năm ban hành (bản tôi biết là 11892-1:2017) trên văn bản chính thức trước khi dùng làm căn cứ.
 6. Hệ thống truy xuất nguồn gốc nông sản Việt Nam: https://truyxuat.gov.vn/
 7. Tài liệu nghiên cứu về chuyển đổi số trong hợp tác xã nông nghiệp Việt Nam.
 8. Các kết quả phỏng vấn HTX, cán bộ kỹ thuật và hộ nông dân: [Bổ sung sau khi khảo sát].
 9. Các tài liệu và dữ liệu thực địa do nhóm thu thập: [Bổ sung].
+10. Thông tư 75/2025/TT-BNNMT ban hành Danh mục thuốc BVTV được phép sử dụng, cấm sử dụng tại Việt Nam (văn bản gốc): https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/12/75-bnnmt.pdf
+11. Thông tư 28/2026/TT-BNNMT sửa đổi, bổ sung Thông tư 75/2025/TT-BNNMT: https://thuvienphapluat.vn/van-ban/Linh-vuc-khac/Thong-tu-28-2026-TT-BNNMT-sua-doi-Thong-tu-75-2025-TT-BNNMT-713084.aspx
+12. Australia New Zealand Food Standards Code, Schedule 20 – Maximum residue limits (Federal Register of Legislation): https://www.legislation.gov.au/F2015L00468
