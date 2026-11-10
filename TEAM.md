@@ -12,7 +12,7 @@
 
 | STT | Họ và tên | MSSV | Vai trò trong nhóm | Tài khoản GitHub |
 |---:|---|---|---|---|
-| 1 | Trịnh Gia Huy | 2A202603924 | Nhóm trưởng (fork repo), đề xuất candidate problem, phụ trách quy trình trước/sau (CP5), hỗ trợ (CP6) problem statement v1 | TrGiaHuy1710-valid |
+| 1 | Trịnh Gia Huy | 2A202603924 | Nhóm trưởng (fork repo), đề xuất candidate problem, phụ trách §4 quy trình trước/sau (CP5) và §7 Problem Statement v1 + eval (CP6) | TrGiaHuy1710-valid |
 | 2 | Lê Hiền Hiếu | 2A202603940 | Dẫn dắt hội tụ nhóm, Ghi chép, Thiết kế mức AI | hieulhaiwork |
 | 3 | Trần Duy Thành | 2A202603919 | Xây dựng Problem Statement và đánh giá tính khả thi | thanh289 |
 | 4 | Cao Minh Quang | 2A202603906 | Metrics, Boundary & Formatting | quang011105 |
@@ -42,23 +42,24 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 **Phần việc phụ trách:**
 
 - Nhóm trưởng: fork repo, quản lý repo chung của nhóm.
-- Đề xuất candidate problem mà nhóm chọn (quản lý, giám sát chất lượng vùng trồng cho HTX), sau đó cùng nhóm thu hẹp vào Thanh Long xuất khẩu.
-- Người chính CP5, quy trình trước/sau: quy trình hiện tại, quy trình tương lai, bảng before/after.
+- Đề xuất Candidate C được nhóm chọn ở CP3: tra cứu kiến thức chăm sóc Thanh Long và quy định sử dụng thuốc, hóa chất phục vụ xuất khẩu.
+- Người phụ trách §4 (CP5): quy trình hiện tại, quy trình tương lai, bảng before/after.
+- Người phụ trách §7 (CP6): Problem Statement v1 và tiêu chí đánh giá đầu ra AI.
 - Hỗ trợ Quang research giải pháp đã có ở CP4.
 
 **Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
 
-- Pitch Problem Card về việc HTX khó tổng hợp dữ liệu của nhiều hộ; card được chọn làm nền cho bài nhóm.
-- Phản biện 3 ý tưởng còn lại (tóm tắt slide, chi tiêu cá nhân, bot hỗ trợ intern) bằng câu hỏi về đối thủ có sẵn, người trả tiền và có cần AI không.
-- Research Plantix, mobiAgri, NextFarm, Agrio; tìm văn bản quy định thuốc BVTV (Thông tư 75/2025/TT-BNNMT) và MRL của Úc (Schedule 20) làm nguồn cho kho tri thức.
-- CP5: vẽ quy trình hiện tại (bottleneck ở bước nông dân hỏi và cán bộ tra quy định thuốc) và quy trình tương lai tách rõ bước AI / Rule / con người, có phương án quay về.
-- Chi tiết idea trợ lý chăm sóc Thanh Long (RAG quy trình chăm sóc + RAG trích xuất quy định thuốc, bảng đã duyệt, cán bộ kiểm) và MVP 1 HTX, 10–20 hộ, 8 tuần.
+- Pitch hướng bài toán Thanh Long (Candidate C); trả lời phản biện về scope, mức cần AI và đối thủ có sẵn.
+- Phản biện 3 candidate còn lại (tóm tắt slide, so sánh mua hàng, hỗ trợ intern) bằng câu hỏi về đối thủ có sẵn, người trả tiền và có cần AI không.
+- Research Plantix, mobiAgri, NextFarm, Agrio; tìm văn bản quy định thuốc BVTV (Thông tư 75/2025/TT-BNNMT) và MRL của Úc (Schedule 20).
+- §4: viết quy trình hiện tại với actor primary / secondary, bottleneck đề xuất; quy trình tương lai tách bước AI / Rule / con người, boundary, phương án quay về; bảng before/after và bộ metric M1–M3 để §5, §7, §8 dùng chung. Các ô chưa có dữ liệu để [PENDING CP4], không tự tạo số liệu.
+- §7: bản nháp Problem Statement v1 và 5 tiêu chí eval (2 tiêu chí chặn: đúng con số về thuốc, biết từ chối và chuyển người).
 
 **Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
 
-- Mục 4 (Quy trình trước/sau) trong `report/team/group_report.md`.
+- Mục 4 và Mục 7 trong `report/team/group_report.md`.
 - Báo cáo cá nhân: `report/individual/2A202603924_TrinhGiaHuy.md` (mục 3 "Idea sau phản biện", mục 4).
-- Commit: `2A202603924 individual report`, `2A202603924 individual report v2`, `Add and update 2A202603924_TrinhGiaHuy.md`.
+- Commit: `2A202603924 individual report`, `2A202603924 individual report v2`, `Add and update 2A202603924_TrinhGiaHuy.md`, `Add and update 2A202603924_TrinhGiaHuy.md and my role in team`.
 
 **Điều mình học được từ phần nhóm:**
 
