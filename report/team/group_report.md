@@ -7,8 +7,8 @@
 
 - Tên nhóm: NhomBanDau
 - Thành viên: xem `TEAM.md`
-- Candidate problem được chọn (1 câu): Người trồng thanh long gặp khó khăn trong việc tiếp cận hoặc xác minh thông tin chăm sóc cây, đặc biệt là các quy định và hướng dẫn liên quan đến thuốc, hóa chất phục vụ xuất khẩu.
-- Quyết định cuối: Not Yet
+- Candidate problem được chọn (1 câu): 
+- Quyết định cuối: Go / Not Yet / No-Go
 
 ---
 
@@ -129,140 +129,145 @@ Những ý đã gạch bỏ vì là solution đội lốt opportunity:
 
 > Người phụ trách: Trịnh Gia Huy. Phạm vi theo Candidate C (CP3): hỗ trợ người trồng Thanh Long tiếp cận và xác minh thông tin chăm sóc cây, nhất là thông tin thuốc, hóa chất liên quan đến xuất khẩu.
 >
-> Nhãn trạng thái: **[CONFIRMED]** đã được nhóm chốt hoặc đã kiểm bằng nguồn có link · **[PROPOSED]** đề xuất của người phụ trách, chờ nhóm xác nhận · **[PENDING CP4]** chờ kết quả kiểm chứng ở §3. Section này **không tự tạo số liệu**: mọi ô thời gian, tần suất chưa có dữ liệu từ §3 đều để [PENDING CP4].
+> Số liệu lấy từ §3.2, có ghi nguồn và cỡ mẫu (n). Phần lớn mới có n = 1 nên được dùng làm mốc tham chiếu; baseline chính thức sẽ đo trong đợt kiểm chứng trước khi xem xét pilot AI (§8.2).
 
 ### 4.1. Quy trình hiện tại
 
 **Actor**
 
-| Actor | Vai trò trong quy trình | Trạng thái |
+| Actor | Vai trò trong quy trình | Căn cứ |
 |---|---|---|
-| Hộ nông dân trồng Thanh Long | Primary actor: người cần thông tin và trực tiếp quyết định dùng thuốc | [CONFIRMED] |
-| Cán bộ kỹ thuật HTX | Secondary actor: xác minh thông tin chuyên môn khi được hỏi | [PROPOSED] |
-| Nguồn thông tin không chính thức (đại lý thuốc, người trồng khác, nhóm mạng xã hội) | Nơi nông dân hỏi đầu tiên | [PENDING CP4]: chưa có phỏng vấn xác nhận |
+| Hộ nông dân trồng Thanh Long | Primary actor: người cần thông tin và trực tiếp chọn thuốc, phun | Chốt ở CP3; 3 hộ phỏng vấn (§3.2) |
+| Đại lý thuốc BVTV | Nguồn thông tin chính khi nông dân chọn thuốc | Cả 3 hộ "phụ thuộc hoàn toàn vào đại lý bán thuốc" (§3.2) |
+| Cán bộ kỹ thuật HTX | Secondary actor: phổ biến danh mục thuốc, trả lời câu hỏi, lấy mẫu kiểm trước thu hoạch | 2 cán bộ phỏng vấn (§3.2) |
 
 Sơ đồ:
 
 ```text
-(1) Nông dân thấy cần xử lý vườn (sâu bệnh / đến giai đoạn chăm sóc)
+(1) Nông dân thấy sâu bệnh / đến đợt chăm sóc
         |
         v
-(2) Hỏi nguồn quen: đại lý thuốc, người trồng khác, nhóm mạng xã hội     [PENDING CP4]
+(2) Ra đại lý thuốc quen, mua theo đại lý chỉ                       <== BOTTLENECK
+    (bao bì chữ nhỏ, tên hoạt chất tiếng nước ngoài, không có thông tin MRL thị trường)
+        |                                    ^
+        | (đôi khi)                          | Kênh phổ biến của HTX ít hiệu quả:
+        v                                    | tờ photo danh mục (ướt, rách, thất lạc),
+(3) Gọi cán bộ HTX hỏi "thuốc này xịt được không"   PDF gửi nhóm Zalo (ít người mở),
+        |                                    | tập huấn đầu vụ (chỉ đông lúc đầu)
+        v
+(4) Cán bộ tra danh mục thuốc VN + quy định MRL của nước nhập khẩu, trả lời từng cuộc gọi
         |
         v
-(3) Có cần xác minh không? --không--> (5)
-        | có
-        v
-(4) Hỏi cán bộ kỹ thuật HTX -> cán bộ tra nhiều văn bản rời rạc:          <== BOTTLENECK (đề xuất)
-    - Danh mục thuốc BVTV được phép sử dụng tại VN (Thông tư 75/2025/TT-BNNMT)
-    - Nhãn thuốc: liều, thời gian cách ly
-    - Quy định thị trường nhập khẩu (VD: MRL của Úc, Schedule 20)
+(5) Nông dân pha thuốc, phun
         |
         v
-(5) Nông dân chọn thuốc, pha, phun; ghi nhật ký (nếu có)
-        |
-        v
-(6) Thu hoạch, bán vào lô xuất khẩu; lô có thể bị kiểm dư lượng
+(6) Sát thu hoạch: HTX / thương lái lấy mẫu kiểm dư lượng -> đạt: gom xuất khẩu
+                                                          -> không đạt: bán nội địa giá thấp
 ```
 
 | Bước | Actor | Input | Output | Thời gian / tần suất | Ghi chú |
 |---:|---|---|---|---|---|
-| 1 | Nông dân | Quan sát vườn, lịch chăm sóc | Nhu cầu thông tin (dùng thuốc gì, chăm sóc thế nào) | [PENDING CP4]: số lần phun / vụ | |
-| 2 | Nông dân → nguồn không chính thức | Câu hỏi | Tên thuốc, cách làm; thường không kèm căn cứ quy định | [PENDING CP4] | Hành vi này là giả định, cần phỏng vấn xác nhận |
-| 3 | Nông dân | Câu trả lời ở bước 2 | Quyết định có xác minh thêm hay không | [PENDING CP4]: tỷ lệ có hỏi lại | |
-| 4 | Cán bộ kỹ thuật HTX | Câu hỏi của nông dân; văn bản quy định | Kết luận: thuốc có được dùng không, liều, thời gian cách ly | [PENDING CP4]: thời gian chờ, thời gian tra | [CONFIRMED] thông tin nằm ở ít nhất 3 nguồn tách rời do các cơ quan khác nhau ban hành (xem §10) |
-| 5 | Nông dân | Thông tin có được | Lần phun; nhật ký (nếu có) | — | |
-| 6 | Nông dân, HTX, bên thu mua | Trái thu hoạch | Lô đạt / không đạt yêu cầu dư lượng | [PENDING CP4]: tỷ lệ lô hoặc hộ bị loại | Impact chưa có số liệu |
+| 1 | Nông dân | Quan sát vườn | Cần xử lý sâu bệnh | 3–4 lần mỗi vụ phải đắn đo chọn thuốc (Snapshot 1, n = 1) | |
+| 2 | Nông dân, đại lý thuốc | Triệu chứng, lời khuyên của đại lý | Chai thuốc đã mua | mỗi đợt sâu bệnh mất 1–2 ngày "vừa mua vừa lo" (Snapshot 1, n = 1) | Nông dân không tự đọc được hoạt chất trên bao bì |
+| 3 | Nông dân → cán bộ HTX | Tên thuốc | Câu hỏi qua điện thoại | Không thường xuyên; nông dân chủ yếu tin đại lý (§3.2) | Không phải lần nào cũng hỏi |
+| 4 | Cán bộ HTX | Danh mục thuốc VN, quy định MRL nước nhập khẩu | Trả lời từng người; tài liệu phổ biến | 2–3 ngày mỗi tháng để soạn tài liệu và trả lời cuộc gọi; 2 cán bộ cho khoảng 100 hộ (Snapshot 2, n = 1) | Quy định MRL thay đổi thường xuyên (Snapshot 2) |
+| 5 | Nông dân | Thuốc, cách pha | Lần phun | — | |
+| 6 | HTX / thương lái | Mẫu trái | Lô đạt hoặc không đạt | 1 trường hợp: 4 tấn không được gom xuất khẩu, bán nội địa 4.000 đ/kg thay vì 18.000 đ/kg (Snapshot 1, n = 1) | Phát hiện quá muộn, thuốc đã phun |
 
-**Bottleneck chính [PROPOSED, chờ CP4 xác nhận]:** bước 2–4. Để quyết định dùng thuốc cho trái xuất khẩu, phải đối chiếu nhiều văn bản chính thức rời rạc. Người trồng khó tự xác minh, còn người xác minh được (cán bộ kỹ thuật) không phải lúc nào cũng sẵn sàng đúng lúc người trồng cần.
+**Bottleneck chính:** bước 2. Nông dân quyết định chọn thuốc tại đại lý mà **không có cách tự kiểm tra ngay** thuốc đó có được dùng cho thị trường xuất khẩu không và phải cách ly bao nhiêu ngày. Kênh xác minh duy nhất là cán bộ HTX (bước 3–4), nhưng 2 cán bộ không thể trả lời kịp khoảng 100 hộ. Vi phạm chỉ lộ ra ở bước 6, khi không còn sửa được.
 
-- Phần đã xác minh: văn bản quy định nằm ở nhiều nguồn tách rời.
-- Phần chưa xác minh: nông dân thực sự hỏi ai, chờ bao lâu, bao nhiêu lần phun dựa trên thông tin chưa xác minh.
+- Căn cứ: §3.2 gồm Snapshot 1, Snapshot 2 và bảng tổng hợp (3 hộ, 2 cán bộ).
+- Giới hạn: số liệu thời gian và thiệt hại mới đến từ 1 người mỗi vai trò; cần thêm dữ liệu trước khi dùng làm baseline chính thức (xem 4.3).
 
 ### 4.2. Quy trình tương lai
 
-> [PROPOSED]. Mức can thiệp do §6 quyết định. Quy trình dưới đây tương thích với mức **Workflow**: các bước cố định, AI không tự quyết bước tiếp theo. Theo phạm vi CP3, quy trình này **không** gồm chẩn đoán bệnh qua ảnh; nếu nhóm giữ Vision ở §6 thì cần quyết định chung (xem xung đột C1). Nguyên tắc: Farmer-first, Cooperative-supported. Nông dân hỏi trực tiếp, HTX không bắt buộc làm trung gian cho mỗi câu hỏi.
-
 ```text
-LUỒNG HỎI ĐÁP (mỗi lần nông dân hỏi)
+LUỒNG TRA CỨU (mỗi lần nông dân cầm chai thuốc, tại đại lý hoặc tại vườn)
 
-[NGƯỜI] Nông dân gửi câu hỏi bằng chữ qua kênh quen thuộc (VD: Zalo)
+[NGƯỜI] Nông dân mở công cụ (không cần tài khoản), gõ vài chữ tên thuốc
+        hoặc hỏi một câu ngắn
      |
      v
-[AI] Phân loại câu hỏi: chăm sóc / thuốc - hóa chất / ngoài phạm vi
-     |
-     +-- chăm sóc ---------> [AI] Truy xuất từ tài liệu kỹ thuật đã được chọn
-     |                        -> trả lời + trích đoạn nguồn
-     |
-     +-- thuốc - hóa chất -> [RULE] Tra BẢNG QUY ĐỊNH ĐÃ DUYỆT:
-     |                        tên thương mại -> hoạt chất -> có đăng ký cho Thanh Long?
-     |                        -> liều, thời gian cách ly -> MRL thị trường đích
-     |                          |-- có trong bảng  -> [AI] diễn đạt lại dễ hiểu
-     |                          |                     + nguồn + ngày cập nhật
-     |                          |-- không có       -> chuyển cán bộ
-     |
-     +-- ngoài phạm vi / hỏi chẩn đoán bệnh / AI không chắc
-                             -> [NGƯỜI] cán bộ kỹ thuật HTX trả lời (HITL)
+[AI] Hiểu câu hỏi, gợi ý đúng tên thương mại trong bảng (gõ sai, viết tắt)
+     -> nông dân chọn đúng chai thuốc
      |
      v
-[NGƯỜI] Nông dân tự quyết định và thực hiện. Hệ thống không quyết định thay.
+[RULE] Tra BẢNG QUY ĐỊNH ĐÃ DUYỆT:
+       tên thương mại -> hoạt chất -> có đăng ký cho Thanh Long? -> liều, thời gian cách ly
+       -> MRL / trạng thái ở thị trường đích
+     |
+     +-- XANH: được phép theo bảng -> liều, số ngày cách ly tối thiểu + nguồn + ngày cập nhật
+     +-- ĐỎ:   không được phép / không có MRL ở thị trường đích -> "không dùng cho trái xuất khẩu" + nguồn
+     +-- VÀNG: không có trong bảng, hoạt chất lạ, dòng đang khóa -> "chưa xác minh"
+               -> [NGƯỜI] chuyển cán bộ HTX xác nhận (HITL)
+     |
+     v
+[AI] Diễn đạt kết quả bằng lời dễ hiểu; KHÔNG thay đổi con số và trạng thái từ bảng
+     |
+     v
+[NGƯỜI] Nông dân tự quyết định mua và phun. Hệ thống không quyết định thay.
 
-LUỒNG DUY TRÌ BẢNG QUY ĐỊNH (khi có văn bản mới)
+Câu hỏi chăm sóc chung (không phải về thuốc):
+[AI] trả lời chỉ từ tài liệu kỹ thuật do HTX chọn, kèm trích nguồn; không có nguồn -> chuyển cán bộ
 
-[AI] Trích xuất văn bản (danh mục thuốc, nhãn, MRL) thành dòng bảng
-     -> [NGƯỜI] cán bộ / chuyên gia duyệt TỪNG DÒNG -> phát hành
-     -> dòng nào bị văn bản mới ảnh hưởng thì KHÓA cho tới khi duyệt lại
+LUỒNG DUY TRÌ BẢNG QUY ĐỊNH (khi có văn bản mới, VD: danh mục thuốc VN, cập nhật MRL, EU 2019/1793)
+
+[AI] Trích xuất văn bản thành các dòng bảng
+     -> [NGƯỜI] cán bộ HTX / chuyên gia duyệt TỪNG DÒNG -> phát hành
+     -> dòng bị văn bản mới ảnh hưởng: KHÓA (trả VÀNG) cho tới khi duyệt lại
 ```
 
 | Bước | Ai làm | Boundary |
 |---|---|---|
-| Phân loại câu hỏi | AI | Không chắc thì xếp vào "ngoài phạm vi" và chuyển người |
-| Trả lời câu chăm sóc | AI, chỉ từ tài liệu đã chọn | Luôn kèm nguồn; không có nguồn thì không trả lời |
-| Kết luận về thuốc (được dùng không, liều, cách ly) | **Rule** trên bảng đã duyệt | AI **không** tự đưa ra con số; không khuyến nghị thuốc ngoài bảng |
-| Câu ngoài phạm vi, chẩn đoán bệnh | Cán bộ kỹ thuật | AI không chẩn đoán |
-| Duyệt bảng quy định | Cán bộ / chuyên gia | Chưa duyệt thì chưa dùng |
-| Quyết định dùng thuốc | Nông dân | Hệ thống chỉ cung cấp thông tin có nguồn |
+| Hiểu câu hỏi, gợi ý tên thuốc | AI | Không đoán; nông dân phải chọn đúng chai thuốc trong danh sách gợi ý |
+| Kết luận XANH / ĐỎ / VÀNG, liều, thời gian cách ly | **Rule** trên bảng đã duyệt | AI **không** tự đưa ra con số hoặc trạng thái |
+| Diễn đạt lại kết quả | AI | Không thêm thông tin ngoài dòng bảng; luôn kèm nguồn và ngày cập nhật |
+| Thuốc lạ, dòng khóa, câu ngoài phạm vi, hỏi chẩn đoán bệnh | Cán bộ HTX | AI không trả lời thay |
+| Duyệt bảng quy định | Cán bộ HTX / chuyên gia | Chưa duyệt thì chưa dùng |
+| Quyết định mua và phun | Nông dân | Hệ thống chỉ cung cấp thông tin có nguồn |
 
-**Phương án quay về khi AI sai:** tắt tự trả lời câu về thuốc → cán bộ trả lời qua kênh nhắn tin như hiện tại, kèm **bảng tra in sẵn** xuất từ bảng quy định đã duyệt. Bảng này vẫn dùng được khi không có AI.
+**Phương án quay về khi AI sai:** tắt phần AI (gợi ý tên, diễn đạt lại), chỉ giữ **tra bảng theo đúng tên** (Rule thuần) và **bảng tra in sẵn** xuất từ bảng đã duyệt. Câu hỏi khác quay về cán bộ HTX qua điện thoại như hiện tại. Bảng quy định vẫn dùng được khi không có AI.
 
-**Điều kiện kích hoạt quay về [PROPOSED, cần §8 thống nhất]:** chỉ cần một câu trả lời sai liều hoặc sai thời gian cách ly đến tay nông dân.
+**Điều kiện kích hoạt quay về (khớp ngưỡng dừng ở §8.2):** chỉ cần một kết quả sai trạng thái, sai liều hoặc sai thời gian cách ly đến tay nông dân.
 
 ### 4.3. Before / after
 
 | Chỉ số | Trước | Sau (kỳ vọng) | Ghi chú |
 |---|---:|---:|---|
-| Số bước (luồng hỏi để quyết định dùng thuốc) | 6 | 5 | Đếm theo sơ đồ 4.1 và 4.2 |
-| Tổng thời gian từ lúc có câu hỏi đến lúc có thông tin đã xác minh | [PENDING CP4] | [PROPOSED] vài phút với câu có trong bảng; câu chuyển cán bộ theo năng lực HTX | Không đặt target bằng số khi chưa có baseline |
-| Số bước thủ công | 6 (mọi bước do người làm) | 2 trong luồng hỏi (hỏi, quyết định) + bước duyệt bảng khi có văn bản mới | Bước duyệt bảng là công việc mới của HTX |
-| Bottleneck chính | Tra nhiều văn bản rời rạc, phụ thuộc thời gian của cán bộ | Chuyển thành việc duy trì bảng quy định đã duyệt | Chi phí công duyệt bảng: [PENDING] |
-| Rủi ro mới phát sinh | — | (1) AI diễn đạt sai con số; (2) bảng lỗi thời khi quy định đổi; (3) nông dân tin máy quá mức, bỏ qua nhãn thuốc; (4) cán bộ quá tải vì câu bị chuyển; (5) chi phí duy trì bảng | Kiểm soát: boundary và phương án quay về ở 4.2; eval ở §7 |
+| Số bước để biết thuốc có dùng được không | 4 (bước 1–4; có khi dừng ở bước 2 mà không xác minh) | 3 (mở công cụ → chọn thuốc → đọc kết quả) | Đếm theo sơ đồ 4.1 và 4.2 |
+| Thời gian nông dân có được câu trả lời đã xác minh | 1–2 ngày mỗi đợt sâu bệnh (n = 1) | Dưới 1 phút với thuốc có trong bảng; câu VÀNG trong ngày làm việc | Cần đo lại trên nhiều hộ |
+| Thời gian cán bộ HTX trả lời và soạn tài liệu | 2–3 ngày mỗi tháng (n = 1) | Giảm ≥ 50%, chỉ còn câu VÀNG và duyệt bảng | Duyệt bảng là việc mới, cần đo thêm |
+| Số bước thủ công | 6 (mọi bước do người làm) | 2 trong luồng tra (chọn thuốc, quyết định) + bước duyệt bảng khi có văn bản mới | |
+| Bottleneck chính | Chọn thuốc tại đại lý mà không tự xác minh được; cán bộ không kịp trả lời | Chuyển thành việc **duy trì bảng quy định đã duyệt** | |
+| Thời điểm phát hiện vi phạm | Sát thu hoạch (bước 6), khi đã phun | Trước khi mua và phun | Đây là thay đổi quan trọng nhất |
+| Rủi ro mới phát sinh | — | (1) AI gợi ý nhầm tên thuốc gần giống; (2) bảng lỗi thời khi quy định đổi; (3) nông dân tin máy quá mức, bỏ qua nhãn; (4) cán bộ quá tải câu VÀNG; (5) chi phí duy trì bảng | Kiểm soát bằng boundary, phương án quay về ở 4.2 và eval ở §7 |
 
-**Metric đề xuất để §5, §7 và §8 dùng thống nhất [PROPOSED]:**
+**Metric dùng thống nhất cho §5, §7, §8:**
 
 | # | Metric | Baseline | Target | Cách đo |
 |---:|---|---|---|---|
-| M1 | % lần phun của hộ pilot dùng thuốc được phép cho thị trường đích, đúng liều, đủ thời gian cách ly | [PENDING CP4]: audit nhật ký trước pilot | [Nhóm quyết định sau khi có baseline] | Cán bộ audit nhật ký định kỳ |
-| M2 | Thời gian từ lúc hỏi đến lúc có thông tin đã xác minh | [PENDING CP4] | [Nhóm quyết định] | Log tin nhắn |
-| M3 | % câu trả lời về thuốc có nguồn và khớp bảng đã duyệt | Không áp dụng (chưa có hệ thống) | 100% | Bộ eval §7 |
+| M1 | % lần phun của hộ pilot dùng thuốc ở trạng thái XANH cho thị trường đích, đủ thời gian cách ly | Đo bằng rà soát nhật ký phun của 10 hộ dự kiến tham gia pilot, trong đợt kiểm chứng (§8.2); §3.2 ghi nhận 1 trường hợp vi phạm (n = 1) | ≥ 95% và 0 lần dùng thuốc trạng thái ĐỎ | Cán bộ audit nhật ký mỗi 2 tuần |
+| M2 | Thời gian từ lúc nông dân có câu hỏi đến lúc có thông tin đã xác minh | 1–2 ngày (Snapshot 1, n = 1); đo lại trong đợt kiểm chứng (§8.2) | Dưới 1 phút (XANH / ĐỎ); trong ngày làm việc (VÀNG) | Log công cụ; bấm giờ khi phỏng vấn |
+| M3 | % kết quả về thuốc khớp bảng đã duyệt và có nguồn | Không áp dụng | 100% | Bộ eval §7 |
+| M4 | Thời gian cán bộ HTX trả lời câu hỏi và soạn tài liệu mỗi tháng | 2–3 ngày (n = 1); đo lại trong đợt kiểm chứng (§8.2) | Giảm ≥ 50% | Cán bộ tự ghi |
+| M5 (kết quả trễ) | Số lô hoặc hộ pilot bị loại vì dư lượng | 1 trường hợp ghi nhận (§3.2, n = 1); tỷ lệ đo trong pilot | 0 trường hợp do thuốc trạng thái ĐỎ | Kết quả kiểm mẫu của HTX / thương lái |
 
 ---
 
 ## 5. Problem Statement v0 (CP5)
 
-*(Trần Duy Thành phụ trách)*
-
 | Trường | Nội dung |
 |---|---|
-| **Actor** | Primary: Hộ nông dân trực tiếp canh tác Thanh Long phục vụ xuất khẩu. Secondary: Cán bộ kỹ thuật HTX nông nghiệp. |
-| **Quy trình** | Khi phát sinh nhu cầu phòng trừ sâu bệnh hoặc chăm sóc vườn $\rightarrow$ Hỏi thông tin từ đại lý thuốc/người quen $\rightarrow$ (Nếu cần) liên hệ cán bộ kỹ thuật HTX để xác minh quy định xuất khẩu $\rightarrow$ Cán bộ tra cứu thủ công từ các văn bản rời rạc $\rightarrow$ Nông dân quyết định mua và phun thuốc (§4.1). |
-| **Bottleneck** | **[Giả thuyết cần kiểm chứng]** Nông dân gặp khó khăn khi tự xác minh tính hợp chuẩn của thuốc đối với thị trường xuất khẩu đích do thông tin MRLs phân tán, ngôn ngữ kỹ thuật phức tạp; việc phụ thuộc vào cán bộ HTX gây nghẽn thời gian vì cán bộ không thể túc trực hỗ trợ tức thời mọi lúc. |
-| **Impact** | **[Giả thuyết cần kiểm chứng]** Nguy cơ sử dụng sai hoạt chất hoặc không tuân thủ thời gian cách ly (PHI) dẫn đến dư lượng hóa chất vượt ngưỡng, trái bị từ chối xuất khẩu hoặc bị tiêu hủy, gây thiệt hại tài chính nặng nề cho nông dân và ảnh hưởng uy tín HTX. |
-| **Success Metric** (baseline → target, cách đo) | - **M1 (% lần phun đúng chuẩn MRLs):** Baseline [CHỜ KIỂM CHỨNG THEO VALIDATION PLAN] $\rightarrow$ Target đề xuất: $\ge 90\%$; đo bằng audit nhật ký canh tác định kỳ.<br>- **M2 (Thời gian xác minh thuốc):** Baseline [CHỜ ĐO ĐẠC THỰC TẾ] $\rightarrow$ Target đề xuất: giảm xuống dưới 5 phút cho các hoạt chất đã có trong bảng duyệt; đo bằng log thời gian gửi câu hỏi.<br>- **M3 (Độ chính xác thông tin thuốc):** 100% câu trả lời có trích dẫn nguồn văn bản pháp lý chính thống. |
-| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) | AI **tuyệt đối không** tự ý chẩn đoán bệnh cây, không tự kê đơn thuốc ngoài danh mục đã được phê duyệt, không tự bịa ra con số liều lượng/ngày cách ly. Cán bộ kỹ thuật HTX là người duy nhất duyệt bảng quy định; nông dân là người tự chịu trách nhiệm đưa ra quyết định phun thuốc cuối cùng. |
+| **Actor** | |
+| **Quy trình** | |
+| **Bottleneck** | |
+| **Impact** | |
+| **Success Metric** (baseline → target, cách đo) | |
+| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) | |
 
 Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng ý không:
 
-- Phản biện từ nhóm: Cần làm rõ ranh giới giữa giả thuyết nghiên cứu và dữ liệu thực tế. Nhóm đồng ý đánh dấu toàn bộ Bottleneck, Impact và Baseline là các **giả thuyết cần kiểm chứng thực địa**, không lấy số liệu giả định làm baseline.
+-
 
 ---
 
@@ -270,64 +275,87 @@ Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng
 
 ### 6.1. Ma trận độ mơ hồ × độ phức tạp
 
-* **Bài của nhóm nằm ở ô:** Phức tạp vừa (nhiều luật/nhiều bệnh) - Mơ hồ vừa.
-* **Vì sao:** Bệnh cây có nhiều biểu hiện (độ mơ hồ Vision), danh mục chất cấm dài và liên tục cập nhật nhưng có văn bản rõ (độ phức tạp RAG).
+* **Bài của nhóm nằm ở ô:** Độ mơ hồ Cao × Độ phức tạp Cao
+* **Vì sao:**
+  - Về độ mơ hồ: Cao
+    - Người trồng thanh long thường đặt câu hỏi theo ngôn ngữ đời thường, sử dụng tên thương mại của thuốc thay vì tên hoạt chất. Một câu hỏi có thể thiếu thông tin về đối tượng phòng trừ, thị trường xuất khẩu hoặc thời điểm thu hoạch.
+    - Cùng một loại thuốc có thể cần đối chiếu nhiều điều kiện khác nhau: đăng ký sử dụng tại Việt Nam, hướng dẫn trên nhãn, thời gian cách ly và giới hạn dư lượng tối đa tại thị trường đích.
+    - Kết quả CP4 cho thấy nông dân gặp khó khăn khi đọc thuật ngữ kỹ thuật, trong khi cán bộ HTX phải xử lý thông tin từ nhiều nguồn. Hệ thống cần nhận biết những trường hợp thiếu dữ kiện hoặc không thể đưa ra kết luận.
+  - Về độ phức tạp: Cao
+    - Quy trình xác minh liên quan đến nhiều nguồn dữ liệu có cấu trúc và phi cấu trúc: danh mục thuốc BVTV, nhãn thuốc, tài liệu kỹ thuật, quy định MRL và cảnh báo SPS.
+    - Hệ thống cần kết hợp các bước: phân loại câu hỏi, chuẩn hóa tên thuốc, tra cứu dữ liệu, kiểm tra điều kiện, tạo câu trả lời dễ hiểu và chuyển cán bộ kỹ thuật khi gặp ngoại lệ.
+    - Dữ liệu quy định có thể thay đổi, đòi hỏi cơ chế cập nhật, xác minh và khóa thông tin chưa được duyệt.
+
+Bài toán có độ mơ hồ cao tại khâu hiểu câu hỏi và diễn đạt thông tin, nhưng phần kiểm tra điều kiện thuốc phải được chuẩn hóa thành các quy tắc rõ ràng. Vì vậy, nhóm ưu tiên phối hợp AI với Rule và Human-in-the-Loop, thay vì để AI tự quyết định toàn bộ quy trình.
 
 ### 6.2. So sánh 4 mức
 
 | Mức | Phương án cho bài của nhóm | Đủ khi nào | Rủi ro | Chọn? |
 | --- | --- | --- | --- | --- |
-| **No AI** | Web form nhập text thuần túy. | Nông dân chăm chỉ nhập liệu chuẩn 100%. | Nông dân bỏ dùng vì lười gõ. | Không |
-| **Rule** | Tự code rule mapping thuốc - hóa chất. | Luật không đổi, danh mục thuốc ít. | Không bắt bệnh qua ảnh được. | Không |
-| **Workflow** | App thu thập ảnh + RAG luật + Vision bắt bệnh (Có phê duyệt). | Con người muốn kiểm soát rủi ro pháp lý. | Cần người duyệt. | **Có** |
-| **Agent** | AI tự bắt bệnh, tự đặt mua thuốc ship về vườn. | Mọi thứ hoàn hảo. | Chết vườn cây, đền bù phá sản. | Không |
+| **No AI** |HTX chuẩn hóa danh mục thuốc, hướng dẫn canh tác và quy định xuất khẩu thành tài liệu đơn giản; cập nhật định kỳ và phổ biến qua Zalo, bản in hoặc tập huấn |Phạm vi thuốc nhỏ, quy định ít thay đổi; nông dân có thể tự tìm đúng thông tin hoặc dễ dàng liên hệ cán bộ  |Thông tin dễ lỗi thời; nông dân vẫn phải tìm kiếm thủ công; cán bộ HTX tiếp tục chịu tải tư vấn| Không ưu tiên |
+| **Rule** |Xây dựng bảng tra cứu tên thương mại → hoạt chất → đăng ký sử dụng → thông tin nhãn → MRL thị trường đích; lọc và cảnh báo theo điều kiện đã được phê duyệt|Dữ liệu đã chuẩn hóa, người dùng nhập đủ thông tin theo biểu mẫu và chủ yếu cần tra cứu các trường hợp xác định |Khó xử lý câu hỏi tự nhiên, tên thuốc nhập sai, thông tin thiếu hoặc yêu cầu giải thích phức tạp |Chọn làm thành phần kiểm tra bắt buộc |
+| **Workflow** |Quy trình cố định: tiếp nhận câu hỏi → AI phân loại → truy xuất dữ liệu/tài liệu → Rule kiểm tra thông tin thuốc → AI diễn đạt kết quả có dẫn nguồn → chuyển cán bộ khi thiếu dữ liệu hoặc có ngoại lệ |Các nhánh nghiệp vụ xác định được từ trước, AI chỉ cần xử lý ngôn ngữ và tổng hợp thông tin trong phạm vi kiểm soát |AI có thể phân loại sai hoặc diễn đạt sai; dữ liệu nguồn lỗi thời; cần cơ chế kiểm tra, fallback và bảo trì |Đề xuất chọn |
+| **Agent** |AI tự quyết định các bước tra cứu tiếp theo, lựa chọn nguồn/công cụ, yêu cầu bổ sung thông tin và điều phối các tác vụ tùy tình huống  |Quy trình có nhiều tình huống khó dự đoán, cần lập kế hoạch động mà Workflow cố định không đáp ứng được |Khó kiểm soát đường đi xử lý, khó truy vết lỗi, chi phí và độ phức tạp cao hơn; tăng rủi ro khi liên quan đến thông tin thuốc BVTV |Chưa cần thiết |
 
 
-**Mức chọn:** Workflow
+**Mức chọn:** Workflow kết hợp Rule và Human-in-the-Loop
 
-**Vì sao không chọn mức đơn giản hơn:** Nếu không có AI Vision mồi nhử chụp ảnh, nông dân sẽ không xài app. Nếu không có RAG tra luật, HTX không xử lý kịp hàng nghìn mã thuốc bảo vệ thực vật.
+**Vì sao không chọn mức đơn giản hơn:**
+- No AI chưa giải quyết triệt để bottleneck: Theo CP4, HTX đã sử dụng tài liệu in, PDF và tập huấn nhưng người trồng vẫn gặp khó khăn trong việc tìm kiếm, hiểu và đối chiếu thông tin. Chỉ cải thiện tài liệu có thể giảm một phần khó khăn nhưng chưa đáp ứng tốt nhu cầu tra cứu trực tiếp tại vườn.
+- Rule đơn thuần chưa đủ cho toàn bộ trải nghiệm: Rule phù hợp để kiểm tra dữ liệu chuẩn hóa, nhưng người dùng thường đặt câu hỏi bằng tiếng Việt tự nhiên, tên thương mại hoặc thông tin không đầy đủ. Việc yêu cầu nông dân điền biểu mẫu phức tạp cũng mâu thuẫn với tín hiệu phản bác về khả năng sử dụng ở CP4.
+- Workflow giải quyết phần còn thiếu: AI hỗ trợ hiểu yêu cầu, tìm tài liệu và diễn đạt thông tin; Rule chịu trách nhiệm kiểm tra các điều kiện có cấu trúc; cán bộ HTX xác minh ngoại lệ.
 
 ### 6.3. AI Canvas rút gọn
 
 | Thành phần | Nội dung |
 |---|---|
-| **Prediction** — AI dự đoán / tạo ra gì? | **AI Vision:** Phân tích ảnh lá/quả Thanh Long do nông dân chụp để dự đoán dấu hiệu sâu bệnh, cảnh báo các hộ có nguy cơ. **AI RAG:** Tra cứu và đối chiếu hoạt chất trong thuốc bảo vệ thực vật được đề xuất với quy định MRLs và danh mục chất cấm của thị trường xuất khẩu (Úc/Nhật), trả về cảnh báo kèm nguồn tham chiếu. |
-| **Judgment** — Con người cân nhắc, quyết định gì? | Cán bộ kỹ thuật HTX kiểm tra lại ảnh, xác nhận tình trạng sâu bệnh và đánh giá cảnh báo từ AI. Đồng thời kiểm tra thông tin hoạt chất, quy định được trích dẫn trước khi quyết định phương án xử lý. Không phụ thuộc hoàn toàn vào kết luận của AI. |
-| **Action** — Hành động cuối cùng là gì, ai làm? | Cán bộ HTX phê duyệt hoặc từ chối phương án chăm sóc, sử dụng thuốc và gửi hướng dẫn cho nông dân. Nông dân thực hiện, cập nhật nhật ký canh tác và ảnh theo dõi. Hệ thống lưu lại dữ liệu để HTX tổng hợp báo cáo chất lượng vùng trồng. |
-| **Outcome** — Đo kết quả bằng gì? | Thời gian tổng hợp báo cáo HTX; tỷ lệ dùng sai thuốc; tỷ lệ lô hàng đạt kiểm định hóa chất. Đánh giá thêm AI Vision bằng Recall và kiểm tra độ chính xác trích xuất hoạt chất của RAG với mục tiêu.
-| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | Ảnh lá/quả Thanh Long, mã hộ/vườn, thời gian chụp, nhật ký canh tác, tên thuốc và hoạt chất dự kiến sử dụng; tài liệu quy định MRLs và danh mục hoạt chất cấm theo thị trường xuất khẩu. Văn bản quy định có thể thu thập từ nguồn chính thức; dữ liệu ảnh thực tế và nhật ký chuẩn hóa chưa đầy đủ. |
-| **Feedback** — Lấy phản hồi ở đâu để cải thiện? | Thu thập kết quả xác nhận/chỉnh sửa chẩn đoán của cán bộ HTX, những cảnh báo sai hoặc bỏ sót, kết quả kiểm định dư lượng và phản hồi của nông dân khi sử dụng app. Dữ liệu này giúp đánh giá, cải thiện mô hình Vision, cập nhật kho tài liệu RAG và tối ưu quy trình cảnh báo. |
+| **Prediction** — AI dự đoán / tạo ra gì? |Phân loại câu hỏi của nông dân thành chăm sóc cây, thuốc/hóa chất hoặc ngoài phạm vi; nhận diện thông tin còn thiếu; truy xuất và tổng hợp hướng dẫn từ nguồn đã được chọn; diễn đạt kết quả bằng ngôn ngữ dễ hiểu, có dẫn nguồn. AI không tự dự đoán mức dư lượng thực tế hoặc tự kết luận thuốc an toàn cho xuất khẩu  |
+| **Judgment** — Con người cân nhắc, quyết định gì? |Nông dân quyết định hành động canh tác sau khi xem thông tin và hướng dẫn chính thức. Cán bộ kỹ thuật HTX hoặc chuyên gia xác minh trường hợp chưa đủ dữ kiện, thuốc chưa có trong bảng hoặc nguồn mâu thuẫn. Người phụ trách dữ liệu duyệt các bản ghi quy định trước khi sử dụng  |
+| **Action** — Hành động cuối cùng là gì, ai làm? |Hệ thống cung cấp thông tin tra cứu có nguồn, ngày cập nhật và cảnh báo khi chưa thể kết luận. Nông dân đối chiếu hướng dẫn và quyết định bước tiếp theo; trường hợp nhạy cảm được chuyển cho cán bộ kỹ thuật xác minh. AI không tự thực hiện hoặc phê duyệt việc sử dụng thuốc |
+| **Outcome** — Đo kết quả bằng gì? |M1: Tỷ lệ lần phun trong pilot đáp ứng các điều kiện sử dụng thuốc được kiểm tra qua nhật ký và hồ sơ liên quan. M2: Thời gian từ lúc gửi câu hỏi đến khi nhận được thông tin đã xác minh. M3: Tỷ lệ câu trả lời về thuốc có nguồn và khớp bảng dữ liệu đã duyệt (target đề xuất: 100%). Baseline và target của M1/M2 cần được nhóm xác nhận theo §4.3 và §5 |
+| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? |Câu hỏi tiếng Việt của nông dân; tên thương mại/hoạt chất; cây trồng, mục đích sử dụng, thị trường đích và thông tin liên quan nếu cần. Nguồn tham chiếu gồm danh mục thuốc BVTV, dữ liệu nhãn, hướng dẫn kỹ thuật và MRL theo thị trường. CP4 đã xác định các loại nguồn có thể tra cứu, nhưng chưa chứng minh đã có cơ sở dữ liệu mapping đầy đủ, chính xác và được cập nhật |
+| **Feedback** — Lấy phản hồi ở đâu để cải thiện? |Phản hồi của nông dân về mức dễ hiểu và tính hữu ích của câu trả lời; các trường hợp được cán bộ HTX kiểm tra/chỉnh sửa; log câu hỏi bị chuyển người; kết quả chấm bộ eval; lịch sử cập nhật dữ liệu. Cán bộ chuyên môn rà soát lỗi để cập nhật bảng dữ liệu, quy tắc và tài liệu tham chiếu |
 
 ### 6.4. Hai câu hỏi của Google PAIR
 
-- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**?: Hỗ trợ. Vì thiệt hại nếu sai (chất lượng xuất khẩu) tính bằng tiền tỷ, cần cán bộ chịu trách nhiệm pháp lý.
-- AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**? Vì sao, và thiết kế đã xử lý thế nào: Bỏ sót tệ hơn. Thà AI báo động giả để cán bộ check lại, còn hơn bỏ sót một chất cấm khiến cả container bị hủy ngoài cảng. Thiết kế: Threshold cảnh báo của AI đặt ở mức nhạy cảm cao.
+- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**?: Chọn: Augment - hỗ trợ ra quyết định, không tự động quyết định thay người dùng. Lý do:
+  - Nông dân gặp khó khăn khi đối chiếu tên thương mại trên chai thuốc với hoạt chất và quy định xuất khẩu. Nhu cầu được ghi nhận là có thể tự tra cứu nhanh, ngay tại vườn.
+  - Các hộ được phỏng vấn phản đối giao diện yêu cầu tạo tài khoản phức tạp, nhập văn bản dài hoặc điền nhiều biểu mẫu.
+  - Cán bộ HTX muốn giảm khối lượng tư vấn lặp lại nhưng vẫn duy trì trách nhiệm xác minh những trường hợp nhạy cảm.
+  - Do đó, hệ thống nên tự động hóa các thao tác hỗ trợ như phân loại câu hỏi, tìm kiếm và tổng hợp thông tin. Việc kiểm tra quy định được thực hiện bằng Rule trên dữ liệu đã duyệt; các quyết định canh tác vẫn thuộc con người.
+- AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**? Vì sao, và thiết kế đã xử lý thế nào: Ưu tiên kiểm soát lỗi báo nhầm theo nghĩa khẳng định sai rằng một phương án sử dụng thuốc là phù hợp hoặc an toàn cho mục tiêu xuất khẩu.
+  - Hậu quả có thể là người dùng tin vào kết luận sai, áp dụng thuốc không phù hợp, làm tăng rủi ro không đạt yêu cầu thu mua hoặc kiểm nghiệm.
+  - Thiết kế:
+    - Không để LLM tự kết luận thuốc được phép sử dụng; sử dụng Rule dựa trên dữ liệu đã duyệt để kiểm tra các điều kiện xác định.
+    - Chỉ cung cấp thông tin khi có nguồn phù hợp, nêu rõ giới hạn của kết quả và thời điểm cập nhật.
+    - Không suy ra rằng sản phẩm chắc chắn đạt tiêu chuẩn xuất khẩu chỉ từ một giá trị MRL hoặc thời gian cách ly.
+    - Nếu dữ liệu thiếu, mâu thuẫn hoặc chưa được phê duyệt, hệ thống phải trả trạng thái "Chưa đủ thông tin để xác minh" và chuyển cán bộ kỹ thuật.
+    - Có cơ chế khóa dữ liệu bị ảnh hưởng bởi thay đổi quy định cho đến khi được rà soát.
 
 ---
 
 ## 7. Problem Statement v1 + tiêu chí đánh giá (CP6)
 
-> Người phụ trách: Trịnh Gia Huy. **Trạng thái: DRAFT.** Bản này phụ thuộc vào §5 (Problem Statement v0, hiện chưa có), §6 (mức can thiệp) và §3 (bằng chứng CP4). Các trường để [PENDING] sẽ được hoàn thiện khi những section đó xong. Mức can thiệp được ghi theo §6 hiện tại (Workflow); bản này không mô tả hệ thống như một Agent tự quyết bước tiếp theo.
+> Người phụ trách: Trịnh Gia Huy. Bản này dùng bằng chứng ở §3 và quy trình ở §4.
+> Bản này giữ nguyên các dữ kiện của v0 (§5), chỉ thay đổi những trường ghi trong bảng so sánh bên dưới, và theo mức đã chọn ở §6 (Workflow + Rule + HITL): hệ thống chạy theo các bước cố định, AI không tự quyết bước tiếp theo.
 
 | Trường | Nội dung |
 |---|---|
-| **Actor** | Primary: hộ nông dân trồng Thanh Long, người trực tiếp quyết định dùng thuốc [CONFIRMED]. Secondary: cán bộ kỹ thuật HTX, người xác minh và xử lý câu ngoài phạm vi [PROPOSED] |
-| **Quy trình** | Có nhu cầu chăm sóc → hỏi nguồn quen → (nếu cần) hỏi cán bộ → cán bộ tra nhiều văn bản → nông dân chọn thuốc, phun → thu hoạch vào lô xuất (§4.1) |
-| **Bottleneck** | Xác minh "thuốc này có được dùng cho trái xuất khẩu không, liều bao nhiêu, cách ly mấy ngày" đòi hỏi đối chiếu nhiều văn bản rời rạc mà người trồng khó tự làm, và phụ thuộc vào thời gian của cán bộ (§4.1) [PROPOSED, chờ CP4] |
-| **Impact** | Dùng thuốc không được phép hoặc không đủ thời gian cách ly có thể khiến trái bị loại khỏi lô xuất khẩu. Mức độ và tần suất: [PENDING CP4] |
-| **Success Metric** (baseline → target, cách đo) | M1: % lần phun đúng quy định (baseline [PENDING CP4] → target nhóm chốt sau baseline; cán bộ audit nhật ký). M2: thời gian từ lúc hỏi đến lúc có thông tin đã xác minh (baseline [PENDING CP4]; log tin nhắn). M3: 100% câu trả lời về thuốc có nguồn và khớp bảng đã duyệt (bộ eval bên dưới) |
-| **Boundary** | AI **không**: chẩn đoán bệnh; khuyến nghị thuốc ngoài bảng đã duyệt; tự đưa ra con số liều hoặc thời gian cách ly; trả lời khi không có nguồn; quyết định thay nông dân. **HITL:** cán bộ hoặc chuyên gia duyệt từng dòng bảng quy định trước khi dùng; nhận mọi câu ngoài phạm vi hoặc không chắc |
-| **AI intervention point** | (1) Phân loại câu hỏi; (2) truy xuất và trả lời câu chăm sóc từ tài liệu đã chọn, kèm nguồn; (3) diễn đạt lại kết quả tra bảng cho dễ hiểu; (4) trích xuất văn bản quy định thành dòng bảng để người duyệt. Kết luận về thuốc do **Rule** làm trên bảng đã duyệt |
-| **Mức chọn** | Workflow (theo §6; chờ nhóm xác nhận lại phạm vi, xem xung đột C1) |
-| **Rủi ro & người kiểm tra** | Sai con số liều / cách ly → Rule lấy số từ bảng, eval tiêu chí 1, người kiểm tra: cán bộ kỹ thuật. Bảng lỗi thời → khóa dòng khi có văn bản mới, người kiểm tra: cán bộ / chuyên gia. Trả lời không có nguồn → tiêu chí 2–3, người kiểm tra: nhóm vận hành pilot |
+| **Actor** | Primary: hộ nông dân trồng Thanh Long, người trực tiếp chọn và phun thuốc (3 hộ phỏng vấn, §3.2). Secondary: cán bộ kỹ thuật HTX, người duyệt bảng quy định và xác nhận trường hợp ngoại lệ (2 cán bộ phỏng vấn, §3.2) |
+| **Quy trình** | Thấy sâu bệnh → mua thuốc theo đại lý → (đôi khi) gọi cán bộ HTX → cán bộ tra danh mục thuốc và quy định MRL → nông dân phun → HTX / thương lái kiểm mẫu sát thu hoạch (§4.1) |
+| **Bottleneck** | Nông dân chọn thuốc tại đại lý mà không có cách tự kiểm tra ngay thuốc đó có được dùng cho thị trường xuất khẩu không và phải cách ly bao nhiêu ngày. Kênh xác minh duy nhất là 2 cán bộ HTX cho khoảng 100 hộ (§4.1; §3.2) |
+| **Impact** | Vi phạm chỉ lộ ra khi kiểm mẫu sát thu hoạch. Trường hợp ghi nhận: 4 tấn không được gom xuất khẩu, bán 4.000 đ/kg thay vì 18.000 đ/kg (§3.2, Snapshot 1, n = 1). Cán bộ HTX mất 2–3 ngày mỗi tháng trả lời và soạn tài liệu (Snapshot 2, n = 1). Ở cấp ngành, thanh long Việt Nam nằm trong diện kiểm soát tăng cường của EU theo Quy định 2019/1793 (§3.2, §10) |
+| **Success Metric** (baseline → target, cách đo) | M1: % lần phun dùng thuốc XANH, đủ thời gian cách ly (baseline đo bằng rà soát nhật ký trong đợt kiểm chứng (§8.2) → ≥ 95%, 0 lần ĐỎ). M2: thời gian có thông tin đã xác minh (1–2 ngày, n = 1 → dưới 1 phút với XANH / ĐỎ; log). M3: 100% kết quả về thuốc khớp bảng và có nguồn (bộ eval). M4: thời gian cán bộ mỗi tháng (2–3 ngày, n = 1 → giảm ≥ 50%; cán bộ tự ghi). Định nghĩa đầy đủ ở §4.3 |
+| **Boundary** | AI **không**: tự đưa ra con số liều, thời gian cách ly hay trạng thái XANH / ĐỎ; khuyến nghị thuốc ngoài bảng; chẩn đoán bệnh; trả lời khi không có nguồn; quyết định thay nông dân. **HITL:** cán bộ HTX / chuyên gia duyệt từng dòng bảng trước khi phát hành; xác nhận mọi trường hợp VÀNG (thuốc lạ, dòng đang khóa, câu ngoài phạm vi), đúng yêu cầu của HTX ở §3.2 |
+| **AI intervention point** | (1) Hiểu câu hỏi và gợi ý đúng tên thương mại khi nông dân gõ sai hoặc viết tắt; (2) diễn đạt kết quả tra bảng thành lời dễ hiểu; (3) trả lời câu chăm sóc chung chỉ từ tài liệu HTX đã chọn, kèm nguồn; (4) trích xuất văn bản quy định mới thành dòng bảng để người duyệt. Kết luận XANH / ĐỎ / VÀNG do **Rule** làm trên bảng đã duyệt |
+| **Mức chọn** | **Workflow kết hợp Rule và Human-in-the-Loop** (theo §6.2) |
+| **Rủi ro & người kiểm tra** | Gợi ý nhầm tên thuốc gần giống → nông dân phải xác nhận đúng chai thuốc; tiêu chí 1 (người kiểm: nhóm vận hành pilot). Sai con số / trạng thái → Rule lấy từ bảng; tiêu chí 2 (cán bộ HTX). Bảng lỗi thời → khóa dòng khi có văn bản mới (cán bộ HTX / chuyên gia). Trả lời không nguồn → tiêu chí 3–4 (nhóm vận hành pilot) |
 
 **Thay đổi so với v0 và lý do:**
 
 | Trường | v0 | v1 | Vì sao đổi |
 |---|---|---|---|
-| AI intervention point | Chưa phân tách các điểm can thiệp kỹ thuật | Tách rõ 4 điểm can thiệp: (1) Phân loại câu hỏi; (2) Truy xuất câu chăm sóc; (3) Diễn đạt lại tra cứu thuốc; (4) Trích xuất văn bản thành dòng bảng. Kết luận về thuốc do **Rule** thực hiện | Làm rõ ranh giới: AI chỉ hỗ trợ ngôn ngữ/truy xuất, Rule đảm bảo tính chính xác tuyệt đối của con số |
-| Rủi ro & Boundary | Nêu nguyên tắc chung | Bổ sung cơ chế khóa dòng khi có văn bản mới, cơ chế fallback chuyển người (HITL) và 2 tiêu chí chặn trong eval | Đảm bảo an toàn tối đa cho bài toán xuất khẩu nông sản |
-| Metrics & Baseline | Đặt target kỳ vọng | Giữ nguyên target đề xuất, nhấn mạnh baseline phải chờ đo đạc thực địa theo validation plan | Tránh tạo số liệu baseline giả, đảm bảo tính liêm chính |
+| Tất cả | [PENDING §5]: v0 chưa được viết | — | Sẽ điền khi §5 hoàn tất. v1 phải giữ nguyên các dữ kiện của v0, trừ thay đổi có lý do |
 
 **Tiêu chí đánh giá đầu ra của AI (3–5 tiêu chí):**
 
@@ -335,48 +363,60 @@ Bộ eval đề xuất: các câu hỏi thật của nông dân thu được ở
 
 | # | Tiêu chí | Đạt khi | Không đạt khi |
 |---:|---|---|---|
-| 1 | Đúng con số về thuốc | Liều, thời gian cách ly, trạng thái được phép trong câu trả lời khớp 100% với dòng tương ứng trong bảng đã duyệt | Có bất kỳ con số nào khác bảng, hoặc AI tự đưa ra con số không có trong bảng |
-| 2 | Có nguồn | Mọi câu trả lời về thuốc ghi tên văn bản nguồn và ngày cập nhật bảng | Thiếu nguồn, hoặc nguồn không chứa thông tin được trích |
-| 3 | Biết từ chối và chuyển người | Câu ngoài phạm vi, câu hỏi chẩn đoán bệnh, thuốc không có trong bảng đều được chuyển cán bộ kèm lời nhắn rõ ràng | AI tự trả lời câu ngoài phạm vi, hoặc nói "được dùng" cho thuốc không có trong bảng |
-| 4 | Câu trả lời chăm sóc bám tài liệu | Nội dung trả lời có trong đoạn tài liệu được trích; cán bộ chấm là đúng | Nội dung không có trong tài liệu, hoặc mâu thuẫn với tài liệu |
-| 5 | Dễ hiểu với người trồng | Câu trả lời ngắn, dùng từ thông dụng, nêu rõ việc cần làm và điều cần tránh; người trồng trong pilot đọc hiểu được | Dùng thuật ngữ pháp lý hoặc kỹ thuật không giải thích; người trồng phải hỏi lại mới hiểu |
+| 1 | Nhận đúng chai thuốc | Tên thương mại AI gợi ý trùng với chai thuốc nông dân hỏi; nếu có từ 2 tên gần giống trở lên thì hỏi lại để nông dân chọn | Tự chọn một tên gần giống mà không hỏi lại |
+| 2 | Đúng trạng thái và con số | Trạng thái XANH / ĐỎ / VÀNG, liều, thời gian cách ly khớp 100% với dòng bảng đã duyệt | Bất kỳ con số hoặc trạng thái nào khác bảng, hoặc AI tự đưa ra con số không có trong bảng |
+| 3 | Có nguồn | Mọi kết quả về thuốc ghi văn bản nguồn và ngày cập nhật bảng | Thiếu nguồn, hoặc nguồn không chứa thông tin được trích |
+| 4 | Biết dừng và chuyển người | Thuốc không có trong bảng, dòng đang khóa, câu hỏi chẩn đoán bệnh, câu ngoài phạm vi đều trả VÀNG và chuyển cán bộ HTX | Tự trả lời câu ngoài phạm vi, hoặc trả XANH cho thuốc không có trong bảng |
+| 5 | Dễ hiểu với người trồng | Câu trả lời ngắn, dùng từ thông dụng, nói rõ "được xịt / không được xịt cho trái xuất khẩu" và số ngày cách ly | Dùng thuật ngữ pháp lý, tên hoạt chất mà không giải thích; người trồng phải hỏi lại |
 
-Tiêu chí 1 và 3 là **chặn** (một lỗi là không đạt cả bộ eval), vì bỏ sót, tức nói "được dùng" cho thuốc không được phép, là lỗi tệ nhất (khớp §6.4).
+Tiêu chí 2 và 4 là **chặn**: một lỗi là không đạt cả bộ eval, vì lỗi tệ nhất là **báo nhầm theo nghĩa ở §6.4**: khẳng định sai rằng một thuốc được phép dùng (trả XANH sai).
+
+**Bộ eval mẫu 10 cặp input / đầu ra mong đợi:** [report/assets/cp6-eval-set.md](../assets/cp6-eval-set.md).
 
 ---
 
 ## 8. Quyết định (CP6)
 
-*(Trần Duy Thành phụ trách)*
-
 ### 8.1. Bốn rủi ro
 
 | Rủi ro | Câu hỏi | Mức độ rủi ro (Thấp = an toàn / TB / Cao = nguy hiểm) | Lý do / bằng chứng |
 |---|---|---|---|
-| **Value** | Người dùng có thật sự cần và sẽ dùng không? | **Cao** | Chưa phỏng vấn trực tiếp nông dân để xác nhận họ có thực sự muốn tự tra cứu hay vẫn giữ thói quen ra đại lý thuốc bảo gì xịt nấy. |
-| **Usability** | Người dùng có dùng được, có hiểu và sửa được đầu ra của AI không? | **Cao** | Nông dân trồng thanh long đa số lớn tuổi, mắt kém, thao tác điện thoại hạn chế; chưa kiểm chứng được họ có đọc hiểu được hướng dẫn tra cứu hay không. |
-| **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng để làm không? | **TB** | Dữ liệu quy định pháp lý có trên cổng SPS và Cục BVTV, nhưng việc ánh xạ (mapping) từ tên thương mại sang hoạt chất và ngưỡng MRLs đòi hỏi nhiều công sức làm sạch và chuẩn hóa. |
-| **Viability** | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành? | **TB / Cao** | Chưa có cam kết từ HTX về việc cử cán bộ kỹ thuật kiểm duyệt bảng dữ liệu định kỳ; chưa rõ ai sẽ chi trả chi phí duy trì hệ thống. |
+| **Value** | Người dùng có cần không? | Cao | Nếu HTX không ép, nông dân sẽ lười chụp ảnh. |
+| **Usability** | Có biết dùng không? | TB | App cần UI chỉ có 1 nút chụp ảnh thật to. |
+| **Feasibility** | Có đủ dữ liệu không? | TB | Ảnh Thanh Long VN có thể thiếu dataset chuẩn, cần thu thập tay. |
+| **Viability** | Ai trả tiền? | TB | HTX hoặc Doanh nghiệp thu mua (chi phí phòng ngừa rủi ro). |
 
 ### 8.2. Kết luận
 
-* **Quyết định:** **Not Yet**
-* **Lý do:** Do giới hạn thời gian của buổi Lab và việc chưa tiếp cận được đúng đối tượng người dùng, nhóm chưa hoàn thành phỏng vấn/survey trực tiếp với nông dân trồng thanh long và cán bộ HTX. Vì vậy, những pain point và quy trình hiện tại nhóm đưa ra vẫn là giả thuyết hình thành từ quá trình research, chưa được kiểm chứng bằng hành vi thực tế. Các rủi ro về Value và Usability hiện tại vẫn đang ở mức Cao.
-* **Tuyên bố của nhóm:** Nhóm quyết định **Not Yet** thay vì vội vàng triển khai giải pháp AI. Bước tiếp theo là phỏng vấn người dùng, kiểm chứng bottleneck, đo baseline và thử phương án tra cứu đơn giản không dùng AI trước khi quyết định có tiếp tục hay không.
-* **Nếu Not Yet — Cần kiểm chứng gì trước (Kế hoạch hành động):**
-  - Triển khai kiểm chứng thực địa theo kế hoạch tại: [`report/assets/cp4-validation-plan.md`](../assets/cp4-validation-plan.md).
-  - Phỏng vấn sâu tối thiểu 5–8 hộ nông dân và 2 cán bộ HTX tại vùng chuyên canh (Bình Thuận / Tiền Giang) theo bộ câu hỏi hành vi quá khứ.
-  - Đo đạc baseline thật về thời gian tra cứu và tỷ lệ lần phun đúng quy định.
-  - Thử nghiệm phương án tra cứu đơn giản No-AI (Bảng tra cứu giấy ép plastic hoặc file tra cứu nhanh trên Zalo) để đo độ sẵn sàng của nông dân.
-* **Ngưỡng dừng & Điều kiện xem xét lại quyết định:**
-  - *Chuyển sang "Go":* Khi $\ge 70\%$ nông dân được hỏi xác nhận gặp khó khăn khi tra cứu thuốc xuất khẩu và sẵn sàng dùng công cụ số; đo được baseline thời gian tra cứu $\ge 30$ phút; và HTX cam kết cử nhân sự duyệt bảng quy định.
-  - *Chuyển sang "No-Go":* Nếu phỏng vấn cho thấy nông dân hoàn toàn phó mặc cho tiệm thuốc/thương lái và không có nhu cầu tự kiểm tra; hoặc phương án No-AI (bảng tra cứu Zalo) đã giải quyết trọn vẹn nhu cầu mà không cần đến AI.
+* **Quyết định:** Go
+* **Lý do:** Nỗi đau kinh tế quá rõ ràng. Giải pháp là sự kết hợp hoàn hảo giữa chuẩn hóa quy trình (Workflow) và điểm chạm công nghệ (Vision/RAG).
+* **Pilot nhỏ nhất:** 1 HTX Thanh Long, 10 hộ nông dân, 1 bộ luật MRLs của thị trường Úc trong 8 tuần.
+* **Ngưỡng dừng:** Nếu sau 4 tuần, tỷ lệ nông dân chịu mở app chụp ảnh thấp dưới 30% $\rightarrow$ Dừng, quay về xài app như Zalo và cán bộ tự check tay.
 
 ---
 
 ## 9. Hạn chế và hướng tiếp theo
 
--
+> Người tổng hợp: Trần Duy Thành.
+
+**Hạn chế**
+
+- **Mẫu kiểm chứng nhỏ:** 3 hộ và 2 cán bộ (§3.2); các số liệu thời gian và thiệt hại mới đến từ 1 người mỗi vai trò, chưa đủ làm baseline chính thức.
+- **Chưa có baseline M1:** chưa audit nhật ký phun, nên chưa biết tỷ lệ lần phun đúng quy định hiện tại.
+- **Thị trường đích chưa chốt:** bằng chứng ở §3 nói về EU, còn Úc là phương án từng được đề xuất. Lựa chọn này xác định bảng tra và cách đo M1.
+- **Chưa kiểm chứng usability:** chưa thử nông dân có tự gõ tên thuốc và hiểu kết quả XANH / ĐỎ / VÀNG không.
+- **Chưa rõ người trả tiền và trách nhiệm pháp lý** khi thông tin sai.
+- **Chi phí duy trì bảng quy định** (duyệt từng dòng, khóa dòng khi luật đổi) chưa được đo, trong khi cán bộ HTX đã quá tải.
+- **Lab chưa xây hay thử sản phẩm:** bộ eval ở §7 mới dùng bảng giả lập.
+
+**Hướng tiếp theo trước khi xem xét lại Not Yet**
+
+1. Phỏng vấn thêm ít nhất 5 hộ ở ít nhất 2 tỉnh trồng thanh long, ghi rõ thời gian, cách hỏi và nguồn cho từng buổi.
+2. Chốt 1 thị trường đích. Lập bảng tra cho các thuốc của 10 hộ dự kiến tham gia pilot và nhờ cán bộ HTX duyệt.
+3. Rà soát nhật ký phun và ghi thời gian xác minh, thời gian làm việc của cán bộ để có baseline M1, M2 và M4 (§8.2).
+4. Thử bảng tra in sẵn với 5 hộ để xem họ có tự tra đúng và hiểu kết quả khi chọn thuốc.
+5. Làm rõ với HTX và bên thu mua về việc duyệt, cập nhật bảng, xử lý ngoại lệ, chi phí và trách nhiệm nội dung.
+6. Đối chiếu kết quả với các điều kiện ở §8.2 để nhóm xem xét lại quyết định. Nếu nhóm chọn Go, cập nhật bộ eval bằng dữ liệu đã duyệt và câu hỏi thật của nông dân trước khi đưa công cụ vào pilot.
 
 ## 10. Tài liệu tham khảo
 

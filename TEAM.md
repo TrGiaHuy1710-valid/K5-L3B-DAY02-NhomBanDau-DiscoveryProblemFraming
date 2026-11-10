@@ -6,7 +6,7 @@
 
 - Tên nhóm: NhomBanDau
 - Candidate problem nhóm chọn (1 câu): Người trồng thanh long gặp khó khăn trong việc tiếp cận hoặc xác minh thông tin chăm sóc cây, đặc biệt là các quy định và hướng dẫn liên quan đến thuốc, hóa chất phục vụ xuất khẩu.
-- Quyết định cuối (Go / Not Yet / No-Go): Not Yet
+- Quyết định cuối (Go / Not Yet / No-Go): **Not Yet**
 
 ## Thành viên
 
@@ -14,7 +14,7 @@
 |---:|---|---|---|---|
 | 1 | Trịnh Gia Huy | 2A202603924 | Nhóm trưởng (fork repo), đề xuất candidate problem, phụ trách §4 quy trình trước/sau (CP5) và §7 Problem Statement v1 + eval (CP6) | TrGiaHuy1710-valid |
 | 2 | Lê Hiền Hiếu | 2A202603940 | Dẫn dắt hội tụ nhóm, Ghi chép, Thiết kế mức AI | hieulhaiwork |
-| 3 | Trần Duy Thành | 2A202603919 | Xây dựng Problem Statement và đánh giá tính khả thi | thanh289 |
+| 3 | Trần Duy Thành | 2A202603919 | Phụ trách §5 Problem Statement v0, §8.1–8.2 rủi ro và quyết định, tổng hợp §9 hạn chế và hướng tiếp theo | thanh289 |
 | 4 | Cao Minh Quang | 2A202603906 | Kiểm chứng vấn đề và nghiên cứu giải pháp hiện có | quang011105 |
 
 Không ghi email hay số điện thoại vào bảng này, vì repo có thể để public.
@@ -29,9 +29,10 @@ Gợi ý vai trò (một người có thể giữ nhiều vai): điều phối t
 | CP4 — Kiểm chứng | Cao Minh Quang | Trịnh Gia Huy, Trần Duy Thành | Assumption map, snapshot hoặc survey |
 | CP4 — Research | Cao Minh Quang | Trịnh Gia Huy | Bảng research có link |
 | CP5 — Quy trình trước/sau | Trịnh Gia Huy | Lê Hiền Hiếu | Quy trình + bảng before/after |
-| CP5 — Problem Statement v0 | Trần Duy Thành | Cả nhóm | Problem Statement v0 |
+| CP5 — Problem Statement v0 | Trần Duy Thành | Cả nhóm | Problem Statement v0 (§5) |
 | CP6 — Mức can thiệp + Problem Statement v1 | Lê Hiền Hiếu | Trịnh Gia Huy | Ma trận, AI Canvas, eval, Problem Statement v1 |
-| CP6 — Quyết định | Trần Duy Thành | Cao Minh Quang | 4 rủi ro + Go/Not Yet/No-Go |
+| CP6 — Rủi ro và quyết định | Trần Duy Thành | Cao Minh Quang | Bảng bốn rủi ro, quyết định và ngưỡng dừng (§8.1–8.2) |
+| Tổng hợp hạn chế và hướng tiếp theo | Trần Duy Thành | — | Hạn chế của bằng chứng và các bước kiểm chứng tiếp theo (§9) |
 
 ## Cá nhân
 
@@ -52,51 +53,68 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 - Pitch hướng bài toán Thanh Long (Candidate C); trả lời phản biện về scope, mức cần AI và đối thủ có sẵn.
 - Phản biện 3 candidate còn lại (tóm tắt slide, so sánh mua hàng, hỗ trợ intern) bằng câu hỏi về đối thủ có sẵn, người trả tiền và có cần AI không.
 - Research Plantix, mobiAgri, NextFarm, Agrio; tìm văn bản quy định thuốc BVTV (Thông tư 75/2025/TT-BNNMT) và MRL của Úc (Schedule 20).
-- §4: viết quy trình hiện tại với actor primary / secondary, bottleneck đề xuất; quy trình tương lai tách bước AI / Rule / con người, boundary, phương án quay về; bảng before/after và bộ metric M1–M3 để §5, §7, §8 dùng chung. Các ô chưa có dữ liệu để [PENDING CP4], không tự tạo số liệu.
-- §7: bản nháp Problem Statement v1 và 5 tiêu chí eval (2 tiêu chí chặn: đúng con số về thuốc, biết từ chối và chuyển người).
+- §4: viết quy trình hiện tại với actor primary / secondary, bottleneck đề xuất; quy trình tương lai tách bước AI / Rule / con người, boundary, phương án quay về; bảng before/after và bộ metric M1–M5 để §5, §7, §8 dùng chung; mọi số liệu lấy từ §3.2 và ghi rõ cỡ mẫu.
+- §7: Problem Statement v1, bảng so sánh v0 → v1, 5 tiêu chí eval (2 tiêu chí chặn: đúng trạng thái và con số về thuốc, biết dừng và chuyển người) và bộ eval 10 cặp `report/assets/cp6-eval-set.md`.
 
 **Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
 
-- Mục 4 và Mục 7 trong `report/team/group_report.md`.
+- Mục 4 và Mục 7 trong `report/team/group_report.md`; bộ eval `report/assets/cp6-eval-set.md`.
 - Báo cáo cá nhân: `report/individual/2A202603924_TrinhGiaHuy.md` (mục 3 "Idea sau phản biện", mục 4).
 - Commit: `2A202603924 individual report`, `2A202603924 individual report v2`, `Add and update 2A202603924_TrinhGiaHuy.md`, `Add and update 2A202603924_TrinhGiaHuy.md and my role in team`.
 
 **Điều mình học được từ phần nhóm:**
 
-- *(Huy tự điền)*
+Qua quá trình thực hành Product Discovery và Design Thinking xuyên suốt từ CP3 đến CP6, mình rút ra được 4 bài học cốt lõi:
+
+1. **Xác thực vấn đề có thật hay không (Problem Validation):** Không bao giờ bắt đầu từ công nghệ hay giả định chủ quan. Một bài toán chỉ có thật khi được chứng minh bằng hành vi và thiệt hại ĐÃ XẢY RA trong thực tế (như trường hợp nông dân bị phạt/trả hàng vì dư lượng hóa chất), chứ không phải dựa trên câu trả lời giả định "nếu có thì tôi sẽ dùng".
+2. **Đánh giá đúng việc có thực sự cần AI hay không (AI Justification):** AI không phải là cây búa vạn năng. Trong bài toán tra cứu quy chuẩn thuốc BVTV và MRLs, việc ép dùng Agent tự động hóa hoàn toàn là sai lầm; giải pháp tối ưu và an toàn nhất là kết hợp Workflow + Rule-based để đảm bảo tính chính xác tuyệt đối của dữ liệu pháp lý, chỉ dùng AI ở khâu trích xuất/hỗ trợ và luôn giữ con người (cán bộ HTX) trong vòng lặp kiểm duyệt (Human-in-the-Loop).
+3. **Xây dựng Problem Statement đủ chặt chẽ:** Một Problem Statement chuẩn mực (từ v0 đến v1) phải bóc tách rành mạch giữa Actor chính và phụ, chỉ rõ nguyên nhân gốc rễ và bottleneck trong quy trình thực tế, đồng thời gắn liền với bộ chỉ số đo lường (M1–M5) có căn cứ định lượng rõ ràng thay vì mô tả định tính mơ hồ.
+4. **Tư duy ra quyết định Go, Not Yet hay No-Go:** Học được cách dũng cảm bấm nút "Not Yet" thay vì vội vàng "Go" theo cảm tính. Khi 4 rủi ro cốt lõi (Value, Usability, Feasibility, Viability) vẫn còn các điểm mù kỹ thuật và dữ liệu chưa được kiểm chứng đầy đủ trên diện rộng, dừng lại ở mức thí điểm thận trọng (Pilot hẹp) là quyết định kỹ thuật và kinh doanh có trách nhiệm nhất.
 
 ### LeHienHieu-2A202603940
 
 **Phần việc phụ trách:**
-- Dẫn dắt quá trình tổng hợp ở CP3: Điều phối việc đánh giá chéo và loại suy trực tiếp các ý tưởng để lập bảng chấm điểm chốt Candidate Problem.
-- Thiết kế và chuẩn hóa quy trình ở CP5: Sơ đồ hóa luồng vận hành hiện tại và thiết kế luồng tương lai với các điểm nghẽn được xử lý.
+- Hội tụ nhóm (phụ trách chính): Tổng hợp các candidate, xây dựng Clustering, Opportunity Solution Tree (OST), bảng chấm điểm theo 7 tiêu chí và lập luận lựa chọn bài toán cuối cùng.
+- Quy trình trước/sau (hỗ trợ): Phối hợp với Trịnh Gia Huy phân tích bottleneck, phản biện quy trình As-Is/To-Be và xác định các bước do con người, Rule và AI thực hiện.
+- Mức can thiệp AI (phụ trách chính, mục 6.1–6.4): Phân tích ma trận độ mơ hồ × độ phức tạp, so sánh No AI / Rule / Workflow / Agent, xây dựng AI Canvas rút gọn và trả lời hai câu hỏi Google PAIR.
 
 **Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
-- Trong bước Hội tụ nhóm, tôi đã chủ động đề xuất bỏ qua bước gom Cluster và vẽ cây OST hình thức để tiết kiệm thời gian.
-- Thay vào đó, tôi đề xuất nhóm đi thẳng vào việc mổ xẻ rào cản kỹ thuật (như web chặn crawl data của app so sánh giá, RAG bị nhiễu của bot intern và scope quá nhỏ, AI tóm tắt thì không có gì hơn được NotebookLM). Qua đó, tôi giúp nhóm lập Bảng chấm điểm nhanh gọn và chốt dự án giám sát Thanh Long.
-- Ở CP5, tôi vẽ sơ đồ quy trình 4 bước
+- Tổng hợp các candidate tại CP3, phân tích và so sánh dựa trên các tiêu chí về actor, quy trình, bằng chứng pain point, impact, tính khả thi và hiểu biết domain. Tham gia phản biện để nhóm lựa chọn bài toán hỗ trợ người trồng thanh long tra cứu thông tin thuốc bảo vệ thực vật phục vụ xuất khẩu.
+- Bổ sung bảng Clustering và cây OST rút gọn để hệ thống hóa các pain point, phân biệt vấn đề với giải pháp và thể hiện quá trình hội tụ ý tưởng.
+- Hỗ trợ rà soát quy trình As-Is/To-Be tại CP5, làm rõ bottleneck khi người trồng phải đối chiếu nhiều nguồn thông tin và phụ thuộc vào cán bộ HTX để xác minh.
+- Phân tích độ mơ hồ và độ phức tạp của bài toán, so sánh bốn mức can thiệp và đề xuất Workflow kết hợp Rule và Human-in-the-Loop, thay vì sử dụng Agent khi chưa có bằng chứng về nhu cầu lập kế hoạch động.
+- Xây dựng AI Canvas với sáu thành phần Prediction, Judgment, Action, Outcome, Input và Feedback, xác định vai trò của nông dân, cán bộ HTX và các nguồn dữ liệu cần kiểm chứng.
+- Phân tích hai câu hỏi Google PAIR, đề xuất hướng Augment và xác định các rủi ro khi AI đưa ra kết luận sai hoặc bỏ sót thông tin quan trọng về thuốc BVTV.
 
 **Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
-
+- report/team/group_report.md — Mục 2.1–2.4: Pitch, Clustering, OST và bảng chấm điểm shortlist.
+- report/team/group_report.md — Mục 4.1–4.3: Quy trình As-Is/To-Be và bảng Before/After (vai trò hỗ trợ không trực tiếp commit).
+- report/team/group_report.md — Mục 6.1–6.4: Ma trận độ mơ hồ × độ phức tạp, so sánh bốn mức can thiệp, AI Canvas và Google PAIR.
+- File cp3-clustering.jpg
+- File cp3-simple-ost-tree.jpg
 
 **Điều mình học được từ phần nhóm:**
+- Quá trình hội tụ ý tưởng cần dựa trên pain point và bằng chứng thay vì chỉ đánh giá mức độ hấp dẫn của công nghệ. Clustering và OST giúp nhóm nhìn rõ điểm chung giữa các candidate và tránh nhầm lẫn giải pháp với vấn đề.
+- Không phải bài toán có nhiều nguồn thông tin và quy trình phức tạp đều cần AI Agent. Qua việc phân tích các mức can thiệp, mình nhận thấy Workflow kết hợp Rule có thể đáp ứng nhu cầu tra cứu với khả năng kiểm soát tốt hơn.
+- Các checkpoint có sự phụ thuộc chặt chẽ. Đặc biệt, lựa chọn mức can thiệp AI phải xuất phát từ kết quả kiểm chứng và quy trình thực tế, đồng thời xác định rõ boundary và trách nhiệm của con người.
 
+### TranDuyThanh-2A202603919
 
+**Phần việc phụ trách**
 
-### Trần Duy Thành - 2A202603919
+- §5 (CP5) - Viết Problem Statement v0 dựa trên kết quả kiểm chứng (§3.2) và quy trình hiện tại (§4).
+- §8.1-8.2 (CP6) - Đánh giá bốn rủi ro và trình bày quyết định chung của nhóm.
+- §9 - Tổng hợp hạn chế của bài lab và các bước kiểm chứng tiếp theo.
 
-**Phần việc phụ trách:**
-- Phản biện tính khả thi, đánh giá 4 rủi ro (Value, Usability, Feasibility, Viability) ở CP6.
-- Đúc kết các nội dung thảo luận để viết Problem Statement.
-
-**Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
+**Đóng góp cụ thể**
 - Loại bỏ các ý tưởng cào dữ liệu TMĐT vướng rào cản pháp lý (chặn API).
-- Chốt bảng đánh giá rủi ro, phân định rõ ràng giữa người dùng (nông dân) và người trả tiền (HTX/Doanh nghiệp thu mua).
-- Đưa ra quyết định "Not Yet" do các rủi ro Value và Usability còn ở mức cao khi chưa có phỏng vấn thực địa.
+- Xác định nút thắt ở bước chọn thuốc tại đại lý. Người trồng thanh long khó tự xác minh thuốc và thời gian cách ly trước khi mua hoặc phun. Gắn nút thắt với M1, M2 và M4, ghi rõ M1 chưa có baseline và các mốc thời gian từ phỏng vấn mới có n = 1.
+- Lập bảng đánh giá Value, Usability, Feasibility và Viability; đề xuất quyết định "Not Yet" do chưa đủ bằng chứng thực địa và rủi ro còn cao.
 
-**Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
-- Mục 5. Problem Statement v0 và Mục 8. Quyết định (CP6) trong `group_report.md`.
-- Commit: `thanh289: fill TEAM.md`
+**Bằng chứng**
+
+- [Báo cáo nhóm](report/team/group_report.md) — §5, §8.1–8.2 và §9.
+- [Báo cáo cá nhân](report/individual/2A202603919_TranDuyThanh.md) — mục 4.
 
 **Điều mình học được từ phần nhóm:**
 - Càng đào sâu vào một ngách hẹp (1 loại cây, 1 hợp tác xã), các rủi ro (Viability, Usability) càng dễ kiểm soát hơn là vẽ ra một "siêu ứng dụng" cho toàn ngành nông nghiệp.
