@@ -6,7 +6,11 @@
 
 - Tên nhóm: NhomBanDau
 - Candidate problem nhóm chọn (1 câu): HTX và nông dân trồng Thanh Long xuất khẩu thiếu hệ thống quản lý, hướng dẫn chăm sóc và đối chiếu tình trạng cây trồng thực tế với tiêu chuẩn dư lượng hóa chất (MRLs), dẫn đến rủi ro bị trả hàng và thiệt hại kinh tế.
+<<<<<<< HEAD
 - Quyết định cuối (Go / Not Yet / No-Go): **Not Yet**
+=======
+- Quyết định cuối (Go / Not Yet / No-Go): Not Yet
+>>>>>>> f293d46713e6cfc3b28aef6d52e3ce53961a3294
 
 ## Thành viên
 
@@ -64,7 +68,12 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 
 **Điều mình học được từ phần nhóm:**
 
-- *(Huy tự điền)*
+Qua quá trình thực hành Product Discovery và Design Thinking xuyên suốt từ CP3 đến CP6, mình rút ra được 4 bài học cốt lõi:
+
+1. **Xác thực vấn đề có thật hay không (Problem Validation):** Không bao giờ bắt đầu từ công nghệ hay giả định chủ quan. Một bài toán chỉ có thật khi được chứng minh bằng hành vi và thiệt hại ĐÃ XẢY RA trong thực tế (như trường hợp nông dân bị phạt/trả hàng vì dư lượng hóa chất), chứ không phải dựa trên câu trả lời giả định "nếu có thì tôi sẽ dùng".
+2. **Đánh giá đúng việc có thực sự cần AI hay không (AI Justification):** AI không phải là cây búa vạn năng. Trong bài toán tra cứu quy chuẩn thuốc BVTV và MRLs, việc ép dùng Agent tự động hóa hoàn toàn là sai lầm; giải pháp tối ưu và an toàn nhất là kết hợp Workflow + Rule-based để đảm bảo tính chính xác tuyệt đối của dữ liệu pháp lý, chỉ dùng AI ở khâu trích xuất/hỗ trợ và luôn giữ con người (cán bộ HTX) trong vòng lặp kiểm duyệt (Human-in-the-Loop).
+3. **Xây dựng Problem Statement đủ chặt chẽ:** Một Problem Statement chuẩn mực (từ v0 đến v1) phải bóc tách rành mạch giữa Actor chính và phụ, chỉ rõ nguyên nhân gốc rễ và bottleneck trong quy trình thực tế, đồng thời gắn liền với bộ chỉ số đo lường (M1–M5) có căn cứ định lượng rõ ràng thay vì mô tả định tính mơ hồ.
+4. **Tư duy ra quyết định Go, Not Yet hay No-Go:** Học được cách dũng cảm bấm nút "Not Yet" thay vì vội vàng "Go" theo cảm tính. Khi 4 rủi ro cốt lõi (Value, Usability, Feasibility, Viability) vẫn còn các điểm mù kỹ thuật và dữ liệu chưa được kiểm chứng đầy đủ trên diện rộng, dừng lại ở mức thí điểm thận trọng (Pilot hẹp) là quyết định kỹ thuật và kinh doanh có trách nhiệm nhất.
 
 ### LeHienHieu-2A202603940
 

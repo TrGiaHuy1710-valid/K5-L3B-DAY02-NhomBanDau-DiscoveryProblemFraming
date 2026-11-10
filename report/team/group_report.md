@@ -198,10 +198,6 @@ Sơ đồ:
 
 ### 4.2. Quy trình tương lai
 
-> Khớp với mức đã chọn ở §6: **Workflow kết hợp Rule và Human-in-the-Loop**: các bước cố định, AI không tự quyết bước tiếp theo. Không có chẩn đoán bệnh qua ảnh (Dependency A; §3.3 cũng kết luận tránh hướng này). Nguyên tắc **Farmer-first, Cooperative-supported**: nông dân tự tra trực tiếp; HTX bảo chứng dữ liệu và xử lý ngoại lệ, không làm trung gian cho mỗi lượt tra.
->
-> Thiết kế bám theo **tín hiệu phản bác ở §3.2**: không bắt tạo tài khoản, không bắt gõ dài, không có form nhật ký; HTX vẫn giữ quyền xác nhận với thuốc mới hoặc trường hợp nhạy cảm.
-
 ```text
 LUỒNG TRA CỨU (mỗi lần nông dân cầm chai thuốc, tại đại lý hoặc tại vườn)
 
