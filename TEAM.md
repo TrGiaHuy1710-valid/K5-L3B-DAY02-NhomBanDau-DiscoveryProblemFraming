@@ -6,7 +6,7 @@
 
 - Tên nhóm: NhomBanDau
 - Candidate problem nhóm chọn (1 câu): HTX và nông dân trồng Thanh Long xuất khẩu thiếu hệ thống quản lý, hướng dẫn chăm sóc và đối chiếu tình trạng cây trồng thực tế với tiêu chuẩn dư lượng hóa chất (MRLs), dẫn đến rủi ro bị trả hàng và thiệt hại kinh tế.
-- Quyết định cuối (Go / Not Yet / No-Go): Go
+- Quyết định cuối (Go / Not Yet / No-Go): **Not Yet**
 
 ## Thành viên
 
@@ -14,7 +14,7 @@
 |---:|---|---|---|---|
 | 1 | Trịnh Gia Huy | 2A202603924 | Nhóm trưởng (fork repo), đề xuất candidate problem, phụ trách §4 quy trình trước/sau (CP5) và §7 Problem Statement v1 + eval (CP6) | TrGiaHuy1710-valid |
 | 2 | Lê Hiền Hiếu | 2A202603940 | Dẫn dắt hội tụ nhóm, Ghi chép, Thiết kế mức AI | hieulhaiwork |
-| 3 | Trần Duy Thành | 2A202603919 | Xây dựng Problem Statement và đánh giá tính khả thi | thanh289 |
+| 3 | Trần Duy Thành | 2A202603919 | Phụ trách §5 Problem Statement v0, §8.1–8.2 rủi ro và quyết định, tổng hợp §9 hạn chế và hướng tiếp theo | thanh289 |
 | 4 | Cao Minh Quang | 2A202603906 | Kiểm chứng vấn đề và nghiên cứu giải pháp hiện có | quang011105 |
 
 Không ghi email hay số điện thoại vào bảng này, vì repo có thể để public.
@@ -29,9 +29,10 @@ Gợi ý vai trò (một người có thể giữ nhiều vai): điều phối t
 | CP4 — Kiểm chứng | Cao Minh Quang | Trịnh Gia Huy, Trần Duy Thành | Assumption map, snapshot hoặc survey |
 | CP4 — Research | Cao Minh Quang | Trịnh Gia Huy | Bảng research có link |
 | CP5 — Quy trình trước/sau | Trịnh Gia Huy | Lê Hiền Hiếu | Quy trình + bảng before/after |
-| CP5 — Problem Statement v0 | Trần Duy Thành | Cả nhóm | Problem Statement v0 |
+| CP5 — Problem Statement v0 | Trần Duy Thành | Cả nhóm | Problem Statement v0 (§5) |
 | CP6 — Mức can thiệp + Problem Statement v1 | Lê Hiền Hiếu | Trịnh Gia Huy | Ma trận, AI Canvas, eval, Problem Statement v1 |
-| CP6 — Quyết định | Trần Duy Thành | Cao Minh Quang | 4 rủi ro + Go/Not Yet/No-Go |
+| CP6 — Rủi ro và quyết định | Trần Duy Thành | Cao Minh Quang | Bảng bốn rủi ro, quyết định và ngưỡng dừng (§8.1–8.2) |
+| Tổng hợp hạn chế và hướng tiếp theo | Trần Duy Thành | — | Hạn chế của bằng chứng và các bước kiểm chứng tiếp theo (§9) |
 
 ## Cá nhân
 
@@ -92,20 +93,24 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 - Không phải bài toán có nhiều nguồn thông tin và quy trình phức tạp đều cần AI Agent. Qua việc phân tích các mức can thiệp, mình nhận thấy Workflow kết hợp Rule có thể đáp ứng nhu cầu tra cứu với khả năng kiểm soát tốt hơn.
 - Các checkpoint có sự phụ thuộc chặt chẽ. Đặc biệt, lựa chọn mức can thiệp AI phải xuất phát từ kết quả kiểm chứng và quy trình thực tế, đồng thời xác định rõ boundary và trách nhiệm của con người.
 
-### Trần Duy Thành - 2A202603919
+### TranDuyThanh-2A202603919
 
-**Phần việc phụ trách:**
-- Phản biện tính khả thi, đánh giá 4 rủi ro (Value, Usability, Feasibility, Viability) ở CP6.
-- Đúc kết các nội dung thảo luận để viết Problem Statement.
+**Phần việc phụ trách**
 
-**Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
+- §5 (CP5) - Viết Problem Statement v0 dựa trên kết quả kiểm chứng (§3.2) và quy trình hiện tại (§4).
+- §8.1-8.2 (CP6) - Đánh giá bốn rủi ro và trình bày quyết định chung của nhóm.
+- §9 - Tổng hợp hạn chế của bài lab và các bước kiểm chứng tiếp theo.
+
+**Đóng góp cụ thể**
 - Loại bỏ các ý tưởng cào dữ liệu TMĐT vướng rào cản pháp lý (chặn API).
-- Chốt bảng đánh giá rủi ro, phân định rõ ràng giữa người dùng (nông dân) và người trả tiền (HTX/Doanh nghiệp thu mua).
-- Đưa ra quyết định "Go" với quy mô Pilot nhỏ nhất gọn gàng.
+- Xác định nút thắt ở bước chọn thuốc tại đại lý. Người trồng thanh long khó tự xác minh thuốc và thời gian cách ly trước khi mua hoặc phun. Gắn nút thắt với M1, M2 và M4, ghi rõ M1 chưa có baseline và các mốc thời gian từ phỏng vấn mới có n = 1.
+- Lập bảng đánh giá Value, Usability, Feasibility và Viability.
 
-**Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
-- Mục 5. Problem Statement v0 và Mục 8. Quyết định (CP6) trong `group_report.md`.
-- Commit: `thanh289: fill TEAM.md`
+
+**Bằng chứng**
+
+- [Báo cáo nhóm](report/team/group_report.md) — §5, §8.1–8.2 và §9.
+- [Báo cáo cá nhân](report/individual/2A202603919_TranDuyThanh.md) — mục 4.
 
 **Điều mình học được từ phần nhóm:**
 - Càng đào sâu vào một ngách hẹp (1 loại cây, 1 hợp tác xã), các rủi ro (Viability, Usability) càng dễ kiểm soát hơn là vẽ ra một "siêu ứng dụng" cho toàn ngành nông nghiệp.

@@ -8,7 +8,7 @@
 - Tên nhóm: NhomBanDau
 - Thành viên: xem `TEAM.md`
 - Candidate problem được chọn (1 câu): 
-- Quyết định cuối: Go / Not Yet / No-Go
+- Quyết định cuối: **Not Yet**
 
 ---
 
@@ -146,7 +146,7 @@ Cách đã dùng: Phỏng vấn sâu (In-depth Interview) kết hợp rà soát 
 
 > Người phụ trách: Trịnh Gia Huy. Phạm vi theo Candidate C (CP3): hỗ trợ người trồng Thanh Long tiếp cận và xác minh thông tin chăm sóc cây, nhất là thông tin thuốc, hóa chất liên quan đến xuất khẩu.
 >
-> Số liệu lấy từ §3.2, có ghi nguồn và cỡ mẫu (n). Phần lớn mới có n = 1 nên được dùng làm mốc tham chiếu; baseline chính thức đo trong 2 tuần đầu pilot (§8.2).
+> Số liệu lấy từ §3.2, có ghi nguồn và cỡ mẫu (n). Phần lớn mới có n = 1 nên được dùng làm mốc tham chiếu; baseline chính thức sẽ đo trong đợt kiểm chứng trước khi xem xét pilot AI (§8.2).
 
 ### 4.1. Quy trình hiện tại
 
@@ -267,10 +267,10 @@ LUỒNG DUY TRÌ BẢNG QUY ĐỊNH (khi có văn bản mới, VD: danh mục th
 
 | # | Metric | Baseline | Target | Cách đo |
 |---:|---|---|---|---|
-| M1 | % lần phun của hộ pilot dùng thuốc ở trạng thái XANH cho thị trường đích, đủ thời gian cách ly | Đo bằng audit nhật ký phun của 10 hộ pilot trong tuần 1–2 (§8.2); §3.2 ghi nhận 1 trường hợp vi phạm (n = 1) | ≥ 95% và 0 lần dùng thuốc trạng thái ĐỎ | Cán bộ audit nhật ký mỗi 2 tuần |
-| M2 | Thời gian từ lúc nông dân có câu hỏi đến lúc có thông tin đã xác minh | 1–2 ngày (Snapshot 1, n = 1); đo lại tuần 1–2 pilot | Dưới 1 phút (XANH / ĐỎ); trong ngày làm việc (VÀNG) | Log công cụ; bấm giờ khi phỏng vấn |
+| M1 | % lần phun của hộ pilot dùng thuốc ở trạng thái XANH cho thị trường đích, đủ thời gian cách ly | Đo bằng rà soát nhật ký phun của 10 hộ dự kiến tham gia pilot, trong đợt kiểm chứng (§8.2); §3.2 ghi nhận 1 trường hợp vi phạm (n = 1) | ≥ 95% và 0 lần dùng thuốc trạng thái ĐỎ | Cán bộ audit nhật ký mỗi 2 tuần |
+| M2 | Thời gian từ lúc nông dân có câu hỏi đến lúc có thông tin đã xác minh | 1–2 ngày (Snapshot 1, n = 1); đo lại trong đợt kiểm chứng (§8.2) | Dưới 1 phút (XANH / ĐỎ); trong ngày làm việc (VÀNG) | Log công cụ; bấm giờ khi phỏng vấn |
 | M3 | % kết quả về thuốc khớp bảng đã duyệt và có nguồn | Không áp dụng | 100% | Bộ eval §7 |
-| M4 | Thời gian cán bộ HTX trả lời câu hỏi và soạn tài liệu mỗi tháng | 2–3 ngày (n = 1) | Giảm ≥ 50% | Cán bộ tự ghi |
+| M4 | Thời gian cán bộ HTX trả lời câu hỏi và soạn tài liệu mỗi tháng | 2–3 ngày (n = 1); đo lại trong đợt kiểm chứng (§8.2) | Giảm ≥ 50% | Cán bộ tự ghi |
 | M5 (kết quả trễ) | Số lô hoặc hộ pilot bị loại vì dư lượng | 1 trường hợp ghi nhận (§3.2, n = 1); tỷ lệ đo trong pilot | 0 trường hợp do thuốc trạng thái ĐỎ | Kết quả kiểm mẫu của HTX / thương lái |
 
 ---
@@ -293,8 +293,8 @@ Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng
 | # | Phản biện (nguồn: AI rà soát v0, chỉ hỏi lỗ hổng) | Nhóm có đồng ý không | Xử lý |
 |---:|---|---|---|
 | 1 | Boundary còn chung chung: chưa nói rõ AI không được tự đưa ra con số liều, thời gian cách ly hay trạng thái được phép / không được phép | Đồng ý | v1 (§7) tách rõ: kết luận do Rule trên bảng đã duyệt, AI chỉ diễn đạt lại |
-| 2 | M1 chưa có baseline; M2 và M4 mới từ 1 người, chưa đủ làm baseline | Đồng ý | Giữ nhãn n = 1; đo baseline trong 2 tuần đầu pilot (§8.2) |
-| 3 | "Thị trường đích" chưa xác định: bằng chứng ở §3 nói về EU, còn pilot cũ ghi Úc | Đồng ý | Pilot chọn 1 thị trường đích ngay tuần 1 (§8.2); bảng quy định chỉ xây cho thị trường đó |
+| 2 | M1 chưa có baseline; M2 và M4 mới từ 1 người, chưa đủ làm baseline | Đồng ý | Giữ nhãn n = 1 và đo baseline trong đợt kiểm chứng trước khi xem xét pilot AI (§8.2) |
+| 3 | "Thị trường đích" chưa xác định: bằng chứng ở §3 nói về EU, còn pilot cũ ghi Úc | Đồng ý | Chốt 1 thị trường đích trong đợt kiểm chứng (§8.2) và lập bảng quy định cho thị trường đó |
 
 ---
 
@@ -372,7 +372,7 @@ Bài toán có độ mơ hồ cao tại khâu hiểu câu hỏi và diễn đạ
 | **Quy trình** | Thấy sâu bệnh → mua thuốc theo đại lý → (đôi khi) gọi cán bộ HTX → cán bộ tra danh mục thuốc và quy định MRL → nông dân phun → HTX / thương lái kiểm mẫu sát thu hoạch (§4.1) |
 | **Bottleneck** | Nông dân chọn thuốc tại đại lý mà không có cách tự kiểm tra ngay thuốc đó có được dùng cho thị trường xuất khẩu không và phải cách ly bao nhiêu ngày. Kênh xác minh duy nhất là 2 cán bộ HTX cho khoảng 100 hộ (§4.1; §3.2) |
 | **Impact** | Vi phạm chỉ lộ ra khi kiểm mẫu sát thu hoạch. Trường hợp ghi nhận: 4 tấn không được gom xuất khẩu, bán 4.000 đ/kg thay vì 18.000 đ/kg (§3.2, Snapshot 1, n = 1). Cán bộ HTX mất 2–3 ngày mỗi tháng trả lời và soạn tài liệu (Snapshot 2, n = 1). Ở cấp ngành, thanh long Việt Nam nằm trong diện kiểm soát tăng cường của EU theo Quy định 2019/1793 (§3.2, §10) |
-| **Success Metric** (baseline → target, cách đo) | M1: % lần phun dùng thuốc XANH, đủ thời gian cách ly (baseline đo bằng audit nhật ký tuần 1–2 pilot → ≥ 95%, 0 lần ĐỎ). M2: thời gian có thông tin đã xác minh (1–2 ngày, n = 1 → dưới 1 phút với XANH / ĐỎ; log). M3: 100% kết quả về thuốc khớp bảng và có nguồn (bộ eval). M4: thời gian cán bộ mỗi tháng (2–3 ngày, n = 1 → giảm ≥ 50%; cán bộ tự ghi). Định nghĩa đầy đủ ở §4.3 |
+| **Success Metric** (baseline → target, cách đo) | M1: % lần phun dùng thuốc XANH, đủ thời gian cách ly (baseline đo bằng rà soát nhật ký trong đợt kiểm chứng (§8.2) → ≥ 95%, 0 lần ĐỎ). M2: thời gian có thông tin đã xác minh (1–2 ngày, n = 1 → dưới 1 phút với XANH / ĐỎ; log). M3: 100% kết quả về thuốc khớp bảng và có nguồn (bộ eval). M4: thời gian cán bộ mỗi tháng (2–3 ngày, n = 1 → giảm ≥ 50%; cán bộ tự ghi). Định nghĩa đầy đủ ở §4.3 |
 | **Boundary** | AI **không**: tự đưa ra con số liều, thời gian cách ly hay trạng thái XANH / ĐỎ; khuyến nghị thuốc ngoài bảng; chẩn đoán bệnh; trả lời khi không có nguồn; quyết định thay nông dân. **HITL:** cán bộ HTX / chuyên gia duyệt từng dòng bảng trước khi phát hành; xác nhận mọi trường hợp VÀNG (thuốc lạ, dòng đang khóa, câu ngoài phạm vi), đúng yêu cầu của HTX ở §3.2 |
 | **AI intervention point** | (1) Hiểu câu hỏi và gợi ý đúng tên thương mại khi nông dân gõ sai hoặc viết tắt; (2) diễn đạt kết quả tra bảng thành lời dễ hiểu; (3) trả lời câu chăm sóc chung chỉ từ tài liệu HTX đã chọn, kèm nguồn; (4) trích xuất văn bản quy định mới thành dòng bảng để người duyệt. Kết luận XANH / ĐỎ / VÀNG do **Rule** làm trên bảng đã duyệt |
 | **Mức chọn** | **Workflow kết hợp Rule và Human-in-the-Loop** (theo §6.2) |
@@ -419,29 +419,25 @@ Tiêu chí 2 và 4 là **chặn**: một lỗi là không đạt cả bộ eval,
 
 ### 8.2. Kết luận
 
-**Quyết định:** **Go có điều kiện**, phạm vi pilot nhỏ.
+**Quyết định** — **Not Yet**. Trước mắt, nhóm kiểm chứng bằng bảng tra in sẵn đã được cán bộ HTX duyệt. Việc đưa công cụ AI cho người trồng cần một quyết định riêng sau đợt kiểm chứng.
 
-**Lý do:**
-- Value có tín hiệu thật (§3.2) và bottleneck rõ, đo được (§4).
-- Usability và Viability đang ở mức Cao, các giả định quan trọng chưa được kiểm chứng. Vì vậy chưa xây ngay hệ thống AI mà chia pilot thành các giai đoạn có cổng kiểm tra; không qua cổng thì dừng.
-- Mức Workflow + Rule + HITL (§6) cho phép bắt đầu bằng phần không cần AI (bảng tra đã duyệt), rồi mới thêm AI.
+**Lý do** — Phỏng vấn cho thấy khó khăn khi tự xác minh thuốc trước lúc mua (§3.2, §4). Usability và Viability vẫn ở mức Cao vì nhóm chưa biết người trồng có tự tra và hiểu kết quả hay không, cũng như ai sẽ chịu chi phí và duy trì bảng. Thị trường đích, bảng dữ liệu đã duyệt và baseline chính thức cũng còn thiếu.
 
-**Pilot nhỏ nhất:** 1 HTX, 10 hộ, 1 thị trường đích (chọn ở tuần 1 giữa EU, theo bằng chứng §3, và Úc), chỉ gồm các thuốc hộ pilot thực sự dùng, trong 8 tuần.
+**Điều kiện để xem xét lại quyết định**
 
-| Giai đoạn | Việc làm | Cổng kiểm tra để đi tiếp |
+| Cần kiểm chứng | Cách làm | Bằng chứng cần có |
 |---|---|---|
-| Tuần 1–2 (chưa có AI) | Chọn thị trường đích; cán bộ HTX duyệt bảng quy định cho các thuốc hộ pilot dùng; phát bảng tra in sẵn; audit nhật ký để có baseline M1; bấm giờ M2, M4; thử với 5 hộ xem họ có tra và hiểu XANH / ĐỎ / VÀNG không | Có baseline M1; ≥ 3/5 hộ tra đúng và hiểu kết quả |
-| Tuần 3 | Chạy bộ eval §7 (10 cặp) trên công cụ | ≥ 9/10 cặp đạt và không có lỗi ở tiêu chí chặn |
-| Tuần 4–8 | Cho 10 hộ dùng công cụ; câu VÀNG chuyển cán bộ | Không chạm ngưỡng dừng |
+| Thị trường đích, dữ liệu và baseline | Chốt 1 thị trường giữa EU và Úc. Nhờ cán bộ HTX duyệt bảng cho các thuốc mà 10 hộ dự kiến tham gia pilot thực sự dùng. Rà soát nhật ký phun để đo M1, ghi lại thời gian xác minh (M2) và thời gian cán bộ trả lời, soạn tài liệu (M4). | Đã chốt thị trường, có bảng được duyệt và có baseline M1, M2, M4 theo §4.3. |
+| Người trồng có tự tra trước khi mua thuốc và hiểu kết quả không | Thử bảng tra in sẵn với 5 hộ. Quan sát họ tự tìm đúng thuốc và giải thích kết quả XANH / ĐỎ / VÀNG trong tình huống chọn thuốc. | Ít nhất 3/5 hộ tự tra đúng và hiểu kết quả. |
+| HTX có thể duy trì bảng và xử lý ngoại lệ không | Làm việc với HTX và bên thu mua về thời gian duyệt bảng, xử lý câu VÀNG, chi phí và trách nhiệm khi thông tin sai. | Xác định được người phụ trách duyệt, cập nhật bảng và xử lý ngoại lệ, bên chịu chi phí và đầu mối chịu trách nhiệm nội dung. |
 
-**Nếu Not Yet (phương án thay thế):** cần kiểm chứng trước (1) nông dân có tự tra trước khi mua thuốc không, bằng thử nghiệm với bảng tra in sẵn; (2) ai trả chi phí vận hành; (3) chốt thị trường đích.
+**Phương án pilot nếu nhóm quyết định Go sau đợt kiểm chứng** — Giữ phạm vi dự kiến 1 HTX, 10 hộ, 1 thị trường đích, với các thuốc các hộ thực sự dùng. Phương án đánh giá tiếp là Workflow + Rule + HITL (§6). Trước khi đưa công cụ cho người trồng, chạy nội bộ bộ eval §7 bằng dữ liệu đã duyệt. Yêu cầu tối thiểu là ≥ 9/10 cặp đạt, không có lỗi ở hai tiêu chí chặn và 100% kết quả về thuốc khớp bảng, có nguồn (M3).
 
-**Nếu No-Go — nên làm gì thay AI:** HTX duy trì bảng tra in sẵn đã duyệt cho các thuốc phổ biến và một kênh hỏi đáp cố định với cán bộ.
+**Ngưỡng dừng nếu pilot được duyệt**
 
-**Ngưỡng dừng:**
-- Nếu sau 4 tuần dùng công cụ, **dưới 30% hộ pilot tra cứu ít nhất 1 lần trong 2 tuần** → dừng, quay về bảng tra in sẵn + cán bộ trả lời qua điện thoại.
-- Nếu có **bất kỳ kết quả XANH sai** (khẳng định sai rằng thuốc được dùng) đến tay nông dân → tắt phần AI ngay, chỉ giữ tra bảng theo đúng tên (§4.2).
-- Nếu sau 8 tuần **thời gian cán bộ HTX** (duyệt bảng + câu VÀNG) **không thấp hơn baseline M4** → Not Yet, xem lại Viability trước khi mở rộng.
+- Sau 4 tuần dùng công cụ, nếu dưới 30% hộ tra cứu ít nhất 1 lần trong 2 tuần gần nhất, dừng công cụ và quay về bảng tra in sẵn cùng kênh hỏi cán bộ qua điện thoại.
+- Nếu bất kỳ kết quả sai trạng thái (nhất là XANH sai), sai liều hoặc sai thời gian cách ly đến tay nông dân, tắt phần AI ngay và quay về phương án ở §4.2.
+- Khi kết thúc pilot, nếu thời gian cán bộ dành cho duyệt bảng và xử lý câu VÀNG không thấp hơn baseline M4, quay về **Not Yet** và xem lại khả năng vận hành trước khi mở rộng.
 
 ---
 
@@ -453,20 +449,20 @@ Tiêu chí 2 và 4 là **chặn**: một lỗi là không đạt cả bộ eval,
 
 - **Mẫu kiểm chứng nhỏ:** 3 hộ và 2 cán bộ (§3.2); các số liệu thời gian và thiệt hại mới đến từ 1 người mỗi vai trò, chưa đủ làm baseline chính thức.
 - **Chưa có baseline M1:** chưa audit nhật ký phun, nên chưa biết tỷ lệ lần phun đúng quy định hiện tại.
-- **Thị trường đích chưa chốt:** bằng chứng ở §3 nói về EU, pilot cũ ghi Úc. Bảng quy định và metric phụ thuộc vào lựa chọn này.
+- **Thị trường đích chưa chốt:** bằng chứng ở §3 nói về EU, còn Úc là phương án từng được đề xuất. Lựa chọn này xác định bảng tra và cách đo M1.
 - **Chưa kiểm chứng usability:** chưa thử nông dân có tự gõ tên thuốc và hiểu kết quả XANH / ĐỎ / VÀNG không.
 - **Chưa rõ người trả tiền và trách nhiệm pháp lý** khi thông tin sai.
 - **Chi phí duy trì bảng quy định** (duyệt từng dòng, khóa dòng khi luật đổi) chưa được đo, trong khi cán bộ HTX đã quá tải.
 - **Lab chưa xây hay thử sản phẩm:** bộ eval ở §7 mới dùng bảng giả lập.
 
-**Hướng tiếp theo**
+**Hướng tiếp theo trước khi xem xét lại Not Yet**
 
-1. Phỏng vấn thêm ít nhất 5 hộ ở ít nhất 2 tỉnh trồng Thanh Long, ghi đủ thời gian, cách hỏi và nguồn cho từng buổi.
-2. Audit nhật ký phun của 10 hộ pilot để có baseline M1.
-3. Thử bảng tra in sẵn (chưa có AI) với 5 hộ để kiểm giả định usability.
-4. Nhóm chốt thị trường đích, rồi xây bảng quy định chỉ cho các thuốc hộ pilot dùng và nhờ cán bộ HTX duyệt.
-5. Hỏi HTX và bên thu mua về việc ai chịu chi phí vận hành, ai chịu trách nhiệm nội dung.
-6. Thay bảng giả lập trong bộ eval §7 bằng dữ liệu thật đã duyệt và câu hỏi thật của nông dân.
+1. Phỏng vấn thêm ít nhất 5 hộ ở ít nhất 2 tỉnh trồng thanh long, ghi rõ thời gian, cách hỏi và nguồn cho từng buổi.
+2. Chốt 1 thị trường đích. Lập bảng tra cho các thuốc của 10 hộ dự kiến tham gia pilot và nhờ cán bộ HTX duyệt.
+3. Rà soát nhật ký phun và ghi thời gian xác minh, thời gian làm việc của cán bộ để có baseline M1, M2 và M4 (§8.2).
+4. Thử bảng tra in sẵn với 5 hộ để xem họ có tự tra đúng và hiểu kết quả khi chọn thuốc.
+5. Làm rõ với HTX và bên thu mua về việc duyệt, cập nhật bảng, xử lý ngoại lệ, chi phí và trách nhiệm nội dung.
+6. Đối chiếu kết quả với các điều kiện ở §8.2 để nhóm xem xét lại quyết định. Nếu nhóm chọn Go, cập nhật bộ eval bằng dữ liệu đã duyệt và câu hỏi thật của nông dân trước khi đưa công cụ vào pilot.
 
 ## 10. Tài liệu tham khảo
 

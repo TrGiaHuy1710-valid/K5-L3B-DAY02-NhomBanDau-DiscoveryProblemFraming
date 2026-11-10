@@ -1,4 +1,4 @@
-# Báo cáo cá nhân - MSSV_HoTen
+# Báo cáo cá nhân - 2A202603919_TranDuyThanh
 
 > Đổi tên file theo quy tắc `MSSV_HoTen.md`, ví dụ `20241234_NguyenVanAn.md` (MSSV trước, dấu `_`, họ tên viết liền không dấu). Sửa cả dòng tiêu đề phía trên cho khớp.
 > Template chi tiết và prompt mẫu cho từng mục: [docs/01-worksheet.md](../../docs/01-worksheet.md).
@@ -9,8 +9,8 @@
 
 - Họ tên: Trần Duy Thành
 - MSSV: 2A202603919
-- Email trường: 
-- Tên nhóm: 26ai.thanhtd2@vinuni.edu.vn
+- Email trường: 26ai.thanhtd2@vinuni.edu.vn
+- Tên nhóm: NhomBanDau
 - Link repo nhóm: https://github.com/TrGiaHuy1710-valid/K5-L3B-DAY02-NhomBanDau-DiscoveryProblemFraming.git
 
 ---
@@ -126,15 +126,18 @@ Quy trình hiện tại - **19 phút/lần, giả định**:
 
 | Hoạt động | Tôi đã làm gì? | Kết quả / ảnh hưởng tới bài nhóm |
 |---|---|---|
-| Pitch Problem Card | Tạo pitch này | Đã được mọi người xem xét |
+| Pitch Problem Card (CP3) | Trình bày Candidate B về việc đối chiếu giá thực trả, thông số và chính sách giữa nhiều nhà bán. | Nhóm xem xét ứng viên này nhưng chọn Candidate C. Khả năng truy cập dữ liệu từ các sàn là một rào cản của Candidate B (§2.4). |
 | Phản biện bài của bạn khác | Hỏi: "AI tóm tắt slide đã có rồi, như NoteLLM, nếu có thể tạo ưu thê thì sẽ làm private nhưng LLM thì rất khó" | Giúp loại bỏ bớt problem này. |
 | Phản biện bài của bạn khác | Hỏi: "Agent hỗ trợ Intern liệu có cần thiết không khi nếu dự án đã private thì chẳng lẽ công ty lại không cho dùng công cụ code hỗ trợ để gỡ bỏ các bug?" | Nhận được câu trả lời: "Các công ty thưởng sẽ không cung cấp model dùng token cho intern, vì vậy mới cần một model local nhỏ giúp hỗ trợ vấn đề này." |
 | Nhận phản biện | "Với problem liên quan tới AI giúp kiểm soát chi tiêu, liệu có nhất thiết phải dùng AI không khi mà suy nghĩ kĩ lại thì rule thôi là cũng ổn" | Đồng ý với ý kiến này, vì vậy card muốn pick là cái #2|
 | Nhận phản biện | "Với việc dùng AI để tổng hợp ra các kênh, trang của sản phẩm, vấn đề là việc lấy API từ các kênh, có nơi không cho, hoặc API cũng sẽ quá nhiều" | Có thể ưu tiên các API  chính thức, hay là cho người dùng cung cấp website hay dùng chẳng hạn.|
-| Kiểm chứng / research | Research thị trường: Tìm kiếm các giải pháp Agri-tech hiện có tại Việt Nam và Thế giới | Kết quả kiểm chứng: Phát hiện các app quốc tế như Plantix làm rất tốt phần nhận diện bệnh (Vision), các app VN thì chủ yếu ghi chép nhật ký nông vụ tĩnh. Chưa có app nào làm RAG real-time về tiêu chuẩn xuất khẩu/hóa chất cấm. Điều này chứng minh USP (Lợi thế độc quyền) của nhóm rất rõ ràng và khả thi |
-Quy trình nhóm | Trình bày ý tưởng -> Phản biện -> Research -> Chốt vấn đề	| Thống nhất được vấn đề chung của nhóm
-Problem Statement | Góp ý vào quá trình hình thành statement cuối | Nông dân trồng Thanh Long gặp khó khăn trong việc chẩn đoán bệnh chính xác và cập nhật kịp thời các thay đổi về tiêu chuẩn xuất khẩu (dư lượng hóa chất), dẫn đến rủi ro bị trả hàng và thiệt hại kinh tế lớn 
-Mức can thiệp AI | Xác định giới hạn hành động của AI (AI làm đến đâu, con người làm đến đâu) | Chốt mức: AI chỉ đóng vai trò phân tích ảnh bệnh và tra cứu luật/cảnh báo hóa chất cấm. Quyết định cuối cùng vẫn thuộc về nông dân.
+| Research (CP4, hỗ trợ) | Tìm hiểu một số công cụ Agri-tech hiện có. | Đối chiếu với §3.3, khoảng trống nhóm tập trung là tra cứu tên thương mại, hoạt chất và ngưỡng dư lượng (MRL) theo thị trường đích. |
+| Problem Statement v0 (CP5, §5) | Viết bản v0 từ kết quả kiểm chứng (§3.2) và quy trình hiện tại (§4). | Làm rõ nút thắt ở bước chọn thuốc tại đại lý, vai trò xác minh của cán bộ HTX và các chỉ số M1, M2, M4. M1 chưa có baseline. Các mốc thời gian từ phỏng vấn mới có n = 1. |
+| Rủi ro và quyết định (CP6, §8.1–8.2) | Đánh giá Value, Usability, Feasibility và Viability, rồi ghi lại quyết định chung và ngưỡng dừng. | Nhóm chốt **Not Yet** vì còn thiếu bằng chứng về khả năng tự tra cứu của người trồng và khả năng vận hành của HTX. Bước tiếp theo là thử bảng tra đã duyệt, đo baseline và xác nhận thị trường, chi phí, trách nhiệm vận hành. Workflow + Rule + xác minh của cán bộ HTX là phương án để đánh giá tiếp (§6–§8). |
+| Hạn chế và hướng tiếp theo (§9) | Tổng hợp giới hạn của bằng chứng và các việc cần kiểm chứng trước khi mở rộng. | Ghi rõ việc cần làm gồm đo baseline, thử bảng tra in sẵn với người trồng, chốt thị trường, làm rõ chi phí và trách nhiệm vận hành, cập nhật bộ đánh giá bằng dữ liệu đã duyệt. |
+
+Bằng chứng cho ba phần phụ trách nằm ở §5, §8.1–8.2 và §9 của [báo cáo nhóm](../team/group_report.md).
+
 ---
 
 ## 5. Dùng AI
