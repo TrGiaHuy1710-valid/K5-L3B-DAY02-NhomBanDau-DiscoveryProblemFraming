@@ -179,7 +179,13 @@ Tôi thấy khó nhất là tách vấn đề ra khỏi ý tưởng giải pháp
 Nếu làm lại, tôi sẽ dành ít thời gian hơn cho việc tranh luận model, crawl hay framework ở giai đoạn đầu. Buổi họp có lúc đi hơi xa vào tính khả thi kỹ thuật của bài so sánh mua hàng, trong khi chưa so sánh kỹ actor, impact và bằng chứng của từng candidate. Tôi cũng sẽ không bỏ qua Cluster và OST ngay từ đầu, vì sau đó vẫn phải quay lại hệ thống hóa ý tưởng để báo cáo có mạch. Đặc biệt với bài thanh long, tôi muốn hỏi sớm hơn về ai là người dùng trực tiếp, họ đang hỏi ai khi cần kiểm tra thuốc và ai chịu trách nhiệm nếu thông tin sai. Những câu đó giúp xác định boundary thực tế hơn nhiều so với việc mặc định làm Agent.
 
 **6.7. Hiểu bài:** giải thích bằng 5–8 câu, không nhìn tài liệu, chuỗi *problem → quy trình → metric → boundary → mức can thiệp AI → quyết định* của bài nhóm mình.
-
+- Nhóm tôi chọn bài toán người trồng thanh long gặp khó khăn trong việc tự kiểm tra thuốc bảo vệ thực vật có phù hợp với yêu cầu xuất khẩu hay không, dẫn đến nguy cơ dùng sai thuốc, vi phạm dư lượng và chịu thiệt hại kinh tế.
+-  Hiện tại nông dân chủ yếu mua thuốc theo lời đại lý, đôi khi mới hỏi cán bộ HTX và thường chỉ biết có vấn đề khi kiểm mẫu sát thu hoạch. Điểm nghẽn chính là họ không có cách tự xác minh thông tin ngay trước khi mua và phun thuốc.
+-  Nhóm đặt mục tiêu ít nhất 95% lần phun trong pilot đáp ứng các điều kiện sử dụng thuốc đã kiểm tra, không có lần dùng thuốc trạng thái ĐỎ; thời gian nhận thông tin xác minh giảm xuống dưới 1 phút với thuốc có trong bảng. Các baseline còn thiếu sẽ được đo trong hai tuần đầu pilot.
+-  AI không được tự kết luận thuốc nào được phép dùng, tự đưa ra liều lượng hoặc thời gian cách ly, cũng không được chẩn đoán bệnh. Những trường hợp thiếu dữ liệu hoặc chưa xác minh phải chuyển cho cán bộ HTX, còn quyết định sử dụng thuốc vẫn thuộc về nông dân.
+-  Nhóm chọn Workflow kết hợp Rule và Human-in-the-Loop, trong đó AI hiểu câu hỏi và diễn đạt thông tin, Rule kiểm tra trên bảng quy định đã duyệt, còn cán bộ kỹ thuật xử lý các trường hợp ngoại lệ. Nhóm không chọn Agent vì chưa cần AI tự quyết định các bước xử lý.
+-  Sau khi đánh giá lại bốn rủi ro Value, Usability, Feasibility và Viability, nhóm quyết định Not Yet. Lý do chính là nhóm chưa thực hiện đủ phỏng vấn, khảo sát thực tế để xác nhận nông dân có gặp đúng vấn đề mình giả định hay không, cũng như mức độ sẵn sàng sử dụng công cụ. Ngoài ra, dữ liệu quy định thuốc và trách nhiệm xác minh vẫn cần nghiên cứu thêm.
+-  Nhóm cần phỏng vấn nông dân và cán bộ HTX, kiểm chứng quy trình hiện tại, đo baseline và thử nghiệm một phương án tra cứu đơn giản chưa dùng AI. Nếu kết quả không cho thấy pain point đủ lớn hoặc giải pháp đơn giản đã đáp ứng được nhu cầu, nhóm sẽ điều chỉnh phạm vi hoặc không tiếp tục phát triển AI.
 
 ## 7. Tài liệu tham khảo
 - https://www.hutech.edu.vn/homepage/tin-tuc/tin-hutech/14577167-an-tuong-he-thong-cham-soc-vuon-thanh-long-bang-iot-cua-sinh-vien-hutech
