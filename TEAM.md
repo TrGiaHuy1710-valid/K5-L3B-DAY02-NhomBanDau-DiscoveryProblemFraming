@@ -111,11 +111,9 @@ Qua quá trình thực hành Product Discovery và Design Thinking xuyên suốt
 - Xác định nút thắt ở bước chọn thuốc tại đại lý. Người trồng thanh long khó tự xác minh thuốc và thời gian cách ly trước khi mua hoặc phun. Gắn nút thắt với M1, M2 và M4, ghi rõ M1 chưa có baseline và các mốc thời gian từ phỏng vấn mới có n = 1.
 - Lập bảng đánh giá Value, Usability, Feasibility và Viability; đề xuất quyết định "Not Yet" do chưa đủ bằng chứng thực địa và rủi ro còn cao.
 
-**Bằng chứng**
-
-- [Báo cáo nhóm](report/team/group_report.md) — §5, §8.1–8.2 và §9.
-- [Báo cáo cá nhân](report/individual/2A202603919_TranDuyThanh.md) — mục 4.
-
+**Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
+- Mục 5. Problem Statement v0 và Mục 8. Quyết định (CP6) trong `group_report.md`.
+- Commit: `thanh289: fill TEAM.md`
 **Điều mình học được từ phần nhóm:**
 - Càng đào sâu vào một ngách hẹp (1 loại cây, 1 hợp tác xã), các rủi ro (Viability, Usability) càng dễ kiểm soát hơn là vẽ ra một "siêu ứng dụng" cho toàn ngành nông nghiệp.
 
@@ -149,3 +147,4 @@ Qua quá trình thực hành Product Discovery và Design Thinking xuyên suốt
 - Hiểu sâu sắc tinh thần liêm chính học thuật trong Discovery: Không được bịa đặt kết quả phỏng vấn khi chưa thực sự làm; dũng cảm chọn **Not Yet** khi chưa đủ bằng chứng thực tế về nỗi đau của người dùng thay vì vội vàng lao vào giải pháp AI.
 - Nắm vững phương pháp thiết kế kế hoạch kiểm chứng (Validation Plan): Phải hỏi về hành vi ĐÃ XẢY RA trong quá khứ, không hỏi câu hỏi giả định ("Bạn có muốn...").
 - Học được tư duy thử nghiệm No-AI trước: Luôn kiểm tra xem phương án đơn giản không dùng AI (như bảng tra cứu Zalo/giấy) có đủ giải quyết vấn đề trước khi đầu tư nguồn lực làm AI.
+
