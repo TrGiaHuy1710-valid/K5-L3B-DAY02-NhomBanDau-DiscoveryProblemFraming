@@ -68,20 +68,29 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 ### LeHienHieu-2A202603940
 
 **Phần việc phụ trách:**
-- Dẫn dắt quá trình tổng hợp ở CP3: Điều phối việc đánh giá chéo và loại suy trực tiếp các ý tưởng để lập bảng chấm điểm chốt Candidate Problem.
-- Thiết kế và chuẩn hóa quy trình ở CP5: Sơ đồ hóa luồng vận hành hiện tại và thiết kế luồng tương lai với các điểm nghẽn được xử lý.
+- Hội tụ nhóm (phụ trách chính): Tổng hợp các candidate, xây dựng Clustering, Opportunity Solution Tree (OST), bảng chấm điểm theo 7 tiêu chí và lập luận lựa chọn bài toán cuối cùng.
+- Quy trình trước/sau (hỗ trợ): Phối hợp với Trịnh Gia Huy phân tích bottleneck, phản biện quy trình As-Is/To-Be và xác định các bước do con người, Rule và AI thực hiện.
+- Mức can thiệp AI (phụ trách chính, mục 6.1–6.4): Phân tích ma trận độ mơ hồ × độ phức tạp, so sánh No AI / Rule / Workflow / Agent, xây dựng AI Canvas rút gọn và trả lời hai câu hỏi Google PAIR.
 
 **Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
-- Trong bước Hội tụ nhóm, tôi đã chủ động đề xuất bỏ qua bước gom Cluster và vẽ cây OST hình thức để tiết kiệm thời gian.
-- Thay vào đó, tôi đề xuất nhóm đi thẳng vào việc mổ xẻ rào cản kỹ thuật (như web chặn crawl data của app so sánh giá, RAG bị nhiễu của bot intern và scope quá nhỏ, AI tóm tắt thì không có gì hơn được NotebookLM). Qua đó, tôi giúp nhóm lập Bảng chấm điểm nhanh gọn và chốt dự án giám sát Thanh Long.
-- Ở CP5, tôi vẽ sơ đồ quy trình 4 bước
+- Tổng hợp các candidate tại CP3, phân tích và so sánh dựa trên các tiêu chí về actor, quy trình, bằng chứng pain point, impact, tính khả thi và hiểu biết domain. Tham gia phản biện để nhóm lựa chọn bài toán hỗ trợ người trồng thanh long tra cứu thông tin thuốc bảo vệ thực vật phục vụ xuất khẩu.
+- Bổ sung bảng Clustering và cây OST rút gọn để hệ thống hóa các pain point, phân biệt vấn đề với giải pháp và thể hiện quá trình hội tụ ý tưởng.
+- Hỗ trợ rà soát quy trình As-Is/To-Be tại CP5, làm rõ bottleneck khi người trồng phải đối chiếu nhiều nguồn thông tin và phụ thuộc vào cán bộ HTX để xác minh.
+- Phân tích độ mơ hồ và độ phức tạp của bài toán, so sánh bốn mức can thiệp và đề xuất Workflow kết hợp Rule và Human-in-the-Loop, thay vì sử dụng Agent khi chưa có bằng chứng về nhu cầu lập kế hoạch động.
+- Xây dựng AI Canvas với sáu thành phần Prediction, Judgment, Action, Outcome, Input và Feedback, xác định vai trò của nông dân, cán bộ HTX và các nguồn dữ liệu cần kiểm chứng.
+- Phân tích hai câu hỏi Google PAIR, đề xuất hướng Augment và xác định các rủi ro khi AI đưa ra kết luận sai hoặc bỏ sót thông tin quan trọng về thuốc BVTV.
 
 **Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
-
+- report/team/group_report.md — Mục 2.1–2.4: Pitch, Clustering, OST và bảng chấm điểm shortlist.
+- report/team/group_report.md — Mục 4.1–4.3: Quy trình As-Is/To-Be và bảng Before/After (vai trò hỗ trợ không trực tiếp commit).
+- report/team/group_report.md — Mục 6.1–6.4: Ma trận độ mơ hồ × độ phức tạp, so sánh bốn mức can thiệp, AI Canvas và Google PAIR.
+- File cp3-clustering.jpg
+- File cp3-simple-ost-tree.jpg
 
 **Điều mình học được từ phần nhóm:**
-
-
+- Quá trình hội tụ ý tưởng cần dựa trên pain point và bằng chứng thay vì chỉ đánh giá mức độ hấp dẫn của công nghệ. Clustering và OST giúp nhóm nhìn rõ điểm chung giữa các candidate và tránh nhầm lẫn giải pháp với vấn đề.
+- Không phải bài toán có nhiều nguồn thông tin và quy trình phức tạp đều cần AI Agent. Qua việc phân tích các mức can thiệp, mình nhận thấy Workflow kết hợp Rule có thể đáp ứng nhu cầu tra cứu với khả năng kiểm soát tốt hơn.
+- Các checkpoint có sự phụ thuộc chặt chẽ. Đặc biệt, lựa chọn mức can thiệp AI phải xuất phát từ kết quả kiểm chứng và quy trình thực tế, đồng thời xác định rõ boundary và trách nhiệm của con người.
 
 ### Trần Duy Thành - 2A202603919
 
