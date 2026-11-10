@@ -6,11 +6,7 @@
 
 - Tên nhóm: NhomBanDau
 - Candidate problem nhóm chọn (1 câu): HTX và nông dân trồng Thanh Long xuất khẩu thiếu hệ thống quản lý, hướng dẫn chăm sóc và đối chiếu tình trạng cây trồng thực tế với tiêu chuẩn dư lượng hóa chất (MRLs), dẫn đến rủi ro bị trả hàng và thiệt hại kinh tế.
-<<<<<<< HEAD
 - Quyết định cuối (Go / Not Yet / No-Go): **Not Yet**
-=======
-- Quyết định cuối (Go / Not Yet / No-Go): Not Yet
->>>>>>> f293d46713e6cfc3b28aef6d52e3ce53961a3294
 
 ## Thành viên
 
